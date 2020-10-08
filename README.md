@@ -13,6 +13,4 @@
 3. Nguyễn Thanh Nhã: Tham gia phân tích yêu cầu bài toán, hoàn thiện đặc tả use case "Xem thông tin xe trong bãi", vẽ biểu đồ hoạt động "Xem thông tin xe trong bãi" và tham gia hoàn thiện tài liệu SRS. 
 
 ## Revisions
-Người kiểm tra
-1. Kiểm tra đặc tả use case: Vũ Trung Nghĩa.
-2. Kiểm tra hoàn thiện tài liệu SRS: Lê Thế Nam.
+Kiểm tra hoàn thiện tài liệu SRS: Lê Thế Nam.
