@@ -17,4 +17,5 @@
 3. Nguyễn Thanh Nhã: Phân tích biểu đồ tương tác và biểu đồ lớp cho use case xem thông tin xe trng bãi
 ## Revisions
 Kiểm tra hoàn thiện tài liệu SRS: Lê Thế Nam.
+
 Kiểm tra hoàn thiện tài liệu phần LAB01: Vũ Trung Nghĩa.
