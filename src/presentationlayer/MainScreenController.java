@@ -1,6 +1,5 @@
 package presentationlayer;
 
-import entities.Bicycle;
 import entities.Dock;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,10 +16,11 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class MainScreenController implements Initializable {
+    ArrayList<Dock> docks;
+
     @FXML
     private ListView<String> docksView;
 
-    ArrayList<Dock> docks;
     @Override
     public void initialize(URL url, ResourceBundle rb){
         System.out.println("Initialize main screen");
