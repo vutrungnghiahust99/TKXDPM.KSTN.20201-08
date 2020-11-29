@@ -15,7 +15,7 @@
    <left>
       <VBox prefHeight="474.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Chọn bãi xe bải muốn trả ">
+            <Label text="Chọn bãi xe bạn muốn trả ">
                <font>
                   <Font size="22.0" />
                </font>
