@@ -7,14 +7,14 @@ public class Dock {
     private String address;
     private String area;
     private int numberOfDockingPoints;
-    private ArrayList<Bicycle> bicycles;
+    private ArrayList<Bike> bikes;
 
     public Dock(String name, String address, String area, int numberOfDockingPoints) {
         this.name = name;
         this.address = address;
         this.area = area;
         this.numberOfDockingPoints = numberOfDockingPoints;
-        this.bicycles = Bicycle.getRandomBicycles();
+        this.bikes = Bike.getRandomBicycles();
     }
 
     public static ArrayList<Dock> getRandomDocks(){
@@ -30,7 +30,11 @@ public class Dock {
         return name + " - " + address;
     }
 
-    public ArrayList<Bicycle> getBicycles() {
-        return bicycles;
+    public String getDetailInfo(){
+        return name + " - " + address + " - " + area + " - " + Integer.toString(numberOfDockingPoints);
+    }
+
+    public ArrayList<Bike> getBikes() {
+        return bikes;
     }
 }
