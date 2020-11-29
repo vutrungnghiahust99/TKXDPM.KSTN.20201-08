@@ -29,9 +29,6 @@ public class ViewDockController implements Initializable {
     @FXML
     private Text dockInfo;
 
-    @FXML
-    private Button returnMainScreenButton;
-
     @Override
     public void initialize(URL url, ResourceBundle rb){
         System.out.println("default initialize ViewDockScreen");
@@ -57,12 +54,6 @@ public class ViewDockController implements Initializable {
             bikesView.getItems().add(bike.toString());
     }
 
-    public void handleReturnMainScreenButton(ActionEvent event){
-        System.out.println("User click return to Main Screen");
-        Stage stage = (Stage) returnMainScreenButton.getScene().getWindow();
-        stage.close();
-    }
-
     public void showViewBikeScreen(Bike bike){
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ViewBikeScreen.fxml"));
@@ -75,6 +66,7 @@ public class ViewDockController implements Initializable {
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(new Scene(root));
+            stage.setTitle("ViewBikeScreen");
             stage.show();
         }catch (IOException e){
             e.printStackTrace();

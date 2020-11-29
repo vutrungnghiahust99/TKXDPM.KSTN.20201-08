@@ -18,9 +18,6 @@ public class ViewBikeController implements Initializable {
     @FXML
     private Text bikeInfo;
 
-    @FXML
-    private Button returnViewDockScreenButton;
-
     @Override
     public void initialize(URL url, ResourceBundle rb){
         System.out.println("default initialize ViewBikeScreen");
@@ -32,9 +29,4 @@ public class ViewBikeController implements Initializable {
         bikeInfo.setText(bike.getDetailInfo());
     }
 
-    public void handleReturnDockScreenButton(ActionEvent event){
-        System.out.println("User click return to Main Screen");
-        Stage stage = (Stage) returnViewDockScreenButton.getScene().getWindow();
-        stage.close();
-    }
 }
