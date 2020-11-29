@@ -8,12 +8,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ffbf00;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationlayer.ViewDockController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="573.0" style="-fx-background-color: #ffbf00;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationlayer.ViewDockController">
    <top>
-      <HBox prefHeight="68.0" prefWidth="800.0" BorderPane.alignment="CENTER" />
+      <HBox prefHeight="62.0" prefWidth="573.0" BorderPane.alignment="CENTER" />
    </top>
    <left>
-      <VBox prefHeight="467.0" prefWidth="307.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="410.0" prefWidth="219.0" BorderPane.alignment="CENTER">
          <children>
             <Label prefHeight="26.0" prefWidth="198.0" text="Thông tin bãi xe ">
                <font>
@@ -22,7 +22,7 @@
                <VBox.margin>
                   <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                </VBox.margin></Label>
-            <AnchorPane prefHeight="449.0" prefWidth="307.0" style="-fx-background-color: white;">
+            <AnchorPane prefHeight="362.0" prefWidth="222.0" style="-fx-background-color: white;">
                <children>
                   <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
@@ -51,7 +51,7 @@
                <VBox.margin>
                   <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                </VBox.margin></Label>
-            <ListView fx:id="bikesView" prefHeight="449.0" prefWidth="493.0" />
+            <ListView fx:id="bikesView" prefHeight="362.0" prefWidth="351.0" />
          </children>
       </VBox>
    </center>

@@ -8,10 +8,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ffbf00;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationlayer.ReturnBikeController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="485.0" prefWidth="385.0" style="-fx-background-color: #ffbf00;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationlayer.ReturnBikeController">
    <top>
-      <Region prefHeight="73.0" prefWidth="800.0" style="-fx-background-color: #ffbf00;" BorderPane.alignment="CENTER" />
+      <Region prefHeight="0.0" prefWidth="385.0" style="-fx-background-color: #ffbf00;" BorderPane.alignment="CENTER" />
    </top>
    <left>
       <VBox prefHeight="474.0" prefWidth="800.0" BorderPane.alignment="CENTER">
@@ -26,9 +25,9 @@
             </Label>
             <AnchorPane prefHeight="425.0" prefWidth="800.0">
                <children>
-                  <VBox prefHeight="381.0" prefWidth="800.0">
+                  <VBox layoutY="-4.0" prefHeight="391.0" prefWidth="385.0">
                      <children>
-                        <ListView fx:id="docksView" prefHeight="425.0" prefWidth="800.0" />
+                        <ListView fx:id="docksView" prefHeight="391.0" prefWidth="385.0" />
                      </children>
                   </VBox>
                </children>
