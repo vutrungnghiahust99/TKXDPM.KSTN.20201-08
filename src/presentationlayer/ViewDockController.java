@@ -1,5 +1,7 @@
 package presentationlayer;
 
+import entities.Bicycle;
+import entities.Dock;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,6 +17,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ViewDockController implements Initializable {
+    private Dock dock;
     @FXML
     private ListView<String> bicycles;
 
@@ -29,12 +32,13 @@ public class ViewDockController implements Initializable {
         System.out.println("default initialize ViewDockScreen");
     }
 
-    public void initData(String dInfo, ArrayList<String> bikes){
+    public void initData(Dock dock){
         System.out.println("initialize dockInfo and bikesInfo ");
-        dockInfo.setText(dInfo);
-        for(String s: bikes){
-            bicycles.getItems().add(s);
-        }
+        this.dock = dock;
+        dockInfo.setText(dock.toString());
+        ArrayList<Bicycle> bikes = dock.getBicycles();
+        for(Bicycle bicycle: bikes)
+            bicycles.getItems().add(bicycle.toString());
     }
 
     public void handleReturnMainScreenButton(ActionEvent event){

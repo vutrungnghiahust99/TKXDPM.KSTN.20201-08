@@ -37,21 +37,21 @@ public class MainScreenController implements Initializable {
             if (click.getClickCount() == 2) {
                 System.out.println("User double on a dock");
                 String dockInfo = docksView.getSelectionModel().getSelectedItem();
-                ArrayList<String> bicycles = getBicyclesInfo(dockInfo);
+                Dock dock = getDockFromString(dockInfo);
 
-                showViewDockScreen(dockInfo, bicycles);
+                showViewDockScreen(dock);
             }
         });
     }
 
-    public void showViewDockScreen(String dockInfo, ArrayList<String> bicycles){
+    public void showViewDockScreen(Dock dock){
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ViewDockScreen.fxml"));
             Parent root = (Parent) loader.load();
 
             ViewDockController viewDockController = loader.getController();
 
-            viewDockController.initData(dockInfo, bicycles);
+            viewDockController.initData(dock);
 
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
@@ -62,15 +62,12 @@ public class MainScreenController implements Initializable {
         }
     }
 
-    private ArrayList<String> getBicyclesInfo(String dockInfo){
+    private Dock getDockFromString(String dockInfo){
 
         for(Dock dock: docks){
             String s = dock.toString();
             if(dockInfo.equals(s)){
-                ArrayList<String> info = new ArrayList<>();
-                for(Bicycle bicycle: dock.getBicycles())
-                    info.add(bicycle.toString());
-                return info;
+                return dock;
             }
          }
         return null;
