@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -22,13 +23,13 @@ public class MainScreenController implements Initializable {
     private ListView<String> docksView;
 
     @Override
-    public void initialize(URL url, ResourceBundle rb){
+    public void initialize(URL url, ResourceBundle rb) {
         System.out.println("Initialize main screen");
         // generate fake docks dataset
         docks = Dock.getRandomDocks();
 
         //show list of docks
-        for(Dock dock: docks){
+        for (Dock dock : docks) {
             docksView.getItems().add(dock.toString());
         }
 
@@ -44,8 +45,8 @@ public class MainScreenController implements Initializable {
         });
     }
 
-    public void showViewDockScreen(Dock dock){
-        try{
+    public void showViewDockScreen(Dock dock) {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ViewDockScreen.fxml"));
             Parent root = (Parent) loader.load();
 
@@ -58,19 +59,39 @@ public class MainScreenController implements Initializable {
             stage.setScene(new Scene(root));
             stage.setTitle("ViewDockScreen");
             stage.show();
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private Dock getDockFromString(String dockInfo){
+    private Dock getDockFromString(String dockInfo) {
 
-        for(Dock dock: docks){
+        for (Dock dock : docks) {
             String s = dock.toString();
-            if(dockInfo.equals(s)){
+            if (dockInfo.equals(s)) {
                 return dock;
             }
-         }
+        }
         return null;
+    }
+
+    public void handleReturnButtonClick() {
+        try {
+            System.out.println("user click ReturnBikeButton");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ReturnBikeScreen.fxml"));
+            Parent root = (Parent) loader.load();
+
+            ReturnBikeController returnBikeController = loader.getController();
+
+            returnBikeController.initData(docks);
+
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(new Scene(root));
+            stage.setTitle("ReturnBikeScreen");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

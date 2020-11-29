@@ -16,7 +16,7 @@
       <HBox spacing="8.0" BorderPane.alignment="CENTER">
          <children>
             <Button mnemonicParsing="false" text="Thuê xe " />
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Trả xe " />
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleReturnButtonClick" text="Trả xe " />
             <Button layoutX="72.0" layoutY="10.0" mnemonicParsing="false" text="Xem thông tin xe đang thuê " />
             <Button layoutX="134.0" layoutY="10.0" mnemonicParsing="false" text="Khóa xe " />
          </children>
