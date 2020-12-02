@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="403.0" prefWidth="483.0" style="-fx-background-color: #ffbf00;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationlayer.ViewBikeController">
+   <children>
+      <Label text="Thông tin chi tiết xe ">
+         <VBox.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </VBox.margin>
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <AnchorPane prefHeight="294.0" prefWidth="483.0" style="-fx-background-color: white;">
+         <children>
+            <VBox prefHeight="299.0" prefWidth="483.0">
+               <children>
+                  <Text fx:id="bikeInfo" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="30.0" right="20.0" top="20.0" />
+                     </VBox.margin>
+                  </Text>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <BorderPane prefHeight="277.0" prefWidth="800.0">
+         <center>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hệ thống thuê xe điện tử EcoBike " BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+         </center>
+      </BorderPane>
+   </children>
+</VBox>
