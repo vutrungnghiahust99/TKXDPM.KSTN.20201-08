@@ -1,25 +1,18 @@
 package presentationlayer;
 
-import entities.Dock;
+import entities.Bike;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import presentationlayer.box.ConfirmBox;
-import presentationlayer.box.DisplayBikeAndRequestBox;
 import presentationlayer.box.NotificationBox;
 import javafx.scene.control.TextField;
-import entities.Bike;
-import java.awt.*;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class RentBikeController {
+public class RentBikeScreenController {
     public Bike bike;
     @FXML
     private TextField barcode;

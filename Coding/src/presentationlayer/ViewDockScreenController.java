@@ -18,7 +18,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class ViewDockController implements Initializable {
+public class ViewDockScreenController implements Initializable {
     private Dock dock;
 
     @FXML
@@ -57,7 +57,7 @@ public class ViewDockController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ViewBikeScreen.fxml"));
             Parent root = (Parent) loader.load();
 
-            ViewBikeController viewBikeController = loader.getController();
+            ViewBikeScreenController viewBikeController = loader.getController();
 
             viewBikeController.initData(bike);
 

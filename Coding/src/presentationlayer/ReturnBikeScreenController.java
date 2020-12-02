@@ -13,7 +13,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class ReturnBikeController implements Initializable {
+public class ReturnBikeScreenController implements Initializable {
     private ArrayList<Dock> docks;
 
     @FXML

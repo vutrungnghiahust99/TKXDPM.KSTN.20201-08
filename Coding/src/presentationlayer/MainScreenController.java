@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -50,7 +49,7 @@ public class MainScreenController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ViewDockScreen.fxml"));
             Parent root = (Parent) loader.load();
 
-            ViewDockController viewDockController = loader.getController();
+            ViewDockScreenController viewDockController = loader.getController();
 
             viewDockController.initData(dock);
 
@@ -81,7 +80,7 @@ public class MainScreenController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ReturnBikeScreen.fxml"));
             Parent root = (Parent) loader.load();
 
-            ReturnBikeController returnBikeController = loader.getController();
+            ReturnBikeScreenController returnBikeController = loader.getController();
 
             returnBikeController.initData(docks);
 

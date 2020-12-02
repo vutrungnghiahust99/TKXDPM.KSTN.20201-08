@@ -1,7 +1,5 @@
 package presentationlayer.box;
 
-import entities.Bike;
-import entities.Dock;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;

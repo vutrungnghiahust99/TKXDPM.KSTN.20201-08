@@ -8,7 +8,7 @@ import javafx.scene.text.Text;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ViewBikeController implements Initializable {
+public class ViewBikeScreenController implements Initializable {
     private Bike bike;
 
     @FXML
