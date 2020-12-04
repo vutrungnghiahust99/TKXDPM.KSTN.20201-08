@@ -1,3 +1,5 @@
+-- MySQL Workbench 8.0
+
 DROP DATABASE IF EXISTS ecodatabase;
 create DATABASE ecodatabase;
 
