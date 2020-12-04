@@ -2,8 +2,6 @@ package entities;
 
 import dataaccesslayer.PaymentTransactionDAO;
 
-import java.util.Date;
-
 public class PaymentTransaction {
     private int rentalCode;
     private String cardCode;
@@ -12,8 +10,10 @@ public class PaymentTransaction {
     private int amount;
     private int balance;
     private String time;
+    private String day;
 
-    public PaymentTransaction(int rentalCode, String cardCode, String owner, String transactionContent, int amount, int balance, String time) {
+
+    public PaymentTransaction(int rentalCode, String cardCode, String owner, String transactionContent, int amount, int balance, String time, String day) {
         this.rentalCode = rentalCode;
         this.cardCode = cardCode;
         this.owner = owner;
@@ -21,6 +21,7 @@ public class PaymentTransaction {
         this.amount = amount;
         this.balance = balance;
         this.time = time;
+        this.day = day;
     }
 
     public void setRentalCode(int rentalCode) {
@@ -79,8 +80,11 @@ public class PaymentTransaction {
         return time;
     }
 
+    public String getDay() {
+        return day;
+    }
     // undone
     public void savePaymentTransaction(){
-        PaymentTransactionDAO.save(rentalCode, cardCode, owner, transactionContent, amount, balance, time);
+        PaymentTransactionDAO.save(rentalCode, cardCode, owner, transactionContent, amount, balance, time, day);
     }
 }
