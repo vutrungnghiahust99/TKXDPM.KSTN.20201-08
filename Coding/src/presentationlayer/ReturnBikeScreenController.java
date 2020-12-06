@@ -45,14 +45,14 @@ public class ReturnBikeScreenController implements Initializable {
         System.out.println("initialize dockInfo and bikesInfo ");
         this.docks = docks;
         for(Dock dock : docks)
-            docksView.getItems().add(dock.toString());
+            docksView.getItems().add(dock.getGeneralInfo());
     }
 
 
     private Dock getDockFromString(String dockInfo){
 
         for(Dock dock: docks){
-            String s = dock.toString();
+            String s = dock.getGeneralInfo();
             if(dockInfo.equals(s)){
                 return dock;
             }

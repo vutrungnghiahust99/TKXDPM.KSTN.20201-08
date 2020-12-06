@@ -1,5 +1,6 @@
 package presentationlayer;
 
+import businesslogiclayer.InitializeController;
 import entities.Dock;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,11 +26,11 @@ public class MainScreenController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         System.out.println("Initialize main screen");
         // generate fake docks dataset
-        docks = Dock.getRandomDocks();
+        docks = InitializeController.getDocks();
 
         //show list of docks
         for (Dock dock : docks) {
-            docksView.getItems().add(dock.toString());
+            docksView.getItems().add(dock.getGeneralInfo());
         }
 
         //listen when user double click on the dock in listview => show ViewDockScreen
@@ -66,7 +67,7 @@ public class MainScreenController implements Initializable {
     private Dock getDockFromString(String dockInfo) {
 
         for (Dock dock : docks) {
-            String s = dock.toString();
+            String s = dock.getGeneralInfo();
             if (dockInfo.equals(s)) {
                 return dock;
             }

@@ -49,7 +49,7 @@ public class ViewDockScreenController implements Initializable {
         dockInfo.setText(dock.getDetailInfo());
         ArrayList<Bike> bikes = dock.getBikes();
         for(Bike bike : bikes)
-            bikesView.getItems().add(bike.toString());
+            bikesView.getItems().add(bike.getGeneralInfo());
     }
 
     public void showViewBikeScreen(Bike bike){
@@ -74,7 +74,7 @@ public class ViewDockScreenController implements Initializable {
     private Bike getBikeFromString(String bikeInfo){
 
         for(Bike bike: dock.getBikes()){
-            String s = bike.toString();
+            String s = bike.getGeneralInfo();
             if(bikeInfo.equals(s)){
                 return bike;
             }
