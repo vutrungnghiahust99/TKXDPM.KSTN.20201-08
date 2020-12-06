@@ -7,6 +7,7 @@ public class DBConnection {
     private static final String DB_URL = "jdbc:mysql://localhost:3306/ecodatabase";
     private static final String USER_NAME = "vutrungnghia";
     private static final String PASSWORD = "29452269";
+    private static Connection conn = getConnection();
 
     public static Connection getConnection() {
         Connection conn = null;
@@ -23,7 +24,6 @@ public class DBConnection {
 
     public static void execute(String command){
         try{
-            Connection conn = getConnection();
             Statement stmt = conn.createStatement();
             stmt.execute(command);
             System.out.println("Execute command: " + command + " successfully");
@@ -35,7 +35,6 @@ public class DBConnection {
     public static ArrayList<ArrayList<String>> query(String command){
         try{
             ArrayList<ArrayList<String>> queryResults = new ArrayList<>();
-            Connection conn = getConnection();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(command);
             int numberOfColumn = rs.getMetaData().getColumnCount();
