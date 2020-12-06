@@ -7,8 +7,8 @@ import java.util.Collections;
 import java.util.Random;
 
 public class Bike {
-    private boolean isInUse;
     private int barcode;
+    private boolean isInUse;
     private String type;
     private int value;
     private int priceForFirst30Minutes;
@@ -17,9 +17,9 @@ public class Bike {
     private float maxTime;
     private String licensePlate;
 
-    public Bike(boolean isInUse, int barcode, String type, int value, int priceForFirst30Minutes, int priceFor15MinutesAfter30Minutes, int remainBattery, float maxTime, String licensePlate) {
-        this.isInUse = isInUse;
+    public Bike(int barcode, boolean isInUse, String type, int value, int priceForFirst30Minutes, int priceFor15MinutesAfter30Minutes, int remainBattery, float maxTime, String licensePlate) {
         this.barcode = barcode;
+        this.isInUse = isInUse;
         this.type = type;
         this.value = value;
         this.priceForFirst30Minutes = priceForFirst30Minutes;
@@ -136,18 +136,18 @@ public class Bike {
         this.isInUse = isInUse;
     }
 
-    public void saveToDatabase(){
-        BikeDAO.save(this.isInUse, barcode, type, value, priceForFirst30Minutes, priceFor15MinutesAfter30Minutes, remainBattery, maxTime, licensePlate);
+    public void updateInDatabase(){
+        BikeDAO.updateIsInUse(this.isInUse, barcode, type, value, priceForFirst30Minutes, priceFor15MinutesAfter30Minutes, remainBattery, maxTime, licensePlate);
     }
 
     // undone
     public String getGeneralInfo(){
-        return "";
+        return barcode + " - " + type;
     }
 
     public String getDetailInfo(){
-        return Integer.toString(barcode) + " - " + type + " - " + Integer.toString(value) + " - " +
-                Integer.toString(priceForFirst30Minutes) + " - " + Integer.toString(priceFor15MinutesAfter30Minutes) + " - " +
-                Integer.toString(remainBattery) + " - " + Float.toString(maxTime) + " - " + licensePlate;
+        return barcode + "\n" + isInUse + '\n' + type + '\n' + value + '\n' +
+                priceForFirst30Minutes + '\n' + priceFor15MinutesAfter30Minutes + '\n' +
+                remainBattery + '\n' + maxTime + '\n' + licensePlate + '\n';
     }
 }

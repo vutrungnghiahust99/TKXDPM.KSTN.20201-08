@@ -5,26 +5,26 @@ import dataaccesslayer.RentBikeTransactionDAO;
 import java.util.Date;
 
 public class RentBikeTransaction {
-    private int barcode;
     private int rentalCode;
+    private int barcode;
     private String type;
-    private String rentTime;
-    private String returnTime;
     private int rentBikeCost;
     private String owner;
     private int priceForFirst30Minutes;
     private int priceFor15MinutesAfter30Minutes;
+    private String rentTime;
+    private String returnTime;
 
-    public RentBikeTransaction(int barcode, int rentalCode, String type, String rentTime, String returnTime, int rentBikeCost, String owner, int priceForFirst30Minutes, int priceFor15MinutesAfter30Minutes) {
-        this.barcode = barcode;
+    public RentBikeTransaction(int rentalCode, int barcode, String type, int rentBikeCost, String owner, int priceForFirst30Minutes, int priceFor15MinutesAfter30Minutes, String rentTime, String returnTime) {
         this.rentalCode = rentalCode;
+        this.barcode = barcode;
         this.type = type;
-        this.rentTime = rentTime;
-        this.returnTime = returnTime;
         this.rentBikeCost = rentBikeCost;
         this.owner = owner;
         this.priceForFirst30Minutes = priceForFirst30Minutes;
         this.priceFor15MinutesAfter30Minutes = priceFor15MinutesAfter30Minutes;
+        this.rentTime = rentTime;
+        this.returnTime = returnTime;
     }
 
     public int getBarcode() {
@@ -103,6 +103,10 @@ public class RentBikeTransaction {
         RentBikeTransactionDAO.save(barcode, rentalCode, type, rentTime, returnTime,
                 rentBikeCost, owner, priceForFirst30Minutes,
                 priceFor15MinutesAfter30Minutes);
+    }
+
+    public void updateReturnTimeAndCost(String returnTime, int rentBikeCost){
+        RentBikeTransactionDAO.updateReturnTimeAndCost(rentalCode, rentBikeCost, returnTime);
     }
 
     // undone

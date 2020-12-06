@@ -3,12 +3,21 @@ package entities;
 import java.util.ArrayList;
 
 public class Dock {
-    private ArrayList<Bike> bikes;
+    private String dockID;
     private String name;
     private String address;
     private String area;
     private int numberOfDockingPoints;
+    private ArrayList<Bike> bikes;
 
+    public Dock(String dockID, String name, String address, String area, int numberOfDockingPoints, ArrayList<Bike> bikes) {
+        this.dockID = dockID;
+        this.name = name;
+        this.address = address;
+        this.area = area;
+        this.numberOfDockingPoints = numberOfDockingPoints;
+        this.bikes = bikes;
+    }
 
     public Dock(String name, String address, String area, int numberOfDockingPoints) {
         this.name = name;
@@ -24,15 +33,6 @@ public class Dock {
             s.add(new Dock(Integer.toString(i), "HUST", "Hai Ba Trung", 100));
         }
         return s;
-    }
-
-    @Override
-    public String toString() {
-        return name + " - " + address;
-    }
-
-    public String getDetailInfo(){
-        return name + " - " + address + " - " + area + " - " + Integer.toString(numberOfDockingPoints);
     }
 
     public ArrayList<Bike> getBikes() {
@@ -79,6 +79,14 @@ public class Dock {
         return area;
     }
 
+    public String getDockID() {
+        return dockID;
+    }
+
+    public void setDockID(String dockID) {
+        this.dockID = dockID;
+    }
+
     public int getNumberOfDockingPoints() {
         return numberOfDockingPoints;
     }
@@ -101,5 +109,16 @@ public class Dock {
 
     public float walkingTime(){
         return -1;
+    }
+
+
+
+    // undone
+    public String getGeneralInfo() {
+        return name + " - " + address;
+    }
+
+    public String getDetailInfo(){
+        return dockID + '\n' + name + '\n' + address + '\n' + area + '\n' + numberOfDockingPoints;
     }
 }
