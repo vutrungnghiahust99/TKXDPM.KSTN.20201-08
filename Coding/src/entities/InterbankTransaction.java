@@ -8,7 +8,7 @@ public class InterbankTransaction {
     String dateExpired;
     String command;
     String transactionContent;
-    String amount;
+    int amount;
     String createdAt;  //format: yyyy-mm-đd hour:minute:second
 
     public InterbankTransaction(){
@@ -39,7 +39,7 @@ public class InterbankTransaction {
         return transactionContent;
     }
 
-    public String getAmount() {
+    public int getAmount() {
         return amount;
     }
 
@@ -71,7 +71,7 @@ public class InterbankTransaction {
         this.transactionContent = transactionContent;
     }
 
-    public void setAmount(String amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
     }
 

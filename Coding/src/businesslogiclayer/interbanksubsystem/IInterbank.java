@@ -1,6 +1,9 @@
 package businesslogiclayer.interbanksubsystem;
 
 public interface IInterbank {
-    String processTransaction(int cost, String command);
-    int viewBalance();
+    public abstract String processTransaction(int cost, String command, String content);
+
+    public abstract int viewBalance();
+
+    public abstract String reset();
 }
