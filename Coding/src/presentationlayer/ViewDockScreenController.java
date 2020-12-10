@@ -49,7 +49,8 @@ public class ViewDockScreenController implements Initializable {
         dockInfo.setText(dock.getDetailInfo());
         ArrayList<Bike> bikes = dock.getBikes();
         for(Bike bike : bikes)
-            bikesView.getItems().add(bike.getGeneralInfo());
+            if(!bike.isInUse())
+                bikesView.getItems().add(bike.getGeneralInfo());
     }
 
     public void showViewBikeScreen(Bike bike){
