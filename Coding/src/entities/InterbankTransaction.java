@@ -1,4 +1,4 @@
-package businesslogiclayer.interbanksubsystem;
+package entities;
 
 
 public class InterbankTransaction {
