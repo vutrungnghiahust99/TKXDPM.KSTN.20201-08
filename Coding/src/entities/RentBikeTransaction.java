@@ -125,4 +125,21 @@ public class RentBikeTransaction {
     public String getRentBikeTransaction(int rentalCode){
         return "";
     }
+
+    public String getDetailInfo(){
+        String header = "         Thông tin thuê và trả xe!"
+;        String row1 = String.format("  %-50s%-30s", "Mã thuê xe", rentalCode);
+        String row2 = String.format("  %-50s%-30d", "Barcode", barcode);
+        String row3 = String.format("  %-50s%-30s", "Loại xe", type);
+        String row4 = String.format("  %-50s%-30d", "Chi phí thuê", rentBikeCost);
+        String row5 = String.format("  %-50s%-30s", "Chủ thẻ", owner);
+        String row6 = String.format("  %-50s%-30d", "Giá thuê 30 phút đầu", priceForFirst30Minutes);
+        String row7 = String.format("  %-50s%-30d", "Giá thuê 15 phút sau 30 phút đầu", priceFor15MinutesAfter30Minutes);
+        String row8 = String.format("  %-50s%-30s", "Thời gian thuê xe", rentTime);
+        String row9 = String.format("  %-50s%-30s", "Thời gian trả xe", rentTime);
+        String row10 = String.format("  %-50s%-30d", "Tiền đặt cọc", deposit);
+
+        return  header + '\n' + row1 + '\n' + row2 + '\n' + row3 + '\n' + row4 + '\n' + row5 + '\n' + row6 + '\n' + row7 +
+                '\n' + row8 + '\n' + row9 + '\n' + row10;
+    }
 }
