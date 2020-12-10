@@ -28,6 +28,11 @@ public class InitializeController {
     private static ArrayList<Bike> getBikes(String dockID){
         ArrayList<Bike> bikes = new ArrayList<>();
         ArrayList<ArrayList<String>> bikeTable = BikeDAO.queryWithDockID(dockID);
+        return InitializeController.tableToBikes(bikeTable);
+    }
+
+    private static ArrayList<Bike> tableToBikes(ArrayList<ArrayList<String>> bikeTable){
+        ArrayList<Bike> bikes = new ArrayList<>();
         for(ArrayList<String> row: bikeTable){
             int barcode = Integer.parseInt(row.get(0));
             boolean isInUse = Boolean.parseBoolean(row.get(1));
