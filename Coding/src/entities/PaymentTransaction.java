@@ -3,7 +3,8 @@ package entities;
 import dataaccesslayer.PaymentTransactionDAO;
 
 public class PaymentTransaction {
-    private int rentalCode;
+    private String rentalCode;
+//    private int rentalCode;
     private String cardCode;
     private String owner;
     private String transactionContent;
@@ -13,7 +14,7 @@ public class PaymentTransaction {
     private String day;
 
 
-    public PaymentTransaction(int rentalCode, String cardCode, String owner, String transactionContent, int amount, int balance, String time, String day) {
+    public PaymentTransaction(String rentalCode, String cardCode, String owner, String transactionContent, int amount, int balance, String time, String day) {
         this.rentalCode = rentalCode;
         this.cardCode = cardCode;
         this.owner = owner;
@@ -24,7 +25,7 @@ public class PaymentTransaction {
         this.day = day;
     }
 
-    public void setRentalCode(int rentalCode) {
+    public void setRentalCode(String rentalCode) {
         this.rentalCode = rentalCode;
     }
 
@@ -52,7 +53,7 @@ public class PaymentTransaction {
         this.time = time;
     }
 
-    public int getRentalCode() {
+    public String getRentalCode() {
         return rentalCode;
     }
 

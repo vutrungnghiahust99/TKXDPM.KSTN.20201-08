@@ -5,7 +5,7 @@ import dataaccesslayer.RentBikeTransactionDAO;
 import java.util.Date;
 
 public class RentBikeTransaction {
-    private int rentalCode;
+    private String rentalCode;
     private int barcode;
     private String type;
     private int rentBikeCost;
@@ -15,7 +15,7 @@ public class RentBikeTransaction {
     private String rentTime;
     private String returnTime;
 
-    public RentBikeTransaction(int rentalCode, int barcode, String type, int rentBikeCost, String owner, int priceForFirst30Minutes, int priceFor15MinutesAfter30Minutes, String rentTime, String returnTime) {
+    public RentBikeTransaction(String rentalCode, int barcode, String type, int rentBikeCost, String owner, int priceForFirst30Minutes, int priceFor15MinutesAfter30Minutes, String rentTime, String returnTime) {
         this.rentalCode = rentalCode;
         this.barcode = barcode;
         this.type = type;
@@ -31,7 +31,7 @@ public class RentBikeTransaction {
         return barcode;
     }
 
-    public int getRentalCode() {
+    public String getRentalCode() {
         return rentalCode;
     }
 
@@ -67,7 +67,7 @@ public class RentBikeTransaction {
         this.barcode = barcode;
     }
 
-    public void setRentalCode(int rentalCode) {
+    public void setRentalCode(String rentalCode) {
         this.rentalCode = rentalCode;
     }
 

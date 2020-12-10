@@ -3,11 +3,11 @@ package entities;
 public class Card {
     private String cardCode;
     private String owner;
-    private int CVV;
+    private String CVV;
     private String expiredDate;
-    private static Card card = new Card("118131_group8_2020", "Group 8", 427, "1125");
+    private static Card card = new Card("118131_group8_2020", "Group 8", "427", "1125");
 
-    public Card(String cardCode, String owner, int CVV, String expiredDate) {
+    public Card(String cardCode, String owner, String CVV, String expiredDate) {
         this.cardCode = cardCode;
         this.owner = owner;
         this.CVV = CVV;
@@ -26,7 +26,7 @@ public class Card {
         return owner;
     }
 
-    public int getCVV() {
+    public String getCVV() {
         return CVV;
     }
 
