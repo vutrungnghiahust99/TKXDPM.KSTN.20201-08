@@ -116,6 +116,8 @@ public class RentBikeTransaction {
     }
 
     public void updateReturnTimeAndCost(String returnTime, int rentBikeCost){
+        this.returnTime = returnTime;
+        this.rentBikeCost = rentBikeCost;
         RentBikeTransactionDAO.updateReturnTimeAndCost(rentalCode, rentBikeCost, returnTime);
     }
 
