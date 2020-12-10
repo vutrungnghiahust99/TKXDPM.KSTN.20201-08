@@ -9,29 +9,31 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class ConvertToTransaction {
+    private         Card card = Card.getInstance();
+
     public InterbankTransaction convertToPaymentTransaction(int cost, String command, String content){
         Calendar calendar = Calendar.getInstance();
         Date date = calendar.getTime();
 
         InterbankTransaction transaction= new InterbankTransaction();
-        transaction.setCardCode("118131_group8_2020");
-        transaction.setOwner("Group 8");
-        transaction.setCvvCode("427");
-        transaction.setDateExpired("1125");
+        transaction.setCardCode(card.getCardCode());
+        transaction.setOwner(card.getOwner());
+        transaction.setCvvCode(card.getCVV());
+        transaction.setDateExpired(card.getExpiredDate());
         transaction.setCommand(command);
         transaction.setTransactionContent(content);
         transaction.setAmount(cost);
-        transaction.setCreatedAt(""+Integer.toString(date.getYear() + 1900) + "-" + date.getMonth() + "-"
-                + date.getDay() + " " + date.getHours() + ":" + date.getMinutes() + ":"
+        transaction.setCreatedAt(""+ (date.getYear() + 1900) + "-" + (date.getMonth() + 1) + "-"
+                + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":"
                 + date.getSeconds());
         return transaction;
     }
 
     public JsonObject resetTransaction(JsonObject body){
-        body.addProperty("cardCode", "118131_group8_2020");
-        body.addProperty("owner", "Group 8");
-        body.addProperty("cvvCode", "427");
-        body.addProperty("dateExpired", "1125");
+        body.addProperty("cardCode", card.getCardCode());
+        body.addProperty("owner", card.getOwner());
+        body.addProperty("cvvCode", card.getCVV());
+        body.addProperty("dateExpired", card.getExpiredDate());
         InterbankBoundary interbank = new InterbankBoundary();
         return body;
     }
