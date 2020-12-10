@@ -121,7 +121,7 @@ CREATE TABLE IF NOT EXISTS `ecodatabase`.`rentbiketransaction` (
   `rentalCode` VARCHAR(45) NOT NULL,
   `barcode` INT(11) NOT NULL,
   `type` VARCHAR(45) NOT NULL,
-  `rentBikecodatabasest` INT(11) NOT NULL,
+  `rentBikeCost` INT(11) NOT NULL,
   `owner` VARCHAR(45) NOT NULL,
   `priceFor30FirstMinutes` INT(11) NOT NULL,
   `priceFor15MinutesAfter30Minutes` INT(11) NOT NULL,
