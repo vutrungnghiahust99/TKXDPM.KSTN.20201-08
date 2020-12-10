@@ -1,6 +1,5 @@
 package businesslogiclayer;
 
-import connection.DBConnection;
 import dataaccesslayer.BikeDAO;
 import dataaccesslayer.DockDAO;
 import entities.Bike;
@@ -31,7 +30,7 @@ public class InitializeController {
         return InitializeController.tableToBikes(bikeTable);
     }
 
-    private static ArrayList<Bike> tableToBikes(ArrayList<ArrayList<String>> bikeTable){
+    public static ArrayList<Bike> tableToBikes(ArrayList<ArrayList<String>> bikeTable){
         ArrayList<Bike> bikes = new ArrayList<>();
         for(ArrayList<String> row: bikeTable){
             int barcode = Integer.parseInt(row.get(0));
