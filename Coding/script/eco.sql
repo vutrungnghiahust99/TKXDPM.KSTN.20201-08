@@ -104,7 +104,6 @@ CREATE TABLE IF NOT EXISTS `ecodatabase`.`paymenttransaction` (
   `owner` VARCHAR(45) NOT NULL,
   `transactionContent` VARCHAR(45) NOT NULL,
   `amount` INT(11) NOT NULL,
-  `balance` INT(11) NOT NULL,
   `time` VARCHAR(45) NOT NULL,
   `day` varchar(45) NOT NULL,
   PRIMARY KEY (`time`,`day`,`cardCode`))
@@ -159,8 +158,8 @@ INSERT INTO `card` VALUES (1,'12345678','Lê Thế Nam',8888,'31/12/2020');
 
 
 INSERT INTO `paymenttransaction` VALUES 
-('4869','123456789','Lê Thế Nam','Cộng tiền',420000,1980000,'10:45','4/12/2020'),
-('4869','12345678','Lê Thế Nam','Đặt cọc',500000,1500000,'8:30','4/12/2020');
+('4869','123456789','Lê Thế Nam','Cộng tiền',420000,'10:45','4/12/2020'),
+('4869','12345678','Lê Thế Nam','Đặt cọc',500000,'8:30','4/12/2020');
 
 
 INSERT INTO `rentbiketransaction` VALUES

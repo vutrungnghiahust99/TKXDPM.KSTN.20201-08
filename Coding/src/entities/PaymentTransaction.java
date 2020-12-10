@@ -9,18 +9,18 @@ public class PaymentTransaction {
     private String owner;
     private String transactionContent;
     private int amount;
-    private int balance;
+//    private int balance;
     private String time;
     private String day;
 
 
-    public PaymentTransaction(String rentalCode, String cardCode, String owner, String transactionContent, int amount, int balance, String time, String day) {
+    public PaymentTransaction(String rentalCode, String cardCode, String owner, String transactionContent, int amount, String time, String day) {
         this.rentalCode = rentalCode;
         this.cardCode = cardCode;
         this.owner = owner;
         this.transactionContent = transactionContent;
         this.amount = amount;
-        this.balance = balance;
+//        this.balance = balance;
         this.time = time;
         this.day = day;
     }
@@ -45,9 +45,9 @@ public class PaymentTransaction {
         this.amount = amount;
     }
 
-    public void setBalance(int balance) {
-        this.balance = balance;
-    }
+//    public void setBalance(int balance) {
+//        this.balance = balance;
+//    }
 
     public void setTime(String time) {
         this.time = time;
@@ -73,9 +73,9 @@ public class PaymentTransaction {
         return amount;
     }
 
-    public int getBalance() {
-        return balance;
-    }
+//    public int getBalance() {
+//        return balance;
+//    }
 
     public String getTime() {
         return time;
@@ -86,6 +86,6 @@ public class PaymentTransaction {
     }
     // undone
     public void savePaymentTransaction(){
-        PaymentTransactionDAO.save(rentalCode, cardCode, owner, transactionContent, amount, balance, time, day);
+        PaymentTransactionDAO.save(rentalCode, cardCode, owner, transactionContent, amount, time, day);
     }
 }
