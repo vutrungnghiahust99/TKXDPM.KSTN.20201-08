@@ -128,6 +128,7 @@ CREATE TABLE IF NOT EXISTS `ecodatabase`.`rentbiketransaction` (
   `priceFor15MinutesAfter30Minutes` INT(11) NOT NULL,
   `rentTime` VARCHAR(45) NOT NULL,
   `returnTime` VARCHAR(45) NULL DEFAULT NULL,
+  `deposit` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`rentalCode`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
@@ -162,6 +163,6 @@ INSERT INTO `paymenttransaction` VALUES
 ('4869','12345678','Lê Thế Nam','Đặt cọc',500000,1500000,'8:30','4/12/2020');
 
 
-
-
-INSERT INTO `rentbiketransaction` VALUES ('4869',20200005,'Xe máy điện',80000,'Lê Thế Nam',30000,10000,'8:30','10:45');
+INSERT INTO `rentbiketransaction` VALUES
+('1111',10200005,'Xe máy điện',80000,'Lê Thế Nam',5000,6000,'2020-12-7 10:45:00','2020-12-7 11:45:00', 100000),
+('4869',20200005,'Xe máy điện',80000,'Alan Walker',5000,6000,'2020-12-7 10:45:00','2020-12-7 12:45:00', 200000);
