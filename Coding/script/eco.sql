@@ -99,7 +99,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 DROP TABLE IF EXISTS `ecodatabase`.`paymenttransaction` ;
 
 CREATE TABLE IF NOT EXISTS `ecodatabase`.`paymenttransaction` (
-  `rentalCode` INT(11) NOT NULL,
+  `rentalCode` VARCHAR(45) NOT NULL,
   `cardCode` VARCHAR(45) NOT NULL,
   `owner` VARCHAR(45) NOT NULL,
   `transactionContent` VARCHAR(45) NOT NULL,
@@ -119,7 +119,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 DROP TABLE IF EXISTS `ecodatabase`.`rentbiketransaction` ;
 
 CREATE TABLE IF NOT EXISTS `ecodatabase`.`rentbiketransaction` (
-  `rentalCode` INT(11) NOT NULL,
+  `rentalCode` VARCHAR(45) NOT NULL,
   `barcode` INT(11) NOT NULL,
   `type` VARCHAR(45) NOT NULL,
   `rentBikecodatabasest` INT(11) NOT NULL,
@@ -158,10 +158,10 @@ INSERT INTO `card` VALUES (1,'12345678','Lê Thế Nam',8888,'31/12/2020');
 
 
 INSERT INTO `paymenttransaction` VALUES 
-(4869,'123456789','Lê Thế Nam','Cộng tiền',420000,1980000,'10:45','4/12/2020'),
-(4869,'12345678','Lê Thế Nam','Đặt cọc',500000,1500000,'8:30','4/12/2020');
+('4869','123456789','Lê Thế Nam','Cộng tiền',420000,1980000,'10:45','4/12/2020'),
+('4869','12345678','Lê Thế Nam','Đặt cọc',500000,1500000,'8:30','4/12/2020');
 
 
 
 
-INSERT INTO `rentbiketransaction` VALUES (4869,20200005,'Xe máy điện',80000,'Lê Thế Nam',30000,10000,'8:30','10:45');
+INSERT INTO `rentbiketransaction` VALUES ('4869',20200005,'Xe máy điện',80000,'Lê Thế Nam',30000,10000,'8:30','10:45');
