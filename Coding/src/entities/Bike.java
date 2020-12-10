@@ -132,12 +132,9 @@ public class Bike {
         this.licensePlate = licensePlate;
     }
 
-    public void update(boolean isInUse){
+    public void updateInUseAndDockID(boolean isInUse, String dockID){
         this.isInUse = isInUse;
-    }
-
-    public void updateInDatabase(){
-        BikeDAO.updateIsInUse(this.isInUse, barcode, type, value, priceForFirst30Minutes, priceFor15MinutesAfter30Minutes, remainBattery, maxTime, licensePlate);
+        BikeDAO.updateIsInUse(this.barcode, isInUse, dockID);
     }
 
     // undone
