@@ -11,7 +11,7 @@ public class RentBikeTransactionDAO {
                             int priceFor15MinutesAfter30Minutes){
         String command = "INSERT INTO rentbiketransaction " +
                 "(rentalCode, barcode, type, rentBikeCost, owner, priceFor30FirstMinutes, priceFor15MinutesAfter30Minutes, rentTime, returnTime) VALUES " +
-                "(" + rentalCode + ", " +
+                "(" + '\'' + rentalCode + '\'' + ", " +
                 barcode + ", " +
                 '\'' + type + '\'' + ", " +
                 rentBikeCost + ", " +
@@ -25,12 +25,13 @@ public class RentBikeTransactionDAO {
     }
 
     public static ArrayList<ArrayList<String>> queryByRentalCode(String rentalCode){
-        String command = "SELECT * FROM rentbiketransaction WHERE rentalCode=" + rentalCode;
+        String command = "SELECT * FROM rentbiketransaction WHERE rentalCode=" + '\'' + rentalCode + '\'';
+        System.out.println(command);
         return DBConnection.query(command);
     }
 
     public static void updateReturnTimeAndCost(String rentalCode, int rentBikeCost, String returnTime){
-        String command = "UPDATE rentbiketransaction SET rentBikeCost=" + rentBikeCost + ", returnTime=" + '\'' + returnTime + '\'' + " WHERE rentalCode=" + rentalCode;
+        String command = "UPDATE rentbiketransaction SET rentBikeCost=" + rentBikeCost + ", returnTime=" + '\'' + returnTime + '\'' + " WHERE rentalCode=" + '\'' + rentalCode + '\'';
         DBConnection.execute(command);
     }
 }
