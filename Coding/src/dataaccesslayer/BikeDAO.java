@@ -22,4 +22,11 @@ public class BikeDAO {
         s = DBConnection.query(command);
         return s;
     }
+
+    public static ArrayList<ArrayList<String>> getBikes(){
+        ArrayList<ArrayList<String>> s = new ArrayList<>();
+        String command = "SELECT * from bike";
+        s = DBConnection.query(command);
+        return s;
+    }
 }
