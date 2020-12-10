@@ -14,8 +14,9 @@ public class RentBikeTransaction {
     private int priceFor15MinutesAfter30Minutes;
     private String rentTime;
     private String returnTime;
+    private int deposit;
 
-    public RentBikeTransaction(String rentalCode, int barcode, String type, int rentBikeCost, String owner, int priceForFirst30Minutes, int priceFor15MinutesAfter30Minutes, String rentTime, String returnTime) {
+    public RentBikeTransaction(String rentalCode, int barcode, String type, int rentBikeCost, String owner, int priceForFirst30Minutes, int priceFor15MinutesAfter30Minutes, String rentTime, String returnTime, int deposit) {
         this.rentalCode = rentalCode;
         this.barcode = barcode;
         this.type = type;
@@ -25,6 +26,15 @@ public class RentBikeTransaction {
         this.priceFor15MinutesAfter30Minutes = priceFor15MinutesAfter30Minutes;
         this.rentTime = rentTime;
         this.returnTime = returnTime;
+        this.deposit = deposit;
+    }
+
+    public int getDeposit() {
+        return deposit;
+    }
+
+    public void setDeposit(int deposit) {
+        this.deposit = deposit;
     }
 
     public int getBarcode() {
