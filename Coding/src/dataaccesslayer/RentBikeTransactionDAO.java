@@ -8,9 +8,9 @@ import java.util.Date;
 public class RentBikeTransactionDAO {
     public static void save(int barcode, String rentalCode, String type, String rentTime, String returnTime,
                             int rentBikeCost, String owner, int priceForFirst30Minutes,
-                            int priceFor15MinutesAfter30Minutes){
+                            int priceFor15MinutesAfter30Minutes, int deposit){
         String command = "INSERT INTO rentbiketransaction " +
-                "(rentalCode, barcode, type, rentBikeCost, owner, priceFor30FirstMinutes, priceFor15MinutesAfter30Minutes, rentTime, returnTime) VALUES " +
+                "(rentalCode, barcode, type, rentBikeCost, owner, priceFor30FirstMinutes, priceFor15MinutesAfter30Minutes, rentTime, returnTime, deposit) VALUES " +
                 "(" + '\'' + rentalCode + '\'' + ", " +
                 barcode + ", " +
                 '\'' + type + '\'' + ", " +
@@ -19,7 +19,8 @@ public class RentBikeTransactionDAO {
                 priceForFirst30Minutes + ", " +
                 priceFor15MinutesAfter30Minutes + ", " +
                 '\'' + rentTime + '\'' + ", " +
-                '\'' + returnTime + '\'' + ")";
+                '\'' + returnTime + '\'' + ", " +
+                deposit + ")";
 
         DBConnection.execute(command);
     }

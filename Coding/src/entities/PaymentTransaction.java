@@ -4,12 +4,10 @@ import dataaccesslayer.PaymentTransactionDAO;
 
 public class PaymentTransaction {
     private String rentalCode;
-//    private int rentalCode;
     private String cardCode;
     private String owner;
     private String transactionContent;
     private int amount;
-//    private int balance;
     private String time;
     private String day;
 
@@ -20,7 +18,6 @@ public class PaymentTransaction {
         this.owner = owner;
         this.transactionContent = transactionContent;
         this.amount = amount;
-//        this.balance = balance;
         this.time = time;
         this.day = day;
     }

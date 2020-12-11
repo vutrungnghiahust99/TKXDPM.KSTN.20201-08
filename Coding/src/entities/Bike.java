@@ -7,15 +7,15 @@ import java.util.Collections;
 import java.util.Random;
 
 public class Bike {
-    private int barcode;
-    private boolean isInUse;
-    private String type;
-    private int value;
-    private int priceForFirst30Minutes;
-    private int priceFor15MinutesAfter30Minutes;
-    private int remainBattery;
-    private float maxTime;
-    private String licensePlate;
+    public int barcode;
+    public boolean isInUse;
+    public String type;
+    public int value;
+    public int priceForFirst30Minutes;
+    public int priceFor15MinutesAfter30Minutes;
+    public int remainBattery;
+    public float maxTime;
+    public String licensePlate;
 
     public Bike(int barcode, boolean isInUse, String type, int value, int priceForFirst30Minutes, int priceFor15MinutesAfter30Minutes, int remainBattery, float maxTime, String licensePlate) {
         this.barcode = barcode;

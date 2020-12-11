@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 public class DBConnection {
     private static final String DB_URL = "jdbc:mysql://localhost:3306/ecodatabase";
-    private static final String USER_NAME = "vutrungnghia";
-    private static final String PASSWORD = "29452269";
+    private static final String USER_NAME = "root";
+    private static final String PASSWORD = "21011999";
     private static Connection conn = getConnection();
 
     public static Connection getConnection() {
@@ -23,16 +23,20 @@ public class DBConnection {
     }
 
     public static void execute(String command){
+        System.out.println("Executing command: \n" + command);
         try{
             Statement stmt = conn.createStatement();
             stmt.execute(command);
-            System.out.println("Execute command: " + command + " successfully");
+            System.out.println("Successfully execute command: " + command);
         } catch (Exception e){
+//            e.printStackTrace();
+            System.out.println("Fail to execute command: \n" + command);
             e.printStackTrace();
         }
     }
 
     public static ArrayList<ArrayList<String>> query(String command){
+        System.out.println("Executing query: \n" + command);
         try{
             ArrayList<ArrayList<String>> queryResults = new ArrayList<>();
             Statement stmt = conn.createStatement();
@@ -44,8 +48,10 @@ public class DBConnection {
                     s.add(rs.getString(i));
                 queryResults.add(s);
             }
+            System.out.println("Successfully execute command: " + command);
             return queryResults;
         }catch (Exception e){
+            System.out.println("Successfully execute command: " + command);
             e.printStackTrace();
             return null;
         }

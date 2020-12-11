@@ -112,7 +112,7 @@ public class RentBikeTransaction {
     public void saveRentBikeTransaction(){
         RentBikeTransactionDAO.save(barcode, rentalCode, type, rentTime, returnTime,
                 rentBikeCost, owner, priceForFirst30Minutes,
-                priceFor15MinutesAfter30Minutes);
+                priceFor15MinutesAfter30Minutes, deposit);
     }
 
     public void updateReturnTimeAndCost(String returnTime, int rentBikeCost){

@@ -130,7 +130,18 @@ public class MainScreenController implements Initializable {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(new Scene(root));
             stage.setTitle("RentBikeScreen");
-            stage.show();
+            stage.showAndWait();
+
+            if(MainScreenController.reset){
+                System.out.println("Reset and reload data from database");
+                docks = InitializeController.getDocks();
+                docksView.getItems().clear();
+                //show list of docks
+                for (Dock dock : docks) {
+                    docksView.getItems().add(dock.getGeneralInfo());
+                }
+                MainScreenController.reset = false;
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

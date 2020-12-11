@@ -10,6 +10,7 @@ import entities.PaymentTransaction;
 import entities.RentBikeTransaction;
 import presentationlayer.ReturnBikeScreenController;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDate;
@@ -22,7 +23,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class ReturnBikeController {
-    private static final String PATTERN = "yyyy-MM-dd hh:mm:ss";
+    private static final String PATTERN = "yyyy-MM-dd HH:mm:ss";
 
     public static RentBikeTransaction processReturnBike(){
         RentBikeTransaction rentBikeTransaction = ReturnBikeController.getRentBikeTransaction(RentBikeController.rentalCode);
@@ -40,7 +41,7 @@ public class ReturnBikeController {
         PaymentTransaction paymentTransaction = new PaymentTransaction(
                 RentBikeController.rentalCode, card.getCardCode(), card.getOwner(),
                 "Castle in the sky", refundAmount,
-                getCurrentLocalDateTimeStamp("hh:mm:ss"), getCurrentLocalDateTimeStamp("yyyy-MM-dd"));
+                getCurrentLocalDateTimeStamp("HH:mm:ss"), getCurrentLocalDateTimeStamp("yyyy-MM-dd"));
         paymentTransaction.savePaymentTransaction();
         String returnTime = getCurrentLocalDateTimeStamp(PATTERN);
 

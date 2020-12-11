@@ -1,19 +1,24 @@
 package businesslogiclayer.interbanksubsystem;
 
+import com.fasterxml.jackson.databind.deser.std.DateDeserializers;
 import com.google.gson.JsonObject;
 import entities.*;
 import javax.xml.bind.DatatypeConverter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 public class ConvertToTransaction {
-    private         Card card = Card.getInstance();
+    private Card card = Card.getInstance();
 
     public InterbankTransaction convertToPaymentTransaction(int cost, String command, String content){
         Calendar calendar = Calendar.getInstance();
         Date date = calendar.getTime();
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String createdAt = df.format(date);
 
         InterbankTransaction transaction= new InterbankTransaction();
         transaction.setCardCode(card.getCardCode());
@@ -23,9 +28,7 @@ public class ConvertToTransaction {
         transaction.setCommand(command);
         transaction.setTransactionContent(content);
         transaction.setAmount(cost);
-        transaction.setCreatedAt(""+ (date.getYear() + 1900) + "-" + (date.getMonth() + 1) + "-"
-                + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":"
-                + date.getSeconds());
+        transaction.setCreatedAt(createdAt);
         return transaction;
     }
 
