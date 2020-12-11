@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="636.0" prefWidth="556.0" style="-fx-background-color: #ffbf00;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationlayer.box.DisplayBikeInfoScreenController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="636.0" prefWidth="556.0" style="-fx-background-color: #ffbf00;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationlayer.DisplayBikeInfoScreenController">
    <bottom>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hệ thống thuê xe điện tử EcoBike " wrappingWidth="306.1025390625" BorderPane.alignment="CENTER">
          <font>
@@ -65,7 +65,7 @@
                         <TextField fx:id="text7" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                         <TextField fx:id="text8" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                         <TextField fx:id="text9" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                        <Label fx:id="label1" text="Label" GridPane.columnIndex="1" />
+                        <TextField fx:id="text1" GridPane.columnIndex="1" />
                      </children>
                   </GridPane>
                   <Text layoutX="39.0" layoutY="549.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bạn có muốn thuê xe không?" wrappingWidth="267.515625">
