@@ -1,7 +1,5 @@
 package presentationlayer;
 import businesslogiclayer.*;
-import dataaccesslayer.BikeDAO;
-import entities.Bike;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,13 +9,11 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 import presentationlayer.box.*;
-
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class RentBikeScreenController {
-    private RentBikeController rentBikeController = new RentBikeController();
-    ArrayList<ArrayList<String>> listBike = BikeDAO.getBikes();
+    private final RentBikeController rentBikeController = new RentBikeController();
     @FXML
     private TextField barcode;
     public static boolean rent = false;
@@ -29,7 +25,7 @@ public class RentBikeScreenController {
             NotificationBox.display("NotificationBox", "Vui lòng nhập barcode của xe!");
         }
         else{
-            if (rent == false) {
+            if (!rent) {
                 int inputCode = Integer.parseInt(message);
                 Pair<Boolean, ArrayList<String>> p = rentBikeController.checkBarcodeAndGetBikeIfTrue(inputCode);
                 if (p.getKey()) {
@@ -50,7 +46,7 @@ public class RentBikeScreenController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("DisplayBikeInfoScreen.fxml"));
             Parent root = loader.load();
-            DisplayBikeInfoScreenController dp = (DisplayBikeInfoScreenController) loader.getController();
+            DisplayBikeInfoScreenController dp = loader.getController();
             Stage stage = new Stage();
             stage.setTitle("EcoBike");
             dp.init(bike, stage);

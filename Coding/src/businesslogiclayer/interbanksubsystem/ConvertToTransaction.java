@@ -1,6 +1,5 @@
 package businesslogiclayer.interbanksubsystem;
 
-import com.fasterxml.jackson.databind.deser.std.DateDeserializers;
 import com.google.gson.JsonObject;
 import entities.*;
 import javax.xml.bind.DatatypeConverter;
@@ -12,14 +11,16 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class ConvertToTransaction {
-    private Card card = Card.getInstance();
+    private final Card card = Card.getInstance();
 
+    /**
+     * Chuyển thông tin đầu vào thành thông tin giao dịch phù hợp để gửi lên api
+     */
     public InterbankTransaction convertToPaymentTransaction(int cost, String command, String content){
         Calendar calendar = Calendar.getInstance();
         Date date = calendar.getTime();
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String createdAt = df.format(date);
-
         InterbankTransaction transaction= new InterbankTransaction();
         transaction.setCardCode(card.getCardCode());
         transaction.setOwner(card.getOwner());
@@ -32,15 +33,23 @@ public class ConvertToTransaction {
         return transaction;
     }
 
+    /**
+     * Tạo ra thông tin giao dịch reset để gửi lên api
+     */
     public JsonObject resetTransaction(JsonObject body){
         body.addProperty("cardCode", card.getCardCode());
         body.addProperty("owner", card.getOwner());
         body.addProperty("cvvCode", card.getCVV());
         body.addProperty("dateExpired", card.getExpiredDate());
-        InterbankBoundary interbank = new InterbankBoundary();
         return body;
     }
 
+    /**
+     * @param transToHash : JsonObject cần chuyển thành mã hash
+     * @param transactionBody : Thông tin cần có của giao dịch được gắn vào request
+     * @return sentJson: thông tin request gửi lên api để thực hiện giao dịch
+     * @throws NoSuchAlgorithmException
+     */
     public JsonObject requestTransaction(JsonObject transToHash, JsonObject transactionBody) throws NoSuchAlgorithmException {
         // transToHash là chuỗi cần băm
         transToHash.addProperty("secretKey", "Bk5+TDRsBPY=");
@@ -48,11 +57,7 @@ public class ConvertToTransaction {
         MessageDigest md = MessageDigest.getInstance("MD5") ;
         md.update(transToHash.toString().getBytes());
         byte[] digest = md.digest();
-
-        // myHash: chuỗi sau khi băm
         String myHash = DatatypeConverter.printHexBinary(digest).toUpperCase();
-
-        // Tạo đối tượng sentJson để gửi lên api
         JsonObject sentJson = new JsonObject();
         sentJson.addProperty("version","1.0.1");
         sentJson.add("transaction",transactionBody);

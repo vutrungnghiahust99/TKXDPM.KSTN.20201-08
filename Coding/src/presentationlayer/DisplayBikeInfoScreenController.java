@@ -2,63 +2,30 @@ package presentationlayer;
 
 import businesslogiclayer.RentBikeController;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import presentationlayer.box.NotificationBox;
-
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class DisplayBikeInfoScreenController implements Initializable {
-
     @FXML
-    private TextField text3;
-
+    private TextField text1, text2, text3, text4, text5, text6, text7, text8, text9;
     @FXML
-    private TextField text4;
-
-    @FXML
-    private TextField text1;
-
-    @FXML
-    private TextField text2;
-
-    @FXML
-    private TextField text7;
-
-    @FXML
-    private Button xacnhan;
-
-    @FXML
-    private TextField text8;
-
-    @FXML
-    private TextField text5;
-
-    @FXML
-    private TextField text6;
-
-    @FXML
-    private Button huy;
-
-    @FXML
-    private TextField text9;
-
+    private Button xacnhan, huy;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
 
+    /**
+     *
+     * @param bike : thông tin đầu vào xe ứng với barcode người dùng đã nhập
+     * @param stage : màn hình hiển thị thông tin xe
+     */
     public void init(ArrayList<String> bike, Stage stage){
-
         text1.setText(bike.get(0));
         text2.setText(bike.get(2));
         text3.setText(bike.get(3));
@@ -69,15 +36,11 @@ public class DisplayBikeInfoScreenController implements Initializable {
         text8.setText(bike.get(8));
         double deposit = Integer.parseInt(bike.get(3))*0.4;
         text9.setText(String.format("%s", (int) deposit));
-
         xacnhan.setOnAction(e -> {
             stage.close();
             RentBikeController rentBikeController = new RentBikeController();
             rentBikeController.processRentBike();
-
         });
-        huy.setOnAction(e -> {
-            stage.close();
-        });
+        huy.setOnAction(e ->  stage.close());
     }
 }

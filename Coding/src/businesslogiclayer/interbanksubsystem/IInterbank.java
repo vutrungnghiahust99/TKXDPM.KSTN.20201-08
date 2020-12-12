@@ -1,11 +1,13 @@
 package businesslogiclayer.interbanksubsystem;
 
+/**
+ * interface cho Interbank Subsystem
+ * Có 2 method để hệ thống giao tiếp đó là:
+ * processTransaction : xử lý giao dịch
+ * reset : reset tài khoản người dùng
+ */
 public interface IInterbank {
-    public abstract String processTransaction(int cost, String command, String content); // command = {"refund", "pay"}
+    String processTransaction(int cost, String command, String content);
 
-    public abstract int viewBalance();  //
-
-    public abstract void reset();
-
-//    IInterbank s = new InterbankSubsysController();
+    void reset();
 }

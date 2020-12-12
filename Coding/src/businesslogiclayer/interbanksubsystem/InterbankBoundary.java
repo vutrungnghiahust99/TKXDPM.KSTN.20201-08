@@ -7,19 +7,16 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class InterbankBoundary {
-    private String reset_path = "api/card/reset-balance" ;
-    private String transaction_path = "api/card/processTransaction";
-    private String base_url = "https://ecopark-system-api.herokuapp.com/";
+    private final String base_url = "https://ecopark-system-api.herokuapp.com/";
 
-    // reset thẻ
     public String reset(JsonObject body){
         try {
+            String reset_path = "api/card/reset-balance";
             String response = new HttpConnector().sendPatch(base_url + reset_path, body.toString());
             if (response != null && new JsonParser().parse(response).isJsonObject()) {
                 JsonObject responseJson = new JsonParser().parse(response).getAsJsonObject();
                 System.out.println(responseJson);
-                String code = responseJson.get("errorCode").getAsString();
-                return code;
+                return responseJson.get("errorCode").getAsString();
             }
         } catch (Exception e){
             System.out.println("Không kết nối được API anh ơi!");
@@ -27,18 +24,16 @@ public class InterbankBoundary {
         return "08";
     }
 
-    // xử lý giao dịch: "pay" and "refund"
     public String processTransaction(JsonObject sentJson) {
         // response from api
         try {
+            String transaction_path = "api/card/processTransaction";
             String response =  new HttpConnector().sendPatch(base_url + transaction_path,sentJson.toString());
             if (response != null && new JsonParser().parse(response).isJsonObject()) {
                 JsonObject responseJson = new JsonParser().parse(response).getAsJsonObject();
                 System.out.println("Giao dịch:" + responseJson);
-                String code = responseJson.get("errorCode").getAsString();
-                return code ;
+                return responseJson.get("errorCode").getAsString();
             }
-
         } catch (Exception e) {
             System.out.println("Thằng api không response anh ơi!");
         }
