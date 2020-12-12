@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="636.0" prefWidth="556.0" style="-fx-background-color: #ffbf00;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationlayer.DisplayBikeInfoScreenController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="636.0" prefWidth="556.0" style="-fx-background-color: #ffbf00;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationlayer.RentBikeTransactionScreenController">
    <bottom>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hệ thống thuê xe điện tử EcoBike " wrappingWidth="306.1025390625" BorderPane.alignment="CENTER">
          <font>
@@ -24,12 +24,12 @@
          <children>
             <AnchorPane prefHeight="575.0" prefWidth="547.0" style="-fx-background-color: white;">
                <children>
-                  <Label alignment="CENTER" layoutX="1.0" prefHeight="74.0" prefWidth="556.0" style="-fx-background-color: #ffbf00;" text="Thông tin  thuê xe">
+                  <Label alignment="CENTER" layoutX="1.0" prefHeight="74.0" prefWidth="556.0" style="-fx-background-color: #ffbf00;" text="Thông tin giao dịch thuê xe">
                      <font>
                         <Font size="32.0" />
                      </font>
                   </Label>
-                  <Button fx:id="huy" layoutX="391.0" layoutY="524.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="99.0" text="OK" />
+                  <Button fx:id="OK" layoutX="391.0" layoutY="524.0" mnemonicParsing="false" onAction="#processOKClick" prefHeight="37.0" prefWidth="99.0" text="OK" />
                   <GridPane layoutX="27.0" layoutY="86.0" prefHeight="417.0" prefWidth="530.0" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="27.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="86.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="324.0" minWidth="10.0" prefWidth="249.0" />
@@ -57,16 +57,16 @@
                         <Text fill="#f20000" strokeType="OUTSIDE" strokeWidth="0.0" text="Giá thuê 15 phút sau 30 phút đầu:" wrappingWidth="206.65625" GridPane.rowIndex="6" />
                         <Text fill="#f50000" strokeType="OUTSIDE" strokeWidth="0.0" text="Thời điểm thuê xe:" wrappingWidth="197.109375" GridPane.rowIndex="7" />
                         <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Thời điểm trả xe:" wrappingWidth="187.8828125" GridPane.rowIndex="8" />
-                        <TextField fx:id="text2" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <TextField fx:id="text3" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <TextField fx:id="text4" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <TextField fx:id="text5" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <TextField fx:id="text6" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <TextField fx:id="text7" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                        <TextField fx:id="text8" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                        <TextField fx:id="text9" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                        <TextField fx:id="text1" GridPane.columnIndex="1" />
-                        <TextField fx:id="text92" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                        <TextField fx:id="text2" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="text3" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="text4" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="text5" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <TextField fx:id="text6" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <TextField fx:id="text7" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <TextField fx:id="text8" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <TextField fx:id="text9" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                        <TextField fx:id="text1" editable="false" GridPane.columnIndex="1" />
+                        <TextField fx:id="text10" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="9" />
                         <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiền đặt cọc:" wrappingWidth="187.8828125" GridPane.rowIndex="9" />
                      </children>
                   </GridPane>
