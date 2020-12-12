@@ -36,7 +36,8 @@ public class ReturnBikeController {
         IInterbank interbank = new InterbankSubsysController();
         String respondCode = interbank.processTransaction(refundAmount, "refund", "Castle in the sky");
         System.out.println("respond code: " + respondCode);
-
+        if (!respondCode.equals("00"))
+            return null;
         // create new transaction and save
         PaymentTransaction paymentTransaction = new PaymentTransaction(
                 RentBikeController.rentalCode, card.getCardCode(), card.getOwner(),
