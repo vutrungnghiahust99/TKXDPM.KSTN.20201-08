@@ -68,15 +68,13 @@ public class DisplayBikeInfoScreenController implements Initializable {
         text7.setText(bike.get(7));
         text8.setText(bike.get(8));
         double deposit = Integer.parseInt(bike.get(3))*0.4;
-        text9.setText(String.format("%s", deposit));
+        text9.setText(String.format("%s", (int) deposit));
 
         xacnhan.setOnAction(e -> {
             stage.close();
-            RentBikeScreenController.rent = true;
             RentBikeController rentBikeController = new RentBikeController();
-            MainScreenController.reset = true;
             rentBikeController.processRentBike();
-            NotificationBox.display("NotificationBox", "Thuê xe thành công!");
+
         });
         huy.setOnAction(e -> {
             stage.close();

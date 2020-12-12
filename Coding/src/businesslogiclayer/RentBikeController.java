@@ -5,6 +5,10 @@ import entities.*;
 import entities.PaymentTransaction;
 import entities.RentBikeTransaction;
 import javafx.util.Pair;
+import presentationlayer.MainScreenController;
+import presentationlayer.RentBikeScreenController;
+import presentationlayer.box.NotificationBox;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -34,55 +38,59 @@ public class RentBikeController {
 
     public void processRentBike(){
         IInterbank interbank = new InterbankSubsysController();
-        int cost = calculateDeposit();
-        System.out.println("Đã trừ: " + cost + "VNĐ");
-        System.out.println(interbank.reset());
-        System.out.println(interbank.processTransaction(cost, "pay", "Trừ tiền cọc"));
-        Calendar calendar = Calendar.getInstance();
-        Date date = calendar.getTime();
-        DateFormat t = new SimpleDateFormat("HH:mm:ss");
-        DateFormat d = new SimpleDateFormat("yyyy-MM-dd");
-        DateFormat td = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        int cost = (int) calculateDeposit();
+        System.out.println(cost);
+        String code = interbank.processTransaction(cost, "pay", "Trừ tiền cọc");
+        if (code.equals("00")){
+            System.out.println("Đã trừ: " + cost + "VNĐ");
+            NotificationBox.display("Notification", "Bạn đã thuê xe thành công, EcoBike chúc bạn có chuyến đi an toàn và vui vẻ!");
+            MainScreenController.reset = true;
+            RentBikeScreenController.rent = true;
+            Calendar calendar = Calendar.getInstance();
+            Date date = calendar.getTime();
+            DateFormat t = new SimpleDateFormat("HH:mm:ss");
+            DateFormat d = new SimpleDateFormat("yyyy-MM-dd");
+            DateFormat td = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-        PaymentTransaction paymentTransaction = new PaymentTransaction(
-                                                                        rentalCode,
-                                                                        card.getCardCode(),
-                                                                        card.getOwner(),
-                                                                        "Trừ tiền cọc",
-                                                                        cost,
-                                                                        t.format(date),
-                                                                        d.format(date));
-        paymentTransaction.savePaymentTransaction();
+            PaymentTransaction paymentTransaction = new PaymentTransaction(
+                    rentalCode,
+                    card.getCardCode(),
+                    card.getOwner(),
+                    "Trừ tiền cọc",
+                    cost,
+                    t.format(date),
+                    d.format(date));
+            paymentTransaction.savePaymentTransaction();
 
-        RentBikeTransaction rentBikeTransaction = new RentBikeTransaction(
-                                                            rentalCode,
-                                                            Integer.parseInt(bikeIsRented.get(0)),
-                                                            bikeIsRented.get(2),
-                                                            -1,
-                                                            card.getOwner(),
-                                                            Integer.parseInt(bikeIsRented.get(4)),
-                                                            Integer.parseInt(bikeIsRented.get(5)),
-                                                            td.format(date),
-                                                            "",
-                                                            cost);
-        rentBikeTransaction.saveRentBikeTransaction();
-        Bike bike = new Bike(
-                            Integer.parseInt(bikeIsRented.get(0)),
-                            false,
-                            bikeIsRented.get(2),
-                            Integer.parseInt(bikeIsRented.get(3)),
-                            Integer.parseInt(bikeIsRented.get(4)),
-                            Integer.parseInt(bikeIsRented.get(5)),
-                            Integer.parseInt(bikeIsRented.get(6)),
-                            Float.parseFloat(bikeIsRented.get(7)),
-                            bikeIsRented.get(8));
-        bike.updateInUseAndDockID(true, bikeIsRented.get(9));
+            RentBikeTransaction rentBikeTransaction = new RentBikeTransaction(
+                    rentalCode,
+                    Integer.parseInt(bikeIsRented.get(0)),
+                    bikeIsRented.get(2),
+                    -1,
+                    card.getOwner(),
+                    Integer.parseInt(bikeIsRented.get(4)),
+                    Integer.parseInt(bikeIsRented.get(5)),
+                    td.format(date),
+                    "",
+                    cost);
+            rentBikeTransaction.saveRentBikeTransaction();
+            Bike bike = new Bike(
+                    Integer.parseInt(bikeIsRented.get(0)),
+                    false,
+                    bikeIsRented.get(2),
+                    Integer.parseInt(bikeIsRented.get(3)),
+                    Integer.parseInt(bikeIsRented.get(4)),
+                    Integer.parseInt(bikeIsRented.get(5)),
+                    Integer.parseInt(bikeIsRented.get(6)),
+                    Float.parseFloat(bikeIsRented.get(7)),
+                    bikeIsRented.get(8));
+            bike.updateInUseAndDockID(true, bikeIsRented.get(9));
+        }
+        else{
+            rentalCode = "";
+            System.out.println("Giao dịch thất bại");
+        }
     }
-
-//    boolean checkBalance(Card card){
-//
-//        return false;
-//    }
 
     public String convertBarcodeToRentalCode(int barcode){
         Calendar calendar = Calendar.getInstance();
@@ -92,7 +100,7 @@ public class RentBikeController {
         return barcode + dateString;
     }
 
-    public int calculateDeposit(){
-        return Integer.parseInt(bikeIsRented.get(3)) * 4 / 10;
+    public double calculateDeposit(){
+        return Integer.parseInt(bikeIsRented.get(3)) * 0.4;
     }
 }

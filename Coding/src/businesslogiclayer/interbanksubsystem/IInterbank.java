@@ -5,7 +5,7 @@ public interface IInterbank {
 
     public abstract int viewBalance();  //
 
-    public abstract String reset();
+    public abstract void reset();
 
 //    IInterbank s = new InterbankSubsysController();
 }

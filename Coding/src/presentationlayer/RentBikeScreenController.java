@@ -20,7 +20,7 @@ public class RentBikeScreenController {
     ArrayList<ArrayList<String>> listBike = BikeDAO.getBikes();
     @FXML
     private TextField barcode;
-    static boolean rent = false;
+    public static boolean rent = false;
 
     @FXML
     void handleButtonThueXe(ActionEvent event){

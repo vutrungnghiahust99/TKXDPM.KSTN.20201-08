@@ -19,15 +19,12 @@ public class InterbankBoundary {
                 JsonObject responseJson = new JsonParser().parse(response).getAsJsonObject();
                 System.out.println(responseJson);
                 String code = responseJson.get("errorCode").getAsString();
-                if (code.equals("00")) {
-                    System.out.println("Reset balance thành công rồi sếp ơi!");
-                }
                 return code;
             }
         } catch (Exception e){
             System.out.println("Không kết nối được API anh ơi!");
         }
-        return "Không kết nối được API";
+        return "08";
     }
 
     // xử lý giao dịch: "pay" and "refund"

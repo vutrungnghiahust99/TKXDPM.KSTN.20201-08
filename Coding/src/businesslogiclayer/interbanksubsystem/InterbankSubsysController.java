@@ -25,11 +25,12 @@ public class InterbankSubsysController implements IInterbank {
             JsonObject sentJson = convertToTransaction.requestTransaction(transToHash, transactionBody);
             InterbankBoundary interbank = new InterbankBoundary();
             String errorCode = interbank.processTransaction(sentJson);
-            return processErrorCode.process(errorCode);
+            processErrorCode.process(errorCode);
+            return errorCode; // return errorCode
 
         }catch (Exception e) {
-            System.out.println("Xử lý giao dịch lỗi anh ơi!");
-            return "Lỗi khi xử lý giao dịch!";
+            System.out.println("Xử lý giao dịch lỗi anh ơi!, intercontroller");
+            return "08";
         }
     }
 
@@ -39,11 +40,16 @@ public class InterbankSubsysController implements IInterbank {
     }
 
     @Override
-    public String reset(){
+    public void reset(){
         JsonObject body = new JsonObject();
         body = convertToTransaction.resetTransaction(body);
         InterbankBoundary interbank = new InterbankBoundary();
         String errorCode = interbank.reset(body);
-        return processErrorCode.process(errorCode);
+        if (errorCode.equals("00")) {
+            System.out.println("Reset balance thành công rồi sếp ơi!");
+        }
+        else{
+            System.out.println("Lối reset!");
+        }
     }
 }

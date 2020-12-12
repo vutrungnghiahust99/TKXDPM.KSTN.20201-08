@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class MainScreenController implements Initializable {
-    static boolean reset = false;
+    public static boolean reset = false;
     ArrayList<Dock> docks;
 
     @FXML
