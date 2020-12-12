@@ -100,7 +100,7 @@ public class Dock {
     }
 
     public int getNumberOfBikes(){
-        return -1;
+        return this.bikes.size();
     }
 
     public float getDistance(){
