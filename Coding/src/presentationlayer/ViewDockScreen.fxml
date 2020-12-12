@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="636.0" prefWidth="556.0" style="-fx-background-color: #ffbf00;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationlayer.ViewBikeScreenController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="636.0" prefWidth="556.0" style="-fx-background-color: #ffbf00;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationlayer.ViewDockScreenController">
    <bottom>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hệ thống thuê xe điện tử EcoBike " wrappingWidth="306.1025390625" BorderPane.alignment="CENTER">
          <font>
@@ -22,7 +22,7 @@
    <left>
       <VBox prefHeight="589.0" prefWidth="565.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane prefHeight="261.0" prefWidth="463.0" style="-fx-background-color: white;">
+            <AnchorPane prefHeight="299.0" prefWidth="557.0" style="-fx-background-color: white;">
                <children>
                   <Label alignment="CENTER" layoutX="1.0" prefHeight="74.0" prefWidth="556.0" style="-fx-background-color: #ffbf00;" text="Thông tin bãi xe                                                       ">
                      <font>
@@ -35,11 +35,12 @@
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="293.0" minWidth="10.0" prefWidth="280.0" />
                      </columnConstraints>
                      <rowConstraints>
-                        <RowConstraints maxHeight="81.0" minHeight="0.0" prefHeight="38.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="131.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="94.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="93.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="81.0" minHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="131.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="94.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="93.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="93.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
                         <Text fill="#eb0707" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã bãi xe:" wrappingWidth="142.515625" />
@@ -52,18 +53,20 @@
                         <TextField fx:id="text4" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <TextField fx:id="text5" editable="false" prefHeight="25.0" prefWidth="267.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         <TextField fx:id="text1" editable="false" GridPane.columnIndex="1" />
+                        <Text fill="#f50303" strokeType="OUTSIDE" strokeWidth="0.0" text="Số xe trong bãi:" wrappingWidth="233.0078125" GridPane.rowIndex="5" />
+                        <TextField fx:id="text6" editable="false" prefHeight="25.0" prefWidth="267.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                      </children>
                   </GridPane>
                </children>
             </AnchorPane>
-            <Label alignment="CENTER" prefHeight="74.0" prefWidth="556.0" style="-fx-background-color: #ffbf00;" text="Danh sách xe trong bãi                                          ">
+            <Label alignment="CENTER" prefHeight="48.0" prefWidth="556.0" style="-fx-background-color: #ffbf00;" text="Danh sách xe trong bãi                                          ">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <ListView prefHeight="249.0" prefWidth="556.0" />
+                  <ListView fx:id="bikesView" prefHeight="249.0" prefWidth="556.0" />
                </children>
             </AnchorPane>
          </children>

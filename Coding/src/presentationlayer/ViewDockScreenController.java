@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -25,7 +26,7 @@ public class ViewDockScreenController implements Initializable {
     private ListView<String> bikesView;
 
     @FXML
-    private Text dockInfo;
+    private TextField text1, text2, text3, text4, text5, text6;
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
@@ -46,7 +47,12 @@ public class ViewDockScreenController implements Initializable {
     public void initData(Dock dock){
         System.out.println("initialize dockInfo and bikesInfo ");
         this.dock = dock;
-        dockInfo.setText(dock.getDetailInfo());
+        text1.setText(dock.getDockID());
+        text2.setText(dock.getName());
+        text3.setText(dock.getAddress());
+        text4.setText(dock.getArea());
+        text5.setText(Integer.toString(dock.getNumberOfDockingPoints()));
+        text6.setText(Integer.toString(dock.getNumberOfBikes()));
         ArrayList<Bike> bikes = dock.getBikes();
         for(Bike bike : bikes)
             if(!bike.isInUse())
@@ -56,17 +62,17 @@ public class ViewDockScreenController implements Initializable {
     public void showViewBikeScreen(Bike bike){
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ViewBikeScreen.fxml"));
-            Parent root = (Parent) loader.load();
+            Parent root = loader.load();
 
             ViewBikeScreenController viewBikeController = loader.getController();
 
-            viewBikeController.initData(bike);
+            viewBikeController.init(bike);
 
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(new Scene(root));
             stage.setTitle("ViewBikeScreen");
-            stage.show();
+            stage.showAndWait();
         }catch (IOException e){
             e.printStackTrace();
         }
