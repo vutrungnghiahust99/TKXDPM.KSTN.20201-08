@@ -1,16 +1,16 @@
-package businesslogiclayer.interbanksubsystem;
+package presentationlayer.box;
 
-import presentationlayer.box.NotificationBox;
-
-public class ProcessErrorCode {
-    /**
-     *
-     * @param code : mã error code mà api gửi lại
-     * Xử lý error code để đưa ra thông báo tương ứng.
-     */
-    public void process(String code){
+public class NotificationErrorCode {
+    public static void displayNotificationErrorCode(String code, String command){
         switch (code) {
-            case "00": System.out.println("Giao dịch thành công"); break;
+            case "00":
+                if (command.equals("pay")){
+                    NotificationBox.display("Notification", "Bạn đã thuê xe thành công, EcoBike chúc bạn có chuyến đi an toàn và vui vẻ!");
+                }
+                else if(command.equals("refund")){
+                    NotificationBox.display("Notification", "Bạn đã trả xe thành công!");
+                }
+                break;
             case "01": NotificationBox.display("Notification", "Thẻ không hợp lệ!"); break;
             case "02": NotificationBox.display("Notification", "Thẻ không đủ số dư!"); break;
             case "03": NotificationBox.display("Notification", "Internal Server Error!"); break;

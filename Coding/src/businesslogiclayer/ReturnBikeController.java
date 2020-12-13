@@ -8,6 +8,7 @@ import entities.Bike;
 import entities.Card;
 import entities.PaymentTransaction;
 import entities.RentBikeTransaction;
+import javafx.util.Pair;
 import presentationlayer.ReturnBikeScreenController;
 
 import java.text.SimpleDateFormat;
@@ -27,7 +28,7 @@ public class ReturnBikeController {
      * Xử lý yêu cầu trả xe của người dùng
      * @return RentBikeTransaction nếu thành công và null nếu thất bại
      */
-    public static RentBikeTransaction processReturnBike(){
+    public static Pair<String, RentBikeTransaction> processReturnBike(){
         RentBikeTransaction rentBikeTransaction = ReturnBikeController.getRentBikeTransaction(RentBikeController.rentalCode);
         System.out.println(rentBikeTransaction.getDetailInfo());
         Card card = Card.getInstance();
@@ -39,7 +40,7 @@ public class ReturnBikeController {
         String respondCode = interbank.processTransaction(refundAmount, "refund", "Castle in the sky");
         System.out.println("respond code: " + respondCode);
         if (!respondCode.equals("00"))
-            return null;
+            return new Pair<>(respondCode, null);
         // create new transaction and save
         PaymentTransaction paymentTransaction = new PaymentTransaction(
                 RentBikeController.rentalCode, card.getCardCode(), card.getOwner(),
@@ -55,7 +56,7 @@ public class ReturnBikeController {
         Bike bike = getBike(rentBikeTransaction.getBarcode());
         bike.updateInUseAndDockID(false, ReturnBikeScreenController.newDockID);
 
-        return rentBikeTransaction;
+        return new Pair<>(respondCode, rentBikeTransaction);
     }
 
     /**

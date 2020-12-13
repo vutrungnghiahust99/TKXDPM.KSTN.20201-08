@@ -12,8 +12,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Pair;
 import presentationlayer.box.ConfirmBox;
 import presentationlayer.box.NotificationBox;
+import presentationlayer.box.NotificationErrorCode;
 
 
 import java.io.IOException;
@@ -54,11 +56,13 @@ public class ReturnBikeScreenController implements Initializable {
                     System.out.println("user confirm to return bike");
                     assert dock != null;
                     newDockID = dock.getDockID();
-                    RentBikeTransaction rentBikeTransaction = ReturnBikeController.processReturnBike();
-                    if (rentBikeTransaction == null){
-                        NotificationBox.display("Đã xảy ra lỗi", "Đã có lỗi xảy ra khi thực hiện giao dịch!");
-                    }
-                    else{
+                    Pair<String, RentBikeTransaction> s = ReturnBikeController.processReturnBike();
+                    String respondCode = s.getKey();
+                    RentBikeTransaction rentBikeTransaction = s.getValue();
+
+                    NotificationErrorCode.displayNotificationErrorCode(respondCode, "refund");
+
+                    if (respondCode.equals("00")){
                         RentBikeController.rentalCode = "";
                         MainScreenController.reset = true;
                         showRentBikeTransactionInfo(rentBikeTransaction);

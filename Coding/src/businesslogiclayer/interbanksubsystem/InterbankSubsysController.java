@@ -7,7 +7,7 @@ import com.google.gson.JsonParser;
 
 public class InterbankSubsysController implements IInterbank {
     public ConvertToTransaction convertToTransaction = new ConvertToTransaction();
-    public ProcessErrorCode processErrorCode = new ProcessErrorCode();
+//    public ProcessErrorCode processErrorCode = new ProcessErrorCode();
 
     /**
      * @param cost : giá tiền cần giao dịch
@@ -27,7 +27,9 @@ public class InterbankSubsysController implements IInterbank {
             JsonObject sentJson = convertToTransaction.requestTransaction(transToHash, transactionBody);
             InterbankBoundary interbank = new InterbankBoundary();
             String errorCode = interbank.processTransaction(sentJson);
-            processErrorCode.process(errorCode);
+            if (command.equals("refund"))
+                errorCode = "04";  // dev
+//            processErrorCode.process(errorCode);
             return errorCode;
 
         }catch (Exception e) {

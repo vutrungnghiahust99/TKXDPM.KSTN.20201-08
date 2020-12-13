@@ -6,6 +6,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import presentationlayer.box.NotificationBox;
+import presentationlayer.box.NotificationErrorCode;
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -39,7 +42,8 @@ public class DisplayBikeInfoScreenController implements Initializable {
         xacnhan.setOnAction(e -> {
             stage.close();
             RentBikeController rentBikeController = new RentBikeController();
-            rentBikeController.processRentBike();
+            String code = rentBikeController.processRentBike();
+            NotificationErrorCode.displayNotificationErrorCode(code, "pay");
         });
         huy.setOnAction(e ->  stage.close());
     }

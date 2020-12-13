@@ -56,14 +56,14 @@ public class RentBikeController {
      *
      * Nếu giao dịch thất bại thì sẽ đưa ra thông báo lỗi và không lưu lại thông tin.
      */
-    public void processRentBike(){
+    public String processRentBike(){
         IInterbank interbank = new InterbankSubsysController();
         int cost = (int) calculateDeposit();
         System.out.println(cost);
         String code = interbank.processTransaction(cost, "pay", "Trừ tiền cọc");
         if (code.equals("00")){
             System.out.println("Đã trừ: " + cost + "VNĐ");
-            NotificationBox.display("Notification", "Bạn đã thuê xe thành công, EcoBike chúc bạn có chuyến đi an toàn và vui vẻ!");
+//            NotificationBox.display("Notification", "Bạn đã thuê xe thành công, EcoBike chúc bạn có chuyến đi an toàn và vui vẻ!");
             MainScreenController.reset = true;
             RentBikeScreenController.rent = true;
             Calendar calendar = Calendar.getInstance();
@@ -117,6 +117,7 @@ public class RentBikeController {
             rentalCode = "";
             System.out.println("Giao dịch thất bại");
         }
+        return code;
     }
 
     /**

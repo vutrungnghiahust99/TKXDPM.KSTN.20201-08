@@ -2,14 +2,14 @@ package entities;
 
 
 public class InterbankTransaction {
-    String cardCode;
-    String owner;
-    String cvvCode;
-    String dateExpired;
-    String command;
-    String transactionContent;
-    int amount;
-    String createdAt;  //format: yyyy-mm-đd hour:minute:second
+    private String cardCode;
+    private String owner;
+    private String cvvCode;
+    private String dateExpired;
+    private String command;
+    private String transactionContent;
+    private int amount;
+    private String createdAt;  //format: yyyy-mm-đd hour:minute:second
 
     public InterbankTransaction(){
 
