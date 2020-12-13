@@ -8,8 +8,15 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-
+/**
+ * Cửa sỏ hiện thị thông báo và nút ok để thoát
+ */
 public class NotificationBox {
+    /**
+     * Hiển thị thông báo cho người dùng
+     * @param title: chủ đề
+     * @param message: nội dung thông báo
+     */
     public static void display(String title, String message){
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);

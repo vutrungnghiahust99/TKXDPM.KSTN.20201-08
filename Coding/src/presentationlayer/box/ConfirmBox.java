@@ -8,9 +8,18 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * Cửa sổ yêu cầu người dùng xác nhận
+ */
 public class ConfirmBox {
     static boolean answer;
 
+    /**
+     * Hiển thị cửa sổ yêu cầu người dùng xác nhận
+     * @param title: tiêu đề của cửa sổ
+     * @param message: nội dung yêu cầu người dùng xác nhận
+     * @return: kết quả xác nhận của người dùng
+     */
     public static boolean display(String title, String message){
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);

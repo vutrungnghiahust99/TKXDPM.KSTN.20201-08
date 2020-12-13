@@ -28,6 +28,12 @@ public class ViewDockScreenController implements Initializable {
     @FXML
     private TextField text1, text2, text3, text4, text5, text6;
 
+    /**
+     * Khởi tọa mặc định giao diện xem thông tin chi tiết bãi xe
+     * Khi người dùng double click vào một xe trong danh sách xe => hiển thị giao diện xem thông tin chi tiết xe
+     * @param url
+     * @param rb
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb){
         System.out.println("default initialize ViewDockScreen");
@@ -44,6 +50,10 @@ public class ViewDockScreenController implements Initializable {
         });
     }
 
+    /**
+     * Khởi tạo giá trị các trường của giao diện xem bãi xe với thông tin từ bãi xe
+     * @param dock: bãi xe
+     */
     public void initData(Dock dock){
         System.out.println("initialize dockInfo and bikesInfo ");
         this.dock = dock;
@@ -59,6 +69,10 @@ public class ViewDockScreenController implements Initializable {
                 bikesView.getItems().add(bike.getGeneralInfo());
     }
 
+    /**
+     * Hiển thị giao diện xem thông tin chi tiết xe trong bãi với thông tin đầu vào của xe
+     * @param bike: thông tin xe
+     */
     public void showViewBikeScreen(Bike bike){
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ViewBikeScreen.fxml"));
@@ -78,6 +92,12 @@ public class ViewDockScreenController implements Initializable {
         }
     }
 
+    /**
+     * Lấy ra đối tượng xe tướng ứng trong danh sách khi ngời dùng double click và một xe trong danh sách
+     * các bãi xe trong bãi
+     * @param bikeInfo: thông tin xe gửi về từ giao diện khi người dùng double click
+     * @return: xe hoặc null
+     */
     private Bike getBikeFromString(String bikeInfo){
 
         for(Bike bike: dock.getBikes()){

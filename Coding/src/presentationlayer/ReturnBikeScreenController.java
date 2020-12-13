@@ -14,7 +14,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import presentationlayer.box.ConfirmBox;
 import presentationlayer.box.NotificationBox;
-import presentationlayer.box.NotificationBoxWithSize;
 
 
 import java.io.IOException;
@@ -22,6 +21,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * Quản lý giao diện trả xe của người dùng
+ */
 public class ReturnBikeScreenController implements Initializable {
     public static String newDockID = null;
     private ArrayList<Dock> docks;
@@ -29,6 +31,13 @@ public class ReturnBikeScreenController implements Initializable {
     @FXML
     private ListView<String> docksView;
 
+    /**
+     * Khởi tạo mặc định giao diện trả xe gồm danh sách các bãi xe đông thời lắng nghe xem người dùng có double click
+     * vào một dòng trong dánh sách, nếu có double click thì hiển thị thông báo yêu cầu xác nhận và thực hiện giao dịch
+     * sau khi người dùng xác nhận, cuối cùng lưu các kết quả vào cơ sở dữ liệu và về màn hình chính
+     * @param url
+     * @param rb
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb){
         System.out.println("default initialize ReturnBikeScreen");
@@ -61,6 +70,10 @@ public class ReturnBikeScreenController implements Initializable {
         });
     }
 
+    /**
+     * Khởi tạo giao diện trả xe với danh sách các bãi xe
+     * @param docks: danh sách các bãi xe
+     */
     public void initData(ArrayList<Dock> docks){
         System.out.println("initialize dockInfo and bikesInfo ");
         this.docks = docks;
@@ -68,7 +81,12 @@ public class ReturnBikeScreenController implements Initializable {
             docksView.getItems().add(dock.getGeneralInfo());
     }
 
-
+    /**
+     * Lấy đối tượng bãi xe tương ứng trong dánh các bãi xe từ phản hồi double clicks của người dùng từ giao diện
+     * vào một dòng trong danh sách
+     * @param dockInfo: string phản hồi từ giao diện
+     * @return: bãi xe tương ứng hoặc null nếu không tìm được
+     */
     private Dock getDockFromString(String dockInfo){
 
         for(Dock dock: docks){
@@ -80,6 +98,10 @@ public class ReturnBikeScreenController implements Initializable {
         return null;
     }
 
+    /**
+     * Hiển thị thông tin chi tiết hóa đơn thuê xe
+     * @param rentBikeTransaction: hóa đơn thuê xe
+     */
     public void showRentBikeTransactionInfo(RentBikeTransaction rentBikeTransaction) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("RentBikeTransactionScreen.fxml"));

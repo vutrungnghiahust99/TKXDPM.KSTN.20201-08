@@ -18,6 +18,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * Giao diện chính sau khi người dùng khởi động ứng dụng
+ */
 public class MainScreenController implements Initializable {
     public static boolean reset = false;
     ArrayList<Dock> docks;
@@ -25,6 +28,11 @@ public class MainScreenController implements Initializable {
     @FXML
     private ListView<String> docksView;
 
+    /**
+     * khởi tạo giá trị mặc định cho giao diện
+     * @param url
+     * @param rb
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         System.out.println("Initialize main screen");
@@ -48,6 +56,10 @@ public class MainScreenController implements Initializable {
         });
     }
 
+    /**
+     * Hiển thị giao diện xem thông tin bãi xe
+     * @param dock: đối tượng bãi xe chứa thông tin cần hiển thị
+     */
     public void showViewDockScreen(Dock dock) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ViewDockScreen.fxml"));
@@ -67,6 +79,12 @@ public class MainScreenController implements Initializable {
         }
     }
 
+    /**
+     * Khi người dùng click vào một dòng trong danh sách bãi xe, hàm sẽ tiến hành tìm kiếm đối tượng bãi xe tương
+     * ứng bằng cách so sánh string từ giao diện gửi về và string của bãi xe trong danh sách bãi xe docks
+     * @param dockInfo: string của bãi xe gửi về từ giao diện
+     * @return: bãi xe tương ứng hoặc null trong trường hợp không tồn tại
+     */
     private Dock getDockFromString(String dockInfo) {
 
         for (Dock dock : docks) {
@@ -78,6 +96,11 @@ public class MainScreenController implements Initializable {
         return null;
     }
 
+    /**
+     * Khi người dùng click vào một bãi xe trong danh sách bãi xe, hàm sẽ khởi tạo một giao diện thông tin bãi xe
+     * và đợi cho đến khi giao diện thông tin bãi xe được tắt đi, tùy theo kết quả trả về có thể cập nhật lại danh
+     * sách bãi xe từ cơ sở dữ liệu hoặc không
+     */
     public void handleReturnButtonClick() {
         if (RentBikeController.rentalCode.equals("")){
             System.out.println("User is not renting a bike");
