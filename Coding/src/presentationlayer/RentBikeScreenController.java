@@ -1,5 +1,6 @@
 package presentationlayer;
 import businesslogiclayer.*;
+import entities.Bike;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,7 +28,7 @@ public class RentBikeScreenController {
         else{
             if (!rent) {
                 int inputCode = Integer.parseInt(message);
-                Pair<Boolean, ArrayList<String>> p = rentBikeController.checkBarcodeAndGetBikeIfTrue(inputCode);
+                Pair<Boolean, Bike> p = rentBikeController.checkBarcodeAndGetBikeIfTrue(inputCode);
                 if (p.getKey()) {
                     System.out.println(p.getValue());
                     display(p.getValue());
@@ -42,7 +43,7 @@ public class RentBikeScreenController {
         }
     }
 
-    public void display(ArrayList<String> bike) {
+    public void display(Bike bike) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("DisplayBikeInfoScreen.fxml"));
             Parent root = loader.load();

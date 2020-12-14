@@ -7,7 +7,6 @@ import entities.RentBikeTransaction;
 import javafx.util.Pair;
 import presentationlayer.MainScreenController;
 import presentationlayer.RentBikeScreenController;
-import presentationlayer.box.NotificationBox;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -27,26 +26,37 @@ public class RentBikeController {
     final Card card = Card.getInstance();
     ArrayList<ArrayList<String>> listBike = BikeDAO.getBikes();
     public static ArrayList<String> bikeIsRented;
+//    public static Bike bike = null;
 
     /**
      *
      * @param barcode : mã xe
      * @return  <mã check barcode, thông tin xe (nếu barcode đúng)>
      */
-    public Pair<Boolean, ArrayList<String>> checkBarcodeAndGetBikeIfTrue(int barcode){
+    public Pair<Boolean, Bike> checkBarcodeAndGetBikeIfTrue(int barcode){
         boolean check = false;
-        ArrayList<String> _bike = new ArrayList<>();
-        for (ArrayList<String> bike : listBike){
-            if (barcode == Integer.parseInt(bike.get(0)) && Integer.parseInt(bike.get(1)) == 0){
+        Bike bike = null;
+        for (ArrayList<String> b : listBike){
+            if (barcode == Integer.parseInt(b.get(0)) && Integer.parseInt(b.get(1)) == 0){
                 check = true;
-                _bike = bike;
-                bikeIsRented = bike;
+                bikeIsRented = b;
+                break;
             }
         }
         if (check){
             rentalCode = convertBarcodeToRentalCode(barcode);
+            bike = new Bike(
+                    Integer.parseInt(bikeIsRented.get(0)),
+                    false,
+                    bikeIsRented.get(2),
+                    Integer.parseInt(bikeIsRented.get(3)),
+                    Integer.parseInt(bikeIsRented.get(4)),
+                    Integer.parseInt(bikeIsRented.get(5)),
+                    Integer.parseInt(bikeIsRented.get(6)),
+                    Float.parseFloat(bikeIsRented.get(7)),
+                    bikeIsRented.get(8));
         }
-        return new Pair<>(check, _bike);
+        return new Pair<>(check, bike);
     }
 
     /**
@@ -56,14 +66,13 @@ public class RentBikeController {
      *
      * Nếu giao dịch thất bại thì sẽ đưa ra thông báo lỗi và không lưu lại thông tin.
      */
-    public String processRentBike(){
+    public String processRentBike(Bike bike){
         IInterbank interbank = new InterbankSubsysController();
         int cost = (int) calculateDeposit();
         System.out.println(cost);
         String code = interbank.processTransaction(cost, "pay", "Trừ tiền cọc");
         if (code.equals("00")){
             System.out.println("Đã trừ: " + cost + "VNĐ");
-//            NotificationBox.display("Notification", "Bạn đã thuê xe thành công, EcoBike chúc bạn có chuyến đi an toàn và vui vẻ!");
             MainScreenController.reset = true;
             RentBikeScreenController.rent = true;
             Calendar calendar = Calendar.getInstance();
@@ -88,12 +97,12 @@ public class RentBikeController {
              */
             RentBikeTransaction rentBikeTransaction = new RentBikeTransaction(
                     rentalCode,
-                    Integer.parseInt(bikeIsRented.get(0)),
-                    bikeIsRented.get(2),
+                    bike.getBarcode(),
+                    bike.getType(),
                     -1,
                     card.getOwner(),
-                    Integer.parseInt(bikeIsRented.get(4)),
-                    Integer.parseInt(bikeIsRented.get(5)),
+                    bike.getPriceForFirst30Minutes(),
+                    bike.getPriceFor15MinutesAfter30Minutes(),
                     td.format(date),
                     "",
                     cost);
@@ -101,16 +110,6 @@ public class RentBikeController {
             /**
              * Cập nhật trạng thái xe
              */
-            Bike bike = new Bike(
-                    Integer.parseInt(bikeIsRented.get(0)),
-                    false,
-                    bikeIsRented.get(2),
-                    Integer.parseInt(bikeIsRented.get(3)),
-                    Integer.parseInt(bikeIsRented.get(4)),
-                    Integer.parseInt(bikeIsRented.get(5)),
-                    Integer.parseInt(bikeIsRented.get(6)),
-                    Float.parseFloat(bikeIsRented.get(7)),
-                    bikeIsRented.get(8));
             bike.updateInUseAndDockID(true, bikeIsRented.get(9));
         }
         else{

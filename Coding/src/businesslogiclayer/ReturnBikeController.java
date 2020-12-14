@@ -9,6 +9,7 @@ import entities.Card;
 import entities.PaymentTransaction;
 import entities.RentBikeTransaction;
 import javafx.util.Pair;
+import presentationlayer.RentBikeScreenController;
 import presentationlayer.ReturnBikeScreenController;
 
 import java.text.SimpleDateFormat;
@@ -56,6 +57,8 @@ public class ReturnBikeController {
         Bike bike = getBike(rentBikeTransaction.getBarcode());
         bike.updateInUseAndDockID(false, ReturnBikeScreenController.newDockID);
 
+        //set rent = false, tức là set trạng thái người dùng thành chưa thuê xe
+        RentBikeScreenController.rent = false;
         return new Pair<>(respondCode, rentBikeTransaction);
     }
 

@@ -1,16 +1,14 @@
 package presentationlayer;
 
 import businesslogiclayer.RentBikeController;
+import entities.Bike;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import presentationlayer.box.NotificationBox;
 import presentationlayer.box.NotificationErrorCode;
-
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class DisplayBikeInfoScreenController implements Initializable {
@@ -28,21 +26,21 @@ public class DisplayBikeInfoScreenController implements Initializable {
      * @param bike : thông tin đầu vào xe ứng với barcode người dùng đã nhập
      * @param stage : màn hình hiển thị thông tin xe
      */
-    public void init(ArrayList<String> bike, Stage stage){
-        text1.setText(bike.get(0));
-        text2.setText(bike.get(2));
-        text3.setText(bike.get(3));
-        text4.setText(bike.get(4));
-        text5.setText(bike.get(5));
-        text6.setText(bike.get(6));
-        text7.setText(bike.get(7));
-        text8.setText(bike.get(8));
-        double deposit = Integer.parseInt(bike.get(3))*0.4;
+    public void init(Bike bike, Stage stage){
+        text1.setText(String.valueOf(bike.getBarcode()));
+        text2.setText(bike.getType());
+        text3.setText(String.valueOf(bike.getValue()));
+        text4.setText(String.valueOf(bike.getPriceForFirst30Minutes()));
+        text5.setText(String.valueOf(bike.getPriceFor15MinutesAfter30Minutes()));
+        text6.setText(String.valueOf(bike.getRemainBattery()));
+        text7.setText(String.valueOf(bike.getMaxTime()));
+        text8.setText(bike.getLicensePlate());
+        double deposit = bike.getValue()*0.4;
         text9.setText(String.format("%s", (int) deposit));
         xacnhan.setOnAction(e -> {
             stage.close();
             RentBikeController rentBikeController = new RentBikeController();
-            String code = rentBikeController.processRentBike();
+            String code = rentBikeController.processRentBike(bike);
             NotificationErrorCode.displayNotificationErrorCode(code, "pay");
         });
         huy.setOnAction(e ->  stage.close());
