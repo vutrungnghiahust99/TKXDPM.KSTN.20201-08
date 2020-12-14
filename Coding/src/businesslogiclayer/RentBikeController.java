@@ -70,6 +70,7 @@ public class RentBikeController {
         IInterbank interbank = new InterbankSubsysController();
         int cost = (int) calculateDeposit();
         System.out.println(cost);
+        interbank.reset();
         String code = interbank.processTransaction(cost, "pay", "Trừ tiền cọc");
         if (code.equals("00")){
             System.out.println("Đã trừ: " + cost + "VNĐ");
