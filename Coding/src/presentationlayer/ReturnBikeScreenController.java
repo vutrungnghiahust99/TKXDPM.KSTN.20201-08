@@ -64,6 +64,8 @@ public class ReturnBikeScreenController implements Initializable {
 
                     if (respondCode.equals("00")){
                         RentBikeController.rentalCode = "";
+                        //set rent = false, tức là set trạng thái người dùng thành chưa thuê xe
+                        RentBikeScreenController.rent = false;
                         MainScreenController.reset = true;
                         showRentBikeTransactionInfo(rentBikeTransaction);
                         Stage stage = (Stage)docksView.getScene().getWindow();

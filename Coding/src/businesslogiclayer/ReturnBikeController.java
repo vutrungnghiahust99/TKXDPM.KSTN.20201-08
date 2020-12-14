@@ -56,9 +56,6 @@ public class ReturnBikeController {
         // update Bike
         Bike bike = getBike(rentBikeTransaction.getBarcode());
         bike.updateInUseAndDockID(false, ReturnBikeScreenController.newDockID);
-
-        //set rent = false, tức là set trạng thái người dùng thành chưa thuê xe
-        RentBikeScreenController.rent = false;
         return new Pair<>(respondCode, rentBikeTransaction);
     }
 
