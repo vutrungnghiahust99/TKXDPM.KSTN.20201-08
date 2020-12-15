@@ -11,10 +11,8 @@ import javafx.stage.Stage;
 import javafx.util.Pair;
 import presentationlayer.box.*;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class RentBikeScreenController {
-    private final RentBikeController rentBikeController = new RentBikeController();
     @FXML
     private TextField barcode;
     public static boolean rent = false;
@@ -29,7 +27,7 @@ public class RentBikeScreenController {
             if (!rent) {
                 try{
                     int inputCode = Integer.parseInt(message);
-                    Pair<Boolean, Bike> p = rentBikeController.checkBarcodeAndGetBikeIfTrue(inputCode);
+                    Pair<Boolean, Bike> p = RentBikeController.checkBarcodeAndGetBikeIfTrue(inputCode);
                     if (p.getKey()) {
                         System.out.println(p.getValue());
                         display(p.getValue());
@@ -49,9 +47,9 @@ public class RentBikeScreenController {
 
     public void display(Bike bike) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("DisplayBikeInfoScreen.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("RentBikeInfoScreen.fxml"));
             Parent root = loader.load();
-            DisplayBikeInfoScreenController dp = loader.getController();
+            RentBikeInfoScreenController dp = loader.getController();
             Stage stage = new Stage();
             stage.setTitle("EcoBike");
             dp.init(bike, stage);

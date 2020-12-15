@@ -11,7 +11,7 @@ import java.util.Date;
 public class RentBikeTransactionDAO {
     /**
      * Lưu giao dịch thuê xe vào cơ sở dữ liệu
-     * @param barcode: barcode của xe
+     * @param bikeCode: bikeCode của xe
      * @param rentalCode: mã thuê xe
      * @param type: loại xe
      * @param rentTime: thời điểm thuê xe
@@ -22,13 +22,13 @@ public class RentBikeTransactionDAO {
      * @param priceFor15MinutesAfter30Minutes: Giá thuê trong 15 phút sau 30 phút đầu tiên
      * @param deposit: tiền đặt cọc
      */
-    public static void save(int barcode, String rentalCode, String type, String rentTime, String returnTime,
+    public static void save(int bikeCode, String rentalCode, String type, String rentTime, String returnTime,
                             int rentBikeCost, String owner, int priceForFirst30Minutes,
                             int priceFor15MinutesAfter30Minutes, int deposit){
         String command = "INSERT INTO rentbiketransaction " +
-                "(rentalCode, barcode, type, rentBikeCost, owner, priceFor30FirstMinutes, priceFor15MinutesAfter30Minutes, rentTime, returnTime, deposit) VALUES " +
+                "(rentalCode, bikeCode, type, rentBikeCost, owner, priceFor30FirstMinutes, priceFor15MinutesAfter30Minutes, rentTime, returnTime, deposit) VALUES " +
                 "(" + '\'' + rentalCode + '\'' + ", " +
-                barcode + ", " +
+                bikeCode + ", " +
                 '\'' + type + '\'' + ", " +
                 rentBikeCost + ", " +
                 '\'' + owner + '\'' + ", " +

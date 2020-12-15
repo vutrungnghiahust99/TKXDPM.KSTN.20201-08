@@ -62,10 +62,10 @@ public class MainScreenController implements Initializable {
      */
     public void showViewDockScreen(Dock dock) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("ViewDockScreen.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("DockScreen.fxml"));
             Parent root = (Parent) loader.load();
 
-            ViewDockScreenController viewDockController = loader.getController();
+            DockScreenController viewDockController = loader.getController();
 
             viewDockController.initData(dock);
 
@@ -169,4 +169,6 @@ public class MainScreenController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    public void handleLockBikeButtonClick(){}
 }

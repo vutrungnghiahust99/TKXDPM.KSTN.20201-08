@@ -11,17 +11,17 @@ import java.util.ArrayList;
 public class BikeDAO {
     /**
      * Cập nhật trạng thái có đang được sử dụng hay không của xe và vị trí bãi xe mới của xe
-     * @param barcode: barcode của xe
+     * @param bikeCode: bikeCode của xe
      * @param isInUse: trạng thái mới của xe
      * @param dockID: ID bãi xe mới của xe
      */
-    public static void updateIsInUse(int barcode, boolean isInUse, String dockID){
+    public static void updateIsInUse(int bikeCode, boolean isInUse, String dockID){
         int flag;
         if (isInUse)
             flag = 1;
         else
             flag = 0;
-        String command = "UPDATE bike SET isInUse=" + flag + ", dockID=" + '\'' + dockID + '\'' + " WHERE barcode=" + barcode;
+        String command = "UPDATE bike SET isInUse=" + flag + ", dockID=" + '\'' + dockID + '\'' + " WHERE bikeCode=" + bikeCode;
         DBConnection.execute(command);
     }
 
@@ -38,13 +38,13 @@ public class BikeDAO {
     }
 
     /**
-     * Lấy thông tin của xe dựa theo barcode
-     * @param barcode: barcode của xe
+     * Lấy thông tin của xe dựa theo bikeCode
+     * @param bikeCode: bikeCode của xe
      * @return: Thông tin của xe lưu dưới dạng mảng một chiều
      */
-    public static ArrayList<ArrayList<String>> queryWithBarcode(int barcode){
+    public static ArrayList<ArrayList<String>> queryWithBikeCode(int bikeCode){
         ArrayList<ArrayList<String>> s = new ArrayList<>();
-        String command = "SELECT * from bike WHERE barcode=" + '\'' + barcode + '\'';
+        String command = "SELECT * from bike WHERE bikeCode=" + '\'' + bikeCode + '\'';
         s = DBConnection.query(command);
         return s;
     }

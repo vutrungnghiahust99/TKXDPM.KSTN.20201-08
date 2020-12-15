@@ -11,7 +11,7 @@ import presentationlayer.box.NotificationErrorCode;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class DisplayBikeInfoScreenController implements Initializable {
+public class RentBikeInfoScreenController implements Initializable {
     @FXML
     private TextField text1, text2, text3, text4, text5, text6, text7, text8, text9;
     @FXML
@@ -27,7 +27,7 @@ public class DisplayBikeInfoScreenController implements Initializable {
      * @param stage : màn hình hiển thị thông tin xe
      */
     public void init(Bike bike, Stage stage){
-        text1.setText(String.valueOf(bike.getBarcode()));
+        text1.setText(String.valueOf(bike.getBikeCode()));
         text2.setText(bike.getType());
         text3.setText(String.valueOf(bike.getValue()));
         text4.setText(String.valueOf(bike.getPriceForFirst30Minutes()));
@@ -39,8 +39,7 @@ public class DisplayBikeInfoScreenController implements Initializable {
         text9.setText(String.format("%s", (int) deposit));
         xacnhan.setOnAction(e -> {
             stage.close();
-            RentBikeController rentBikeController = new RentBikeController();
-            String code = rentBikeController.processRentBike(bike);
+            String code = RentBikeController.processRentBike(bike);
             NotificationErrorCode.displayNotificationErrorCode(code, "pay");
         });
         huy.setOnAction(e ->  stage.close());

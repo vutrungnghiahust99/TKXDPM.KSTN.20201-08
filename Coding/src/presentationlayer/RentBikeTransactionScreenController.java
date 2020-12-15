@@ -19,7 +19,7 @@ public class RentBikeTransactionScreenController {
     public void initData(RentBikeTransaction rentBikeTransaction){
         System.out.println("display rentbiketransaction info");
         text1.setText(rentBikeTransaction.getRentalCode());
-        text2.setText(Integer.toString(rentBikeTransaction.getBarcode()));
+        text2.setText(Integer.toString(rentBikeTransaction.getBikeCode()));
         text3.setText(rentBikeTransaction.getType());
         text4.setText(Integer.toString(rentBikeTransaction.getRentBikeCost()));
         text5.setText(rentBikeTransaction.getOwner());

@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.Random;
 
 public class Bike {
-    private int barcode;
+    private int bikeCode;
     private boolean isInUse;
     private String type;
     private int value;
@@ -17,8 +17,8 @@ public class Bike {
     private float maxTime;
     private String licensePlate;
 
-    public Bike(int barcode, boolean isInUse, String type, int value, int priceForFirst30Minutes, int priceFor15MinutesAfter30Minutes, int remainBattery, float maxTime, String licensePlate) {
-        this.barcode = barcode;
+    public Bike(int bikeCode, boolean isInUse, String type, int value, int priceForFirst30Minutes, int priceFor15MinutesAfter30Minutes, int remainBattery, float maxTime, String licensePlate) {
+        this.bikeCode = bikeCode;
         this.isInUse = isInUse;
         this.type = type;
         this.value = value;
@@ -29,8 +29,8 @@ public class Bike {
         this.licensePlate = licensePlate;
     }
 
-    public Bike(int barcode, String type) {
-        this.barcode = barcode;
+    public Bike(int bikeCode, String type) {
+        this.bikeCode = bikeCode;
         this.type = type;
         value = 10000;
         priceFor15MinutesAfter30Minutes = 300000;
@@ -56,7 +56,7 @@ public class Bike {
 
     @Override
     public String toString() {
-        return Integer.toString(barcode) + " - " + type;
+        return Integer.toString(bikeCode) + " - " + type;
     }
 
 
@@ -64,8 +64,8 @@ public class Bike {
         return isInUse;
     }
 
-    public int getBarcode() {
-        return barcode;
+    public int getBikeCode() {
+        return bikeCode;
     }
 
     public String getType() {
@@ -100,8 +100,8 @@ public class Bike {
         isInUse = inUse;
     }
 
-    public void setBarcode(int barcode) {
-        this.barcode = barcode;
+    public void setBikeCode(int bikeCode) {
+        this.bikeCode = bikeCode;
     }
 
     public void setType(String type) {
@@ -134,16 +134,16 @@ public class Bike {
 
     public void updateInUseAndDockID(boolean isInUse, String dockID){
         this.isInUse = isInUse;
-        BikeDAO.updateIsInUse(this.barcode, isInUse, dockID);
+        BikeDAO.updateIsInUse(this.bikeCode, isInUse, dockID);
     }
 
     // undone
     public String getGeneralInfo(){
-        return barcode + " - " + type;
+        return bikeCode + " - " + type;
     }
 
     public String getDetailInfo(){
-        return barcode + "\n" + isInUse + '\n' + type + '\n' + value + '\n' +
+        return bikeCode + "\n" + isInUse + '\n' + type + '\n' + value + '\n' +
                 priceForFirst30Minutes + '\n' + priceFor15MinutesAfter30Minutes + '\n' +
                 remainBattery + '\n' + maxTime + '\n' + licensePlate + '\n';
     }

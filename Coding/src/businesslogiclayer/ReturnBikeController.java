@@ -54,7 +54,7 @@ public class ReturnBikeController {
         rentBikeTransaction.updateReturnTimeAndCost(returnTime, rentBikeCost);
 
         // update Bike
-        Bike bike = getBike(rentBikeTransaction.getBarcode());
+        Bike bike = getBike(rentBikeTransaction.getBikeCode());
         bike.updateInUseAndDockID(false, ReturnBikeScreenController.newDockID);
         return new Pair<>(respondCode, rentBikeTransaction);
     }
@@ -69,7 +69,7 @@ public class ReturnBikeController {
         ArrayList<ArrayList<String>> rentBikeTransactions = RentBikeTransactionDAO.queryByRentalCode(rentalCode);
         assert rentBikeTransactions.size() == 1;
         ArrayList<String> s = rentBikeTransactions.get(0);
-        int barcode = Integer.parseInt(s.get(1));
+        int bikeCode = Integer.parseInt(s.get(1));
         String bikeType = s.get(2);
         int rentBikeCost = Integer.parseInt(s.get(3));
         String owner = s.get(4);
@@ -79,7 +79,7 @@ public class ReturnBikeController {
         String returnTime = s.get(8);
         int deposit = Integer.parseInt(s.get(9));
         return new RentBikeTransaction(
-                rentalCode, barcode, bikeType, rentBikeCost, owner,
+                rentalCode, bikeCode, bikeType, rentBikeCost, owner,
                 priceForFirst30Minutes, priceFor15MinutesAfter30Minutes, rentTime, returnTime, deposit);
     }
 
@@ -118,13 +118,13 @@ public class ReturnBikeController {
     }
 
     /**
-     * Lấy thông tin của xe từ cơ sở dữ liệu dựa theo barcode
+     * Lấy thông tin của xe từ cơ sở dữ liệu dựa theo bikeCode
      *
-     * @param barcode: barcode của xe
+     * @param bikeCode: bikeCode của xe
      * @return: ArrayList<String> là một mảng các thuộc tính của xe
      */
-    private static Bike getBike(int barcode){
-        ArrayList<ArrayList<String>> bikeTable = BikeDAO.queryWithBarcode(barcode);
+    private static Bike getBike(int bikeCode){
+        ArrayList<ArrayList<String>> bikeTable = BikeDAO.queryWithBikeCode(bikeCode);
         ArrayList<Bike> s = InitializeController.tableToBikes(bikeTable);
         assert s.size() == 1;
         return s.get(0);

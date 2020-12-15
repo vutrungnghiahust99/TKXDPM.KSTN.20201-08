@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class RentBikeTransaction {
     private String rentalCode;
-    private int barcode;
+    private int bikeCode;
     private String type;
     private int rentBikeCost;
     private String owner;
@@ -16,9 +16,9 @@ public class RentBikeTransaction {
     private String returnTime;
     private int deposit;
 
-    public RentBikeTransaction(String rentalCode, int barcode, String type, int rentBikeCost, String owner, int priceForFirst30Minutes, int priceFor15MinutesAfter30Minutes, String rentTime, String returnTime, int deposit) {
+    public RentBikeTransaction(String rentalCode, int bikeCode, String type, int rentBikeCost, String owner, int priceForFirst30Minutes, int priceFor15MinutesAfter30Minutes, String rentTime, String returnTime, int deposit) {
         this.rentalCode = rentalCode;
-        this.barcode = barcode;
+        this.bikeCode = bikeCode;
         this.type = type;
         this.rentBikeCost = rentBikeCost;
         this.owner = owner;
@@ -37,8 +37,8 @@ public class RentBikeTransaction {
         this.deposit = deposit;
     }
 
-    public int getBarcode() {
-        return barcode;
+    public int getBikeCode() {
+        return bikeCode;
     }
 
     public String getRentalCode() {
@@ -73,8 +73,8 @@ public class RentBikeTransaction {
         return priceFor15MinutesAfter30Minutes;
     }
 
-    public void setBarcode(int barcode) {
-        this.barcode = barcode;
+    public void setBikeCode(int bikeCode) {
+        this.bikeCode = bikeCode;
     }
 
     public void setRentalCode(String rentalCode) {
@@ -110,7 +110,7 @@ public class RentBikeTransaction {
     }
 
     public void saveRentBikeTransaction(){
-        RentBikeTransactionDAO.save(barcode, rentalCode, type, rentTime, returnTime,
+        RentBikeTransactionDAO.save(bikeCode, rentalCode, type, rentTime, returnTime,
                 rentBikeCost, owner, priceForFirst30Minutes,
                 priceFor15MinutesAfter30Minutes, deposit);
     }
@@ -129,7 +129,7 @@ public class RentBikeTransaction {
     public String getDetailInfo(){
         String header = "         Thông tin thuê và trả xe!"
 ;        String row1 = String.format("  %-50s%-30s", "Mã thuê xe", rentalCode);
-        String row2 = String.format("  %-50s%-30d", "Barcode", barcode);
+        String row2 = String.format("  %-50s%-30d", "Mã xe", bikeCode);
         String row3 = String.format("  %-50s%-30s", "Loại xe", type);
         String row4 = String.format("  %-50s%-30d", "Chi phí thuê", rentBikeCost);
         String row5 = String.format("  %-50s%-30s", "Chủ thẻ", owner);

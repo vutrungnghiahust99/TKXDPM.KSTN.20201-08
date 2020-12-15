@@ -24,17 +24,16 @@ public class RentBikeController {
      *              Phiên thuê xe khác nhau sẽ có rentalCode khác nhau.
      */
     public static String rentalCode = "";
-    final Card card = Card.getInstance();
-    ArrayList<ArrayList<String>> listBike = BikeDAO.getBikes();
-    public static ArrayList<String> bikeIsRented;
-//    public static Bike bike = null;
+    private static final Card card = Card.getInstance();
+    private static ArrayList<ArrayList<String>> listBike = BikeDAO.getBikes();
+    private static ArrayList<String> bikeIsRented;
 
     /**
      *
      * @param barcode : mã xe
-     * @return  <mã check barcode, thông tin xe (nếu barcode đúng)>
+     * @return  <mã check bikeCode, thông tin xe (nếu bikeCode đúng)>
      */
-    public Pair<Boolean, Bike> checkBarcodeAndGetBikeIfTrue(int barcode){
+    public static Pair<Boolean, Bike> checkBarcodeAndGetBikeIfTrue(int barcode){
         IBarcodeConverter bc = new BarcodeConverterController();
         int bikeCode = bc.convertBarcodeToBikeCode(barcode);
         boolean check = false;
@@ -70,7 +69,7 @@ public class RentBikeController {
      *
      * Nếu giao dịch thất bại thì sẽ đưa ra thông báo lỗi và không lưu lại thông tin.
      */
-    public String processRentBike(Bike bike){
+    public static String processRentBike(Bike bike){
         IInterbank interbank = new InterbankSubsysController();
         int cost = (int) calculateDeposit();
         System.out.println(cost);
@@ -102,7 +101,7 @@ public class RentBikeController {
              */
             RentBikeTransaction rentBikeTransaction = new RentBikeTransaction(
                     rentalCode,
-                    bike.getBarcode(),
+                    bike.getBikeCode(),
                     bike.getType(),
                     -1,
                     card.getOwner(),
@@ -126,22 +125,22 @@ public class RentBikeController {
 
     /**
      *
-     * @param barcode
+     * @param bikeCode
      * Sinh ra rental code cho phiên thuê xe
      * @return rental code
      */
-    public String convertBikeCodeToRentalCode(int barcode){
+    public static String convertBikeCodeToRentalCode(int bikeCode){
         Calendar calendar = Calendar.getInstance();
         Date date = calendar.getTime();
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String dateString = df.format(date);
-        return barcode + dateString;
+        return bikeCode + dateString;
     }
 
     /**
      * @return giá trị tiền đặt cọc  = 40% giá trị xe
      */
-    public double calculateDeposit(){
+    public static double calculateDeposit(){
         return Integer.parseInt(bikeIsRented.get(3)) * 0.4;
     }
 }

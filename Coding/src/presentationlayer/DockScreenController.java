@@ -9,7 +9,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -19,7 +18,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class ViewDockScreenController implements Initializable {
+public class DockScreenController implements Initializable {
     private Dock dock;
 
     @FXML
@@ -79,10 +78,10 @@ public class ViewDockScreenController implements Initializable {
      */
     private void showViewBikeScreen(Bike bike){
         try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("ViewBikeScreen.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("BikeDetailScreen.fxml"));
             Parent root = loader.load();
 
-            ViewBikeScreenController viewBikeController = loader.getController();
+            BikeDetailScreenController viewBikeController = loader.getController();
 
             viewBikeController.init(bike);
 
