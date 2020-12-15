@@ -41,13 +41,17 @@ public class ViewDockScreenController implements Initializable {
         //listen when user double click on a bike in listview => show ViewBikeScreen
         bikesView.setOnMouseClicked(click -> {
             if (click.getClickCount() == 2) {
-                System.out.println("User double on a dock");
-                String dockInfo = bikesView.getSelectionModel().getSelectedItem();
-                Bike bike = getBikeFromString(dockInfo);
-
-                showViewBikeScreen(bike);
+                handleDoubleClickOnBikeList();
             }
         });
+    }
+
+    private void handleDoubleClickOnBikeList() {
+        System.out.println("User double on a dock");
+        String dockInfo = bikesView.getSelectionModel().getSelectedItem();
+        Bike bike = getBikeFromString(dockInfo);
+
+        showViewBikeScreen(bike);
     }
 
     /**
@@ -73,7 +77,7 @@ public class ViewDockScreenController implements Initializable {
      * Hiển thị giao diện xem thông tin chi tiết xe trong bãi với thông tin đầu vào của xe
      * @param bike: thông tin xe
      */
-    public void showViewBikeScreen(Bike bike){
+    private void showViewBikeScreen(Bike bike){
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ViewBikeScreen.fxml"));
             Parent root = loader.load();
