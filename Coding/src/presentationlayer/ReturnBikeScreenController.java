@@ -47,35 +47,44 @@ public class ReturnBikeScreenController implements Initializable {
         //listen when user double click on a bike in listview => show ConfirmReturnBikeScreen
         docksView.setOnMouseClicked(click -> {
             if (click.getClickCount() == 2) {
-                System.out.println("User double on a dock");
-                String dockInfo = docksView.getSelectionModel().getSelectedItem();
-                Dock dock = getDockFromString(dockInfo);  // for further usage when we want to update dock
-                boolean confirmReturnBike = ConfirmBox.display("ConfirmBox", "Xác nhận trả xe?");
-                System.out.println(confirmReturnBike);
-                if(confirmReturnBike){
-                    System.out.println("user confirm to return bike");
-                    assert dock != null;
-                    newDockID = dock.getDockID();
-                    Pair<String, RentBikeTransaction> s = ReturnBikeController.processReturnBike();
-                    String respondCode = s.getKey();
-                    RentBikeTransaction rentBikeTransaction = s.getValue();
-
-                    NotificationErrorCode.displayNotificationErrorCode(respondCode, "refund");
-
-                    if (respondCode.equals("00")){
-                        RentBikeController.rentalCode = "";
-                        //set rent = false, tức là set trạng thái người dùng thành chưa thuê xe
-                        RentBikeScreenController.rent = false;
-                        MainScreenController.reset = true;
-                        showRentBikeTransactionInfo(rentBikeTransaction);
-                        Stage stage = (Stage)docksView.getScene().getWindow();
-                        stage.close();
-                    }
-                }
-                Stage stage = (Stage)docksView.getScene().getWindow();
-                stage.close();
+                handleDoubleClickOnDockList();
             }
         });
+    }
+
+    private void handleDoubleClickOnDockList() {
+        System.out.println("User double on a dock");
+        String dockInfo = docksView.getSelectionModel().getSelectedItem();
+        Dock dock = getDockFromString(dockInfo);  // for further usage when we want to update dock
+        boolean confirmReturnBike = ConfirmBox.display("ConfirmBox", "Xác nhận trả xe?");
+        System.out.println(confirmReturnBike);
+        if(confirmReturnBike){
+            assert dock != null;
+            handleUserConfirmReturnBike(dock);
+        }
+        Stage stage = (Stage)docksView.getScene().getWindow();
+        stage.close();
+    }
+
+    private void handleUserConfirmReturnBike(Dock dock) {
+        System.out.println("user confirm to return bike");
+        assert dock != null;
+        newDockID = dock.getDockID();
+        Pair<String, RentBikeTransaction> s = ReturnBikeController.processReturnBike();
+        String respondCode = s.getKey();
+        RentBikeTransaction rentBikeTransaction = s.getValue();
+
+        NotificationErrorCode.displayNotificationErrorCode(respondCode, "refund");
+
+        if (respondCode.equals("00")){
+            RentBikeController.rentalCode = "";
+            //set rent = false, tức là set trạng thái người dùng thành chưa thuê xe
+            RentBikeScreenController.rent = false;
+            MainScreenController.reset = true;
+            showRentBikeTransactionInfo(rentBikeTransaction);
+            Stage stage = (Stage)docksView.getScene().getWindow();
+            stage.close();
+        }
     }
 
     /**
@@ -110,7 +119,7 @@ public class ReturnBikeScreenController implements Initializable {
      * Hiển thị thông tin chi tiết hóa đơn thuê xe
      * @param rentBikeTransaction: hóa đơn thuê xe
      */
-    public void showRentBikeTransactionInfo(RentBikeTransaction rentBikeTransaction) {
+    private void showRentBikeTransactionInfo(RentBikeTransaction rentBikeTransaction) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("RentBikeTransactionScreen.fxml"));
             Parent root = (Parent) loader.load();
