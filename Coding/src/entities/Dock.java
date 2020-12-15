@@ -19,52 +19,8 @@ public class Dock {
         this.bikes = bikes;
     }
 
-    public Dock(String name, String address, String area, int numberOfDockingPoints) {
-        this.name = name;
-        this.address = address;
-        this.area = area;
-        this.numberOfDockingPoints = numberOfDockingPoints;
-        this.bikes = Bike.getRandomBicycles();
-    }
-
-    public static ArrayList<Dock> getRandomDocks(){
-        ArrayList<Dock> s = new ArrayList<>();
-        for(int i = 0; i < 30; ++i){
-            s.add(new Dock(Integer.toString(i), "HUST", "Hai Ba Trung", 100));
-        }
-        return s;
-    }
-
     public ArrayList<Bike> getBikes() {
         return bikes;
-    }
-
-    public Dock(ArrayList<Bike> bikes, String name, String address, String area, int numberOfDockingPoints) {
-        this.bikes = bikes;
-        this.name = name;
-        this.address = address;
-        this.area = area;
-        this.numberOfDockingPoints = numberOfDockingPoints;
-    }
-
-    public void setBikes(ArrayList<Bike> bikes) {
-        this.bikes = bikes;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public void setArea(String area) {
-        this.area = area;
-    }
-
-    public void setNumberOfDockingPoints(int numberOfDockingPoints) {
-        this.numberOfDockingPoints = numberOfDockingPoints;
     }
 
     public String getName() {
@@ -91,13 +47,6 @@ public class Dock {
         return numberOfDockingPoints;
     }
 
-    public void addBike(Bike bike){
-
-    }
-
-    public void removeBike(Bike bike){
-
-    }
 
     public int getNumberOfBikes(){
         return this.bikes.size();
@@ -107,18 +56,8 @@ public class Dock {
         return -1f;
     }
 
-    public float walkingTime(){
-        return -1;
-    }
-
-
-
-    // undone
     public String getGeneralInfo() {
         return name + " - " + address;
     }
 
-    public String getDetailInfo(){
-        return dockID + '\n' + name + '\n' + address + '\n' + area + '\n' + numberOfDockingPoints;
-    }
 }

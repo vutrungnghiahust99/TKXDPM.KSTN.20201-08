@@ -19,32 +19,8 @@ public class InterbankTransaction {
         return cardCode;
     }
 
-    public String getOwner() {
-        return owner;
-    }
-
-    public String getCvvCode() {
-        return cvvCode;
-    }
-
-    public String getDateExpired() {
-        return dateExpired;
-    }
-
-    public String getCommand() {
-        return command;
-    }
-
-    public String getTransactionContent() {
-        return transactionContent;
-    }
-
     public int getAmount() {
         return amount;
-    }
-
-    public String getCreatedAt() {
-        return createdAt;
     }
 
     public void setCardCode(String cardCode) {

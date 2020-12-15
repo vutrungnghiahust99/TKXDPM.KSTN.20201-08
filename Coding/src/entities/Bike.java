@@ -40,20 +40,6 @@ public class Bike {
         licensePlate = "30A.19954";
     }
 
-    public static ArrayList<Bike> getRandomBicycles(){
-        ArrayList<Bike> bikes = new ArrayList<>();
-        Random random = new Random();
-        int n = random.nextInt(30) + 1;
-        ArrayList<Integer> s = new ArrayList<>();
-        for(int i = 0; i < n; ++i)
-            s.add(i);
-        Collections.shuffle(s);
-        for(int i: s){
-            bikes.add(new Bike(i, "Lamboghini"));
-        }
-        return bikes;
-    }
-
     @Override
     public String toString() {
         return Integer.toString(bikeCode) + " - " + type;
@@ -96,40 +82,16 @@ public class Bike {
         return licensePlate;
     }
 
-    public void setInUse(boolean inUse) {
-        isInUse = inUse;
-    }
-
-    public void setBikeCode(int bikeCode) {
-        this.bikeCode = bikeCode;
-    }
-
     public void setType(String type) {
         this.type = type;
-    }
-
-    public void setValue(int value) {
-        this.value = value;
     }
 
     public void setPriceForFirst30Minutes(int priceForFirst30Minutes) {
         this.priceForFirst30Minutes = priceForFirst30Minutes;
     }
 
-    public void setPriceFor15MinutesAfter30Minutes(int priceFor15MinutesAfter30Minutes) {
-        this.priceFor15MinutesAfter30Minutes = priceFor15MinutesAfter30Minutes;
-    }
-
-    public void setRemainBattery(int remainBattery) {
-        this.remainBattery = remainBattery;
-    }
-
     public void setMaxTime(float maxTime) {
         this.maxTime = maxTime;
-    }
-
-    public void setLicensePlate(String licensePlate) {
-        this.licensePlate = licensePlate;
     }
 
     public void updateInUseAndDockID(boolean isInUse, String dockID){
@@ -137,14 +99,8 @@ public class Bike {
         BikeDAO.updateIsInUse(this.bikeCode, isInUse, dockID);
     }
 
-    // undone
     public String getGeneralInfo(){
         return bikeCode + " - " + type;
     }
 
-    public String getDetailInfo(){
-        return bikeCode + "\n" + isInUse + '\n' + type + '\n' + value + '\n' +
-                priceForFirst30Minutes + '\n' + priceFor15MinutesAfter30Minutes + '\n' +
-                remainBattery + '\n' + maxTime + '\n' + licensePlate + '\n';
-    }
 }
