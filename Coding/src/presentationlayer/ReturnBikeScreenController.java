@@ -72,6 +72,8 @@ public class ReturnBikeScreenController implements Initializable {
                         stage.close();
                     }
                 }
+                Stage stage = (Stage)docksView.getScene().getWindow();
+                stage.close();
             }
         });
     }
