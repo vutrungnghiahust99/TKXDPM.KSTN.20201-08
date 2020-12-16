@@ -57,7 +57,10 @@ public class Dock {
     }
 
     public String getGeneralInfo() {
-        return name + " - " + address;
+        int n = this.getNumberOfDockingPoints() - this.getBikes().size();
+        String s = Integer.toString(n);
+        if(s.length() < 2)
+            s = "0" + s;
+        return  String.format("%-4s - %-2s - %s", "[" + s + "]", name, address);
     }
-
 }

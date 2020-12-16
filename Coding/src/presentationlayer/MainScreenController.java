@@ -63,7 +63,7 @@ public class MainScreenController implements Initializable {
     public void showViewDockScreen(Dock dock) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("DockScreen.fxml"));
-            Parent root = (Parent) loader.load();
+            Parent root = loader.load();
 
             DockScreenController viewDockController = loader.getController();
 

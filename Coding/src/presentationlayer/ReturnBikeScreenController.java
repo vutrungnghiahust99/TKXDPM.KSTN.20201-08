@@ -55,15 +55,23 @@ public class ReturnBikeScreenController implements Initializable {
     private void handleDoubleClickOnDockList() {
         System.out.println("User double on a dock");
         String dockInfo = docksView.getSelectionModel().getSelectedItem();
-        Dock dock = getDockFromString(dockInfo);  // for further usage when we want to update dock
-        boolean confirmReturnBike = ConfirmBox.display("ConfirmBox", "Xác nhận trả xe?");
-        System.out.println(confirmReturnBike);
-        if(confirmReturnBike){
-            assert dock != null;
-            handleUserConfirmReturnBike(dock);
+        Dock dock = getDockFromString(dockInfo);
+        assert dock != null;
+        if(!checkDockHasSpareDockingPoint(dock))
+            NotificationBox.display("ERROR", "Bãi xe không còn chỗ trống!");
+        else{
+            boolean confirmReturnBike = ConfirmBox.display("ConfirmBox", "Xác nhận trả xe?");
+            System.out.println(confirmReturnBike);
+            if(confirmReturnBike){
+                handleUserConfirmReturnBike(dock);
+            }
+            Stage stage = (Stage)docksView.getScene().getWindow();
+            stage.close();
         }
-        Stage stage = (Stage)docksView.getScene().getWindow();
-        stage.close();
+    }
+
+    private boolean checkDockHasSpareDockingPoint(Dock dock){
+        return dock.getNumberOfDockingPoints() - dock.getBikes().size() > 0;
     }
 
     private void handleUserConfirmReturnBike(Dock dock) {
@@ -122,7 +130,7 @@ public class ReturnBikeScreenController implements Initializable {
     private void showRentBikeTransactionInfo(RentBikeTransaction rentBikeTransaction) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("RentBikeTransactionScreen.fxml"));
-            Parent root = (Parent) loader.load();
+            Parent root = loader.load();
 
             RentBikeTransactionScreenController rentBikeTransactionScreenController = loader.getController();
             rentBikeTransactionScreenController.initData(rentBikeTransaction);
