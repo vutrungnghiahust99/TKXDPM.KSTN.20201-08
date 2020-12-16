@@ -149,7 +149,7 @@ INSERT INTO `dock` VALUES
 ('TNL','Lord of Thunder','Phố Hồng Mai,Quận Hai Bà Trưng','Hà Nội',20),
 ('NEU','Đại học Kinh tế quốc dân','Số 18, Đường Giải Phóng, Quận Hai Bà Trưng','Hà Nội',20),
 ('UTC','Đại học Giao thông vận tải','Số 1, Đường Cầu Giấy','Hà Nội',20),
-('XDA','Đại học Xây dựng','Số 10, Đường Giải Phóng','Hà Nội',20),
+('XDA','Đại học Xây dựng','Số 10, Đường Giải Phóng','Hà Nội',4),
 ('DSL','B1 Bách Khoa','Số 1, Phố Tạ Quang Bửu','Hà Nội',20),
 ('C1','C1 Bách Khoa Hà Nội','Số 1, Đại Cồ Việt, Quận Hai Bà Trưng','Hà Nội',20),
 ('D6','D6 Bách Khoa Hà Nội','số 1, Đường Giải Phóng','Hà Nội',20),
