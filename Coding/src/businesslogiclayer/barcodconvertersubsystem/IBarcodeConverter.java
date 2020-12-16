@@ -1,12 +1,14 @@
 package businesslogiclayer.barcodconvertersubsystem;
 
 /**
- * interface cho Interbank Subsystem
- * Có 2 method để hệ thống giao tiếp đó là:
- * processTransaction : xử lý giao dịch
- * reset : reset tài khoản người dùng
+ * interface cho Barcode Converter Subsystem
  */
 public interface IBarcodeConverter {
-    int convertBarcodeToBikeCode(int Barcode);
-
+    /**
+     * Chuyển barcode thành bikeCode
+     *
+     * @param barcode : barcode người dùng nhập vào
+     * @return bikeCode
+     */
+    int convertBarcodeToBikeCode(int barcode);
 }
