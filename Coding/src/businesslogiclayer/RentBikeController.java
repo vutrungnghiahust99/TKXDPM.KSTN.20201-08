@@ -85,18 +85,6 @@ public class RentBikeController {
             DateFormat d = new SimpleDateFormat("yyyy-MM-dd");
             DateFormat td = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             /**
-             * Lưu lại giao dịch thanh toán
-             */
-            PaymentTransaction paymentTransaction = new PaymentTransaction(
-                    rentalCode,
-                    card.getCardCode(),
-                    card.getOwner(),
-                    "Trừ tiền cọc",
-                    cost,
-                    t.format(date),
-                    d.format(date));
-            paymentTransaction.savePaymentTransaction();
-            /**
              * Lưu lại thông tin phiên thuê xe
              */
             RentBikeTransaction rentBikeTransaction = new RentBikeTransaction(
@@ -111,6 +99,18 @@ public class RentBikeController {
                     "",
                     cost);
             rentBikeTransaction.saveRentBikeTransaction();
+            /**
+             * Lưu lại giao dịch thanh toán
+             */
+            PaymentTransaction paymentTransaction = new PaymentTransaction(
+                    rentalCode,
+                    card.getCardCode(),
+                    card.getOwner(),
+                    "Trừ tiền cọc",
+                    cost,
+                    t.format(date),
+                    d.format(date));
+            paymentTransaction.savePaymentTransaction();
             /**
              * Cập nhật trạng thái xe
              */
