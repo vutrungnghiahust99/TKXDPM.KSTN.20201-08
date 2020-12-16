@@ -1,5 +1,6 @@
 package businesslogiclayer;
 import businesslogiclayer.interbanksubsystem.*;
+import businesslogiclayer.barcodconvertersubsystem.*;
 import dataaccesslayer.*;
 import entities.*;
 import entities.PaymentTransaction;
@@ -34,17 +35,19 @@ public class RentBikeController {
      * @return  <mã check barcode, thông tin xe (nếu barcode đúng)>
      */
     public Pair<Boolean, Bike> checkBarcodeAndGetBikeIfTrue(int barcode){
+        IBarcodeConverter bc = new BarcodeConverterController();
+        int bikeCode = bc.convertBarcodeToBikeCode(barcode);
         boolean check = false;
         Bike bike = null;
+
         for (ArrayList<String> b : listBike){
-            if (barcode == Integer.parseInt(b.get(0)) && Integer.parseInt(b.get(1)) == 0){
+            if (bikeCode == Integer.parseInt(b.get(0)) && Integer.parseInt(b.get(1)) == 0){
                 check = true;
                 bikeIsRented = b;
                 break;
             }
         }
         if (check){
-            rentalCode = convertBarcodeToRentalCode(barcode);
             bike = new Bike(
                     Integer.parseInt(bikeIsRented.get(0)),
                     false,
@@ -55,6 +58,7 @@ public class RentBikeController {
                     Integer.parseInt(bikeIsRented.get(6)),
                     Float.parseFloat(bikeIsRented.get(7)),
                     bikeIsRented.get(8));
+            rentalCode = convertBikeCodeToRentalCode(bikeCode);
         }
         return new Pair<>(check, bike);
     }
@@ -126,7 +130,7 @@ public class RentBikeController {
      * Sinh ra rental code cho phiên thuê xe
      * @return rental code
      */
-    public String convertBarcodeToRentalCode(int barcode){
+    public String convertBikeCodeToRentalCode(int barcode){
         Calendar calendar = Calendar.getInstance();
         Date date = calendar.getTime();
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

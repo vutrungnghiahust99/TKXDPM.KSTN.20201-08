@@ -8,7 +8,6 @@ import presentationlayer.box.NotificationBox;
 
 public class InterbankSubsysController implements IInterbank {
     public ConvertToTransaction convertToTransaction = new ConvertToTransaction();
-//    public ProcessErrorCode processErrorCode = new ProcessErrorCode();
 
     /**
      * @param cost : giá tiền cần giao dịch

@@ -50,11 +50,16 @@ public class ConvertToTransaction {
      * @return sentJson: thông tin request gửi lên api để thực hiện giao dịch
      * @throws NoSuchAlgorithmException
      */
-    public JsonObject requestTransaction(JsonObject transToHash, JsonObject transactionBody) throws NoSuchAlgorithmException {
+    public JsonObject requestTransaction(JsonObject transToHash, JsonObject transactionBody)  {
         // transToHash là chuỗi cần băm
         transToHash.addProperty("secretKey", "Bk5+TDRsBPY=");
         transToHash.add("transaction", transactionBody);
-        MessageDigest md = MessageDigest.getInstance("MD5") ;
+        MessageDigest md = null;
+        try {
+            md = MessageDigest.getInstance("MD5");
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
         md.update(transToHash.toString().getBytes());
         byte[] digest = md.digest();
         String myHash = DatatypeConverter.printHexBinary(digest).toUpperCase();
