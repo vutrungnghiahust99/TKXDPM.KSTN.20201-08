@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="796.0" style="-fx-background-color: #ffbf00;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationlayer.MainScreenController">
+   <top>
+      <HBox spacing="8.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#handleRentButtonClick" text="Thuê xe " />
+            <Region />
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleReturnButtonClick" text="Trả xe " />
+            <Region />
+            <Button layoutX="72.0" layoutY="10.0" mnemonicParsing="false" text="Xem thông tin xe đang thuê " />
+            <Region />
+            <Button layoutX="134.0" layoutY="10.0" mnemonicParsing="false" text="Khóa xe " />
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+         </BorderPane.margin>
+      </HBox>
+   </top>
+   <left>
+      <ImageView fitHeight="504.0" fitWidth="312.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="file:D:/SoftwareDesignAndConstruction/TKXDPM.KSTN.20201-08/Coding/images/MainScreen.jpg" />
+         </image></ImageView>
+   </left>
+   <center>
+      <VBox prefHeight="496.0" prefWidth="512.0" BorderPane.alignment="CENTER">
+         <children>
+            <Region />
+            <Label text="Danh sách bãi xe ">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </VBox.margin>
+            </Label>
+            <ListView fx:id="docksView" prefHeight="473.0" prefWidth="512.0" />
+         </children>
+      </VBox>
+   </center>
+   <bottom>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hệ thống thuê xe điện tử EcoBike" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+         </BorderPane.margin>
+      </Text>
+   </bottom>
+</BorderPane>

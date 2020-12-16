@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="636.0" prefWidth="556.0" style="-fx-background-color: #ffbf00;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationlayer.DockScreenController">
+   <bottom>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hệ thống thuê xe điện tử EcoBike " wrappingWidth="306.1025390625" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
+      </Text>
+   </bottom>
+   <left>
+      <VBox prefHeight="589.0" prefWidth="565.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane prefHeight="299.0" prefWidth="557.0" style="-fx-background-color: white;">
+               <children>
+                  <Label alignment="CENTER" layoutX="1.0" prefHeight="74.0" prefWidth="556.0" style="-fx-background-color: #ffbf00;" text="Thông tin bãi xe                                                       ">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <GridPane layoutX="27.0" layoutY="86.0" prefHeight="180.0" prefWidth="530.0" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="27.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="86.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="324.0" minWidth="10.0" prefWidth="249.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="293.0" minWidth="10.0" prefWidth="280.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="81.0" minHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="131.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="94.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="93.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="93.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Text fill="#eb0707" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã bãi xe:" wrappingWidth="142.515625" />
+                        <Text fill="#f20606" strokeType="OUTSIDE" strokeWidth="0.0" text="Tên bãi:" wrappingWidth="134.484375" GridPane.rowIndex="1" />
+                        <Text fill="#e80404" strokeType="OUTSIDE" strokeWidth="0.0" text="Địa chỉ:" wrappingWidth="132.234375" GridPane.rowIndex="2" />
+                        <Text fill="#f50606" strokeType="OUTSIDE" strokeWidth="0.0" text="Khu vực:" GridPane.rowIndex="3" />
+                        <Text fill="#f50303" strokeType="OUTSIDE" strokeWidth="0.0" text="Số điểm đỗ xe:" wrappingWidth="233.0078125" GridPane.rowIndex="4" />
+                        <TextField fx:id="text2" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="text3" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="text4" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="text5" editable="false" prefHeight="25.0" prefWidth="267.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <TextField fx:id="text1" editable="false" GridPane.columnIndex="1" />
+                        <Text fill="#f50303" strokeType="OUTSIDE" strokeWidth="0.0" text="Số xe trong bãi:" wrappingWidth="233.0078125" GridPane.rowIndex="5" />
+                        <TextField fx:id="text6" editable="false" prefHeight="25.0" prefWidth="267.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+            <Label alignment="CENTER" prefHeight="48.0" prefWidth="556.0" style="-fx-background-color: #ffbf00;" text="Danh sách xe trong bãi                                          ">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ListView fx:id="bikesView" prefHeight="249.0" prefWidth="556.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </left>
+   <top>
+      <Region prefHeight="0.0" prefWidth="385.0" style="-fx-background-color: #ffbf00;" BorderPane.alignment="CENTER" />
+   </top>
+</BorderPane>
