@@ -34,7 +34,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `ecodatabase`.`bike` ;
 CREATE TABLE IF NOT EXISTS `ecodatabase`.`bike` (
-  `barcode` INT(11) NOT NULL,
+  `bikeCode` INT(11) NOT NULL,
   `isInUse` INT(10) NOT NULL,
   `type` VARCHAR(45) NOT NULL,
   `value` INT(11) NOT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `ecodatabase`.`bike` (
   `maxTime` FLOAT NOT NULL,
   `licensePlate` VARCHAR(45) NOT NULL,
   `dockID` CHAR(10) NOT NULL,
-  PRIMARY KEY (`barcode`),
+  PRIMARY KEY (`bikeCode`),
   -- INDEX `dockID_idx` (`dockID` ASC) VISIBLE,
   CONSTRAINT `dockID`
     FOREIGN KEY (`dockID`)
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `ecodatabase`.`user` (
   `phoneNumber` INT(11) NOT NULL,
   `province` VARCHAR(45) NOT NULL,
   `address` VARCHAR(45) NOT NULL,
-  `mail` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
   `dateOfBirth` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`userID`))
@@ -119,7 +119,7 @@ DROP TABLE IF EXISTS `ecodatabase`.`rentbiketransaction` ;
 
 CREATE TABLE IF NOT EXISTS `ecodatabase`.`rentbiketransaction` (
   `rentalCode` VARCHAR(45) NOT NULL,
-  `barcode` INT(11) NOT NULL,
+  `bikeCode` INT(11) NOT NULL,
   `type` VARCHAR(45) NOT NULL,
   `rentBikeCost` INT(11) NOT NULL,
   `owner` VARCHAR(45) NOT NULL,
