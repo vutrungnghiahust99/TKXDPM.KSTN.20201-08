@@ -48,7 +48,7 @@
                         <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Text fill="#eb0707" strokeType="OUTSIDE" strokeWidth="0.0" text="Barcode:" wrappingWidth="142.515625" />
+                        <Text fill="#eb0707" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã xe:" wrappingWidth="142.515625" />
                         <Text fill="#f20606" strokeType="OUTSIDE" strokeWidth="0.0" text="Loại xe:" wrappingWidth="134.484375" GridPane.rowIndex="1" />
                         <Text fill="#e80404" strokeType="OUTSIDE" strokeWidth="0.0" text="Giá trị:" wrappingWidth="132.234375" GridPane.rowIndex="2" />
                         <Text fill="#f50606" strokeType="OUTSIDE" strokeWidth="0.0" text="Giá thuê trong 30 phút đầu tiên:" GridPane.rowIndex="3" />
