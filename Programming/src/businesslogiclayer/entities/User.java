@@ -1,6 +1,4 @@
-package entities;
-
-import java.util.Date;
+package businesslogiclayer.entities;
 
 public class User {
     private Card card;

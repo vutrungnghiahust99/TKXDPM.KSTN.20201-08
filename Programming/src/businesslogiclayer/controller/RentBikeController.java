@@ -1,10 +1,10 @@
-package businesslogiclayer;
+package businesslogiclayer.controller;
 import businesslogiclayer.interbanksubsystem.*;
 import businesslogiclayer.barcodconvertersubsystem.*;
 import dataaccesslayer.*;
-import entities.*;
-import entities.PaymentTransaction;
-import entities.RentBikeTransaction;
+import businesslogiclayer.entities.*;
+import businesslogiclayer.entities.PaymentTransaction;
+import businesslogiclayer.entities.RentBikeTransaction;
 import javafx.util.Pair;
 import presentationlayer.MainScreenController;
 import presentationlayer.RentBikeScreenController;

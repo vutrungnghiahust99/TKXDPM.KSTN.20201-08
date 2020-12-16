@@ -1,7 +1,7 @@
 package presentationlayer;
 
-import entities.Bike;
-import entities.Dock;
+import businesslogiclayer.entities.Bike;
+import businesslogiclayer.entities.Dock;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;

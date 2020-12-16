@@ -1,10 +1,9 @@
 package businesslogiclayer.interbanksubsystem;
 
-import entities.*;
+import businesslogiclayer.entities.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import presentationlayer.box.NotificationBox;
 
 public class InterbankSubsysController implements IInterbank {
     public ConvertToTransaction convertToTransaction = new ConvertToTransaction();

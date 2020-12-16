@@ -1,9 +1,9 @@
 package presentationlayer;
 
-import businesslogiclayer.RentBikeController;
-import businesslogiclayer.ReturnBikeController;
-import entities.Dock;
-import entities.RentBikeTransaction;
+import businesslogiclayer.controller.RentBikeController;
+import businesslogiclayer.controller.ReturnBikeController;
+import businesslogiclayer.entities.Dock;
+import businesslogiclayer.entities.RentBikeTransaction;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;

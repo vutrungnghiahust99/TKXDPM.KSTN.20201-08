@@ -1,7 +1,5 @@
 package dataaccesslayer;
 
-import connection.DBConnection;
-
 import java.util.ArrayList;
 
 /**

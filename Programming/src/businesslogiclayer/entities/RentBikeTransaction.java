@@ -1,8 +1,6 @@
-package entities;
+package businesslogiclayer.entities;
 
 import dataaccesslayer.RentBikeTransactionDAO;
-
-import java.util.Date;
 
 public class RentBikeTransaction {
     private String rentalCode;

@@ -1,15 +1,14 @@
-package businesslogiclayer;
+package businesslogiclayer.controller;
 
 import businesslogiclayer.interbanksubsystem.IInterbank;
 import businesslogiclayer.interbanksubsystem.InterbankSubsysController;
 import dataaccesslayer.BikeDAO;
 import dataaccesslayer.RentBikeTransactionDAO;
-import entities.Bike;
-import entities.Card;
-import entities.PaymentTransaction;
-import entities.RentBikeTransaction;
+import businesslogiclayer.entities.Bike;
+import businesslogiclayer.entities.Card;
+import businesslogiclayer.entities.PaymentTransaction;
+import businesslogiclayer.entities.RentBikeTransaction;
 import javafx.util.Pair;
-import presentationlayer.RentBikeScreenController;
 import presentationlayer.ReturnBikeScreenController;
 
 import java.text.SimpleDateFormat;

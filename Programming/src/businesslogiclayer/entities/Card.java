@@ -1,4 +1,4 @@
-package entities;
+package businesslogiclayer.entities;
 
 public class Card {
     private String cardCode;

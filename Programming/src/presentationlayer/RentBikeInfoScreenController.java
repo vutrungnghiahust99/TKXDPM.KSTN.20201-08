@@ -1,7 +1,7 @@
 package presentationlayer;
 
-import businesslogiclayer.RentBikeController;
-import entities.Bike;
+import businesslogiclayer.controller.RentBikeController;
+import businesslogiclayer.entities.Bike;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;

@@ -1,13 +1,10 @@
 package presentationlayer;
 
-import entities.Dock;
-import entities.RentBikeTransaction;
+import businesslogiclayer.entities.RentBikeTransaction;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
-import java.util.ArrayList;
 
 public class RentBikeTransactionScreenController {
     @FXML

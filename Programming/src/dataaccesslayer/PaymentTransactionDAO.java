@@ -1,7 +1,5 @@
 package dataaccesslayer;
 
-import connection.DBConnection;
-
 /**
  * Lưu hóa đơn ngân hàng vào cơ sở dữ liệu
  */

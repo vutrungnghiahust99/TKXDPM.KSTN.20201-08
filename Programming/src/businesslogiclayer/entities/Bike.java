@@ -1,10 +1,6 @@
-package entities;
+package businesslogiclayer.entities;
 
 import dataaccesslayer.BikeDAO;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Random;
 
 public class Bike {
     private int bikeCode;

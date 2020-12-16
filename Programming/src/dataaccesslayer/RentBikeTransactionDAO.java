@@ -1,9 +1,6 @@
 package dataaccesslayer;
 
-import connection.DBConnection;
-
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Lưu, cập nhật và truy vấn giao dịch thuê xe trong cơ sở dữ liệu

@@ -1,6 +1,6 @@
 package presentationlayer;
-import businesslogiclayer.*;
-import entities.Bike;
+import businesslogiclayer.controller.RentBikeController;
+import businesslogiclayer.entities.Bike;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

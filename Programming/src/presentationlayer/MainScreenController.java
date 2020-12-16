@@ -1,8 +1,8 @@
 package presentationlayer;
 
-import businesslogiclayer.InitializeController;
-import businesslogiclayer.RentBikeController;
-import entities.Dock;
+import businesslogiclayer.controller.InitializeController;
+import businesslogiclayer.controller.RentBikeController;
+import businesslogiclayer.entities.Dock;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
