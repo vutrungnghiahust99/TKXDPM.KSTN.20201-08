@@ -27,13 +27,17 @@ public class RentBikeScreenController {
         }
         else{
             if (!rent) {
-                int inputCode = Integer.parseInt(message);
-                Pair<Boolean, Bike> p = rentBikeController.checkBarcodeAndGetBikeIfTrue(inputCode);
-                if (p.getKey()) {
-                    System.out.println(p.getValue());
-                    display(p.getValue());
+                try{
+                    int inputCode = Integer.parseInt(message);
+                    Pair<Boolean, Bike> p = rentBikeController.checkBarcodeAndGetBikeIfTrue(inputCode);
+                    if (p.getKey()) {
+                        System.out.println(p.getValue());
+                        display(p.getValue());
 
-                } else {
+                    } else {
+                        NotificationBox.display("NotificationBox", "Barcode không hợp lệ!");
+                    }
+                }catch (NumberFormatException e){
                     NotificationBox.display("NotificationBox", "Barcode không hợp lệ!");
                 }
             }
