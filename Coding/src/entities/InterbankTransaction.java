@@ -59,12 +59,12 @@ public class InterbankTransaction {
         return owner;
     }
 
-    public String getDateExpired() {
-        return dateExpired;
-    }
-
     public String getCvvCode() {
         return cvvCode;
+    }
+
+    public String getDateExpired() {
+        return dateExpired;
     }
 
     public String getCommand() {
