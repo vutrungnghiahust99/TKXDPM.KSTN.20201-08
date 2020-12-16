@@ -54,4 +54,28 @@ public class InterbankTransaction {
     public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public String getDateExpired() {
+        return dateExpired;
+    }
+
+    public String getCvvCode() {
+        return cvvCode;
+    }
+
+    public String getCommand() {
+        return command;
+    }
+
+    public String getTransactionContent() {
+        return transactionContent;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
 }
