@@ -1,6 +1,6 @@
 package presentationlayer;
 import businesslogiclayer.controller.RentBikeController;
-import businesslogiclayer.entities.Bike;
+import entities.Bike;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +12,7 @@ import javafx.util.Pair;
 import presentationlayer.box.*;
 import java.io.IOException;
 
-public class RentBikeScreenController {
+public class RentBikeScreen {
     @FXML
     private TextField barcode;
     public static boolean rent = false;
@@ -49,7 +49,7 @@ public class RentBikeScreenController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("RentBikeInfoScreen.fxml"));
             Parent root = loader.load();
-            RentBikeInfoScreenController dp = loader.getController();
+            RentBikeInfoScreen dp = loader.getController();
             Stage stage = new Stage();
             stage.setTitle("EcoBike");
             dp.init(bike, stage);

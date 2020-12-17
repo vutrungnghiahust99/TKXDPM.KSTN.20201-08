@@ -2,12 +2,12 @@ package businesslogiclayer.controller;
 import businesslogiclayer.interbanksubsystem.*;
 import businesslogiclayer.barcodconvertersubsystem.*;
 import dataaccesslayer.*;
-import businesslogiclayer.entities.*;
-import businesslogiclayer.entities.PaymentTransaction;
-import businesslogiclayer.entities.RentBikeTransaction;
+import entities.*;
+import entities.PaymentTransaction;
+import entities.RentBikeTransaction;
 import javafx.util.Pair;
-import presentationlayer.MainScreenController;
-import presentationlayer.RentBikeScreenController;
+import presentationlayer.MainScreen;
+import presentationlayer.RentBikeScreen;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -77,8 +77,8 @@ public class RentBikeController {
         String code = interbank.processTransaction(cost, "pay", "Trừ tiền cọc");
         if (code.equals("00")){
             System.out.println("Đã trừ: " + cost + "VNĐ");
-            MainScreenController.reset = true;
-            RentBikeScreenController.rent = true;
+            MainScreen.reset = true;
+            RentBikeScreen.rent = true;
             Calendar calendar = Calendar.getInstance();
             Date date = calendar.getTime();
             DateFormat t = new SimpleDateFormat("HH:mm:ss");

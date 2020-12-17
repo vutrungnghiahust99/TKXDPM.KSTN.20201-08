@@ -4,12 +4,12 @@ import businesslogiclayer.interbanksubsystem.IInterbank;
 import businesslogiclayer.interbanksubsystem.InterbankSubsysController;
 import dataaccesslayer.BikeDAO;
 import dataaccesslayer.RentBikeTransactionDAO;
-import businesslogiclayer.entities.Bike;
-import businesslogiclayer.entities.Card;
-import businesslogiclayer.entities.PaymentTransaction;
-import businesslogiclayer.entities.RentBikeTransaction;
+import entities.Bike;
+import entities.Card;
+import entities.PaymentTransaction;
+import entities.RentBikeTransaction;
 import javafx.util.Pair;
-import presentationlayer.ReturnBikeScreenController;
+import presentationlayer.ReturnBikeScreen;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -54,7 +54,7 @@ public class ReturnBikeController {
 
         // update Bike
         Bike bike = getBike(rentBikeTransaction.getBikeCode());
-        bike.updateInUseAndDockID(false, ReturnBikeScreenController.newDockID);
+        bike.updateInUseAndDockID(false, ReturnBikeScreen.newDockID);
         return new Pair<>(respondCode, rentBikeTransaction);
     }
 

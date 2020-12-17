@@ -1,7 +1,7 @@
 package presentationlayer;
 
-import businesslogiclayer.entities.Bike;
-import businesslogiclayer.entities.Dock;
+import entities.Bike;
+import entities.Dock;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,7 +18,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class DockScreenController implements Initializable {
+public class DockScreen implements Initializable {
     private Dock dock;
 
     @FXML
@@ -81,7 +81,7 @@ public class DockScreenController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("BikeDetailScreen.fxml"));
             Parent root = loader.load();
 
-            BikeDetailScreenController viewBikeController = loader.getController();
+            BikeDetailScreen viewBikeController = loader.getController();
 
             viewBikeController.init(bike);
 

@@ -2,8 +2,8 @@ package businesslogiclayer.controller;
 
 import dataaccesslayer.BikeDAO;
 import dataaccesslayer.DockDAO;
-import businesslogiclayer.entities.Bike;
-import businesslogiclayer.entities.Dock;
+import entities.Bike;
+import entities.Dock;
 
 import java.util.ArrayList;
 

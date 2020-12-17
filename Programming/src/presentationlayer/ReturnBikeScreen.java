@@ -2,8 +2,8 @@ package presentationlayer;
 
 import businesslogiclayer.controller.RentBikeController;
 import businesslogiclayer.controller.ReturnBikeController;
-import businesslogiclayer.entities.Dock;
-import businesslogiclayer.entities.RentBikeTransaction;
+import entities.Dock;
+import entities.RentBikeTransaction;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -26,7 +26,7 @@ import java.util.ResourceBundle;
 /**
  * Quản lý giao diện trả xe của người dùng
  */
-public class ReturnBikeScreenController implements Initializable {
+public class ReturnBikeScreen implements Initializable {
     public static String newDockID = null;
     private ArrayList<Dock> docks;
 
@@ -87,8 +87,8 @@ public class ReturnBikeScreenController implements Initializable {
         if (respondCode.equals("00")){
             RentBikeController.rentalCode = "";
             //set rent = false, tức là set trạng thái người dùng thành chưa thuê xe
-            RentBikeScreenController.rent = false;
-            MainScreenController.reset = true;
+            RentBikeScreen.rent = false;
+            MainScreen.reset = true;
             showRentBikeTransactionInfo(rentBikeTransaction);
             Stage stage = (Stage)docksView.getScene().getWindow();
             stage.close();
@@ -132,7 +132,7 @@ public class ReturnBikeScreenController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("RentBikeTransactionScreen.fxml"));
             Parent root = loader.load();
 
-            RentBikeTransactionScreenController rentBikeTransactionScreenController = loader.getController();
+            RentBikeTransactionScreen rentBikeTransactionScreenController = loader.getController();
             rentBikeTransactionScreenController.initData(rentBikeTransaction);
 
             Stage stage = new Stage();

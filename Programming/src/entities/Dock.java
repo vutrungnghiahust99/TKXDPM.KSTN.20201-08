@@ -1,4 +1,4 @@
-package businesslogiclayer.entities;
+package entities;
 
 import java.util.ArrayList;
 

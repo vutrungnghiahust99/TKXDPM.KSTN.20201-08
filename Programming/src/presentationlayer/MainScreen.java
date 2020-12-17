@@ -2,7 +2,7 @@ package presentationlayer;
 
 import businesslogiclayer.controller.InitializeController;
 import businesslogiclayer.controller.RentBikeController;
-import businesslogiclayer.entities.Dock;
+import entities.Dock;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
 /**
  * Giao diện chính sau khi người dùng khởi động ứng dụng
  */
-public class MainScreenController implements Initializable {
+public class MainScreen implements Initializable {
     public static boolean reset = false;
     ArrayList<Dock> docks;
 
@@ -65,7 +65,7 @@ public class MainScreenController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("DockScreen.fxml"));
             Parent root = loader.load();
 
-            DockScreenController viewDockController = loader.getController();
+            DockScreen viewDockController = loader.getController();
 
             viewDockController.initData(dock);
 
@@ -114,7 +114,7 @@ public class MainScreenController implements Initializable {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("ReturnBikeScreen.fxml"));
                 Parent root = loader.load();
 
-                ReturnBikeScreenController returnBikeController = loader.getController();
+                ReturnBikeScreen returnBikeController = loader.getController();
 
                 returnBikeController.initData(docks);
 
@@ -123,7 +123,7 @@ public class MainScreenController implements Initializable {
                 stage.setScene(new Scene(root));
                 stage.setTitle("ReturnBikeScreen");
                 stage.showAndWait();
-                if(MainScreenController.reset){
+                if(MainScreen.reset){
                     System.out.println("Reset and reload data from database");
                     docks = InitializeController.getDocks();
                     docksView.getItems().clear();
@@ -131,7 +131,7 @@ public class MainScreenController implements Initializable {
                     for (Dock dock : docks) {
                         docksView.getItems().add(dock.getGeneralInfo());
                     }
-                    MainScreenController.reset = false;
+                    MainScreen.reset = false;
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -155,7 +155,7 @@ public class MainScreenController implements Initializable {
             stage.setTitle("RentBikeScreen");
             stage.showAndWait();
 
-            if(MainScreenController.reset){
+            if(MainScreen.reset){
                 System.out.println("Reset and reload data from database");
                 docks = InitializeController.getDocks();
                 docksView.getItems().clear();
@@ -163,7 +163,7 @@ public class MainScreenController implements Initializable {
                 for (Dock dock : docks) {
                     docksView.getItems().add(dock.getGeneralInfo());
                 }
-                MainScreenController.reset = false;
+                MainScreen.reset = false;
             }
         } catch (IOException e) {
             e.printStackTrace();

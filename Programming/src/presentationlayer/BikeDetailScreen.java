@@ -1,6 +1,6 @@
 package presentationlayer;
 
-import businesslogiclayer.entities.Bike;
+import entities.Bike;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
 /**
  * Hiển thị thông tin chi tiết của xe sau khi người dùng ấn vào một xe trong danh sách xe trong bãi xe
  */
-public class BikeDetailScreenController implements Initializable {
+public class BikeDetailScreen implements Initializable {
     @FXML
     private TextField text1, text2, text3, text4, text5, text6, text7, text8;
     @FXML

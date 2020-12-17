@@ -1,4 +1,4 @@
-package dataaccesslayer;
+package connection;
 
 import java.sql.*;
 import java.util.ArrayList;

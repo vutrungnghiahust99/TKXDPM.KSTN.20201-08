@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="636.0" prefWidth="556.0" style="-fx-background-color: #ffbf00;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationlayer.BikeDetailScreenController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="636.0" prefWidth="556.0" style="-fx-background-color: #ffbf00;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationlayer.BikeDetailScreen">
    <bottom>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hệ thống thuê xe điện tử EcoBike " wrappingWidth="306.1025390625" BorderPane.alignment="CENTER">
          <font>

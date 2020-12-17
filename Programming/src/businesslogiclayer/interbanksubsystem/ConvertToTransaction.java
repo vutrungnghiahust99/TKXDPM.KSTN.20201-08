@@ -1,7 +1,7 @@
 package businesslogiclayer.interbanksubsystem;
 
 import com.google.gson.JsonObject;
-import businesslogiclayer.entities.*;
+import entities.*;
 import javax.xml.bind.DatatypeConverter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

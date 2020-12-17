@@ -1,4 +1,4 @@
-package businesslogiclayer.entities;
+package entities;
 
 public class User {
     private Card card;
