@@ -4,3 +4,5 @@ JavaFxApplication.iml
 TKXDPM.KSTN.20201-08.iml
 .idea
 out
+*.bak
+*.lock
