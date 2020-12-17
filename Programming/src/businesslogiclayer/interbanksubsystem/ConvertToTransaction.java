@@ -11,12 +11,12 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class ConvertToTransaction {
-    private final Card card = Card.getInstance();
+    private static final Card card = Card.getInstance();
 
     /**
      * Chuyển thông tin đầu vào thành thông tin giao dịch phù hợp để gửi lên api
      */
-    public InterbankTransaction convertToPaymentTransaction(int cost, String command, String content){
+    public static InterbankTransaction convertToPaymentTransaction(int cost, String command, String content){
         Calendar calendar = Calendar.getInstance();
         Date date = calendar.getTime();
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -36,7 +36,7 @@ public class ConvertToTransaction {
     /**
      * Tạo ra thông tin giao dịch reset để gửi lên api
      */
-    public JsonObject resetTransaction(JsonObject body){
+    public static  JsonObject resetTransaction(JsonObject body){
         body.addProperty("cardCode", card.getCardCode());
         body.addProperty("owner", card.getOwner());
         body.addProperty("cvvCode", card.getCVV());
@@ -50,7 +50,7 @@ public class ConvertToTransaction {
      * @return sentJson: thông tin request gửi lên api để thực hiện giao dịch
      * @throws NoSuchAlgorithmException
      */
-    public JsonObject requestTransaction(JsonObject transToHash, JsonObject transactionBody)  {
+    public static JsonObject requestTransaction(JsonObject transToHash, JsonObject transactionBody)  {
         // transToHash là chuỗi cần băm
         transToHash.addProperty("secretKey", "Bk5+TDRsBPY=");
         transToHash.add("transaction", transactionBody);

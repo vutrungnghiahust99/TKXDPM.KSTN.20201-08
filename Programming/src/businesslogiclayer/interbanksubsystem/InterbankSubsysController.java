@@ -6,7 +6,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 public class InterbankSubsysController implements IInterbank {
-    public ConvertToTransaction convertToTransaction = new ConvertToTransaction();
 
     /**
      * @param cost : giá tiền cần giao dịch
@@ -19,11 +18,11 @@ public class InterbankSubsysController implements IInterbank {
     public String processTransaction(int cost, String command, String content){
         try {
             InterbankTransaction transaction;
-            transaction = convertToTransaction.convertToPaymentTransaction(cost, command, content);
+            transaction = ConvertToTransaction.convertToPaymentTransaction(cost, command, content);
             String transactString = new ObjectMapper().writeValueAsString(transaction);
             JsonObject transactionBody = new JsonParser().parse(transactString).getAsJsonObject();
             JsonObject transToHash = new JsonObject();
-            JsonObject sentJson = convertToTransaction.requestTransaction(transToHash, transactionBody);
+            JsonObject sentJson = ConvertToTransaction.requestTransaction(transToHash, transactionBody);
             InterbankBoundary interbank = new InterbankBoundary();
             String errorCode = interbank.processTransaction(sentJson);
             return errorCode;
@@ -41,7 +40,7 @@ public class InterbankSubsysController implements IInterbank {
     @Override
     public void reset(){
         JsonObject body = new JsonObject();
-        body = convertToTransaction.resetTransaction(body);
+        body = ConvertToTransaction.resetTransaction(body);
         InterbankBoundary interbank = new InterbankBoundary();
         String errorCode = interbank.reset(body);
         switch (errorCode) {
