@@ -5,7 +5,7 @@ public class NotificationErrorCode {
         switch (code) {
             case "00":
                 if (command.equals("pay")){
-                    NotificationBox.display("Notification", "Bạn đã thuê xe thành công, EcoBike chúc bạn có chuyến đi an toàn và vui vẻ!");
+                    NotificationBox.display("Notification", "Bạn đã thuê xe thành công, \nEcoBike chúc bạn có chuyến đi an toàn và vui vẻ!");
                 }
                 else if(command.equals("refund")){
                     NotificationBox.display("Notification", "Bạn đã trả xe thành công!");
