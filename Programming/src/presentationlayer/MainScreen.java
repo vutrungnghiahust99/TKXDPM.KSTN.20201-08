@@ -47,13 +47,17 @@ public class MainScreen implements Initializable {
         //listen when user double click on the dock in listview => show ViewDockScreen
         docksView.setOnMouseClicked(click -> {
             if (click.getClickCount() == 2) {
-                System.out.println("User double on a dock");
-                String dockInfo = docksView.getSelectionModel().getSelectedItem();
-                Dock dock = getDockFromString(dockInfo);
-
-                showViewDockScreen(dock);
+                handleDoubleClickOnDockList();
             }
         });
+    }
+
+    private void handleDoubleClickOnDockList() {
+        System.out.println("User double on a dock");
+        String dockInfo = docksView.getSelectionModel().getSelectedItem();
+        Dock dock = getDockFromString(dockInfo);
+
+        showViewDockScreen(dock);
     }
 
     /**
