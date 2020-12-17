@@ -1,5 +1,7 @@
 package entities;
 
+import dataaccesslayer.DockDAO;
+
 import java.util.ArrayList;
 
 public class Dock {
@@ -62,5 +64,9 @@ public class Dock {
         if(s.length() < 2)
             s = "0" + s;
         return  String.format("%-4s - %-2s - %s", "[" + s + "]", name, address);
+    }
+
+    public static ArrayList<ArrayList<String>> getDockTale(){
+        return DockDAO.getAllDocks();
     }
 }

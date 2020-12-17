@@ -5,6 +5,7 @@ import dataaccesslayer.DockDAO;
 import entities.Bike;
 import entities.Dock;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -17,7 +18,7 @@ public class InitializeController {
      */
     public static ArrayList<Dock> getDocks(){
         ArrayList<Dock> docks = new ArrayList<>();
-        ArrayList<ArrayList<String>> dockTable = DockDAO.getAllDocks();
+        ArrayList<ArrayList<String>> dockTable = Dock.getDockTale();
         for(ArrayList<String> row: dockTable){
             String dockID = row.get(0);
             String name = row.get(1);
