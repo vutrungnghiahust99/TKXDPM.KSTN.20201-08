@@ -9,6 +9,7 @@ import javafx.util.Pair;
 import presentationlayer.MainScreen;
 import presentationlayer.RentBikeScreen;
 
+import entities.Card;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
