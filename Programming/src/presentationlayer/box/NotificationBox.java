@@ -4,6 +4,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -21,8 +22,11 @@ public class NotificationBox {
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle(title);
-        window.setMinWidth(300);
+        window.setHeight(200);
+        window.setWidth(300);
+        Region region = new Region();
         Label label = new Label();
+
         label.setText(message);
         Label label1 = new Label();
         label1.setText("EcoBike System");
@@ -32,7 +36,7 @@ public class NotificationBox {
         });
 
         VBox layout = new VBox(10);
-        layout.getChildren().addAll(label1, label, button);
+        layout.getChildren().addAll(label1, label, button, region);
         layout.setAlignment(Pos.CENTER);
         Scene scene = new Scene(layout);
         window.setScene(scene);
