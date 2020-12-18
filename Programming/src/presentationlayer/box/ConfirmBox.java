@@ -1,9 +1,12 @@
 package presentationlayer.box;
 
+import javafx.geometry.HPos;
 import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -34,6 +37,10 @@ public class ConfirmBox {
         Button noButton = new Button("No");
         Region region1 = new Region();
         Region region2 = new Region();
+        Region region3 = new Region();
+        Region region4 = new Region();
+
+
         yesButton.setOnAction(e -> {
            answer = true;
            window.close();
@@ -45,7 +52,12 @@ public class ConfirmBox {
         });
 
         VBox layout = new VBox(10);
-        layout.getChildren().addAll(label, region1, yesButton, noButton, region2);
+        HBox hBox = new HBox(3, yesButton, region2, region3, region4, noButton);
+
+        hBox.setAlignment(Pos.CENTER);
+        Label label1 = new Label();
+        label1.setText("EcoBike System");
+        layout.getChildren().addAll(label1, label, region1, hBox);
         layout.setAlignment(Pos.CENTER);
         Scene scene = new Scene(layout);
         window.setScene(scene);
