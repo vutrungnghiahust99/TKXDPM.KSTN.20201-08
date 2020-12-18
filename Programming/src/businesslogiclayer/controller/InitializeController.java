@@ -37,8 +37,7 @@ public class InitializeController {
      * @param dockID: ID của bãi xe
      * @return: danh sách xe
      */
-    private static ArrayList<Bike> getBikes(String dockID){
-        ArrayList<Bike> bikes = new ArrayList<>();
+    public static ArrayList<Bike> getBikes(String dockID){
         ArrayList<ArrayList<String>> bikeTable = BikeDAO.queryWithDockID(dockID);
         return InitializeController.tableToBikes(bikeTable);
     }
@@ -75,7 +74,4 @@ public class InitializeController {
         return bikes;
     }
 
-    public static int dummy(int x){
-        return x;
-    }
 }

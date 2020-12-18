@@ -30,9 +30,11 @@ public class ReturnBikeController {
      */
     public static Pair<String, RentBikeTransaction> processReturnBike(){
         RentBikeTransaction rentBikeTransaction = ReturnBikeController.getRentBikeTransaction(RentBikeController.rentalCode);
+
+
         System.out.println(rentBikeTransaction.getDetailInfo());
         Card card = Card.getInstance();
-        int rentBikeCost = ReturnBikeController.estimateCost(rentBikeTransaction);
+        int rentBikeCost = ReturnBikeController.estimateCost(rentBikeTransaction, true);
         int refundAmount = rentBikeTransaction.getDeposit() -  rentBikeCost;
         System.out.println("Refund amount: " + refundAmount);
         assert refundAmount > 0;
@@ -64,7 +66,7 @@ public class ReturnBikeController {
      * @param rentalCode: mã thuê xe
      * @return Đối tượng RentBikeTransaction
      */
-    private static RentBikeTransaction getRentBikeTransaction(String rentalCode){
+    public static RentBikeTransaction getRentBikeTransaction(String rentalCode){
         ArrayList<ArrayList<String>> rentBikeTransactions = RentBikeTransactionDAO.queryByRentalCode(rentalCode);
         assert rentBikeTransactions.size() == 1;
         ArrayList<String> s = rentBikeTransactions.get(0);
@@ -88,7 +90,7 @@ public class ReturnBikeController {
      * @param rentBikeTransaction: Giao dịch thuê xe
      * @return: Chi phí tính toán
      */
-    public static int estimateCost(RentBikeTransaction rentBikeTransaction){
+    public static int estimateCost(RentBikeTransaction rentBikeTransaction, boolean isTest){
         System.out.println("Estimating cost...");
         String rentTime = rentBikeTransaction.getRentTime();  //
         SimpleDateFormat df = new SimpleDateFormat(PATTERN);
@@ -96,8 +98,11 @@ public class ReturnBikeController {
             Date date = df.parse(rentTime);
             long epoch = date.getTime();
             long start = epoch / 1000;
-//            long now = System.currentTimeMillis() / 1000;
-            long now = start + 3600;  // for dev
+            long now;
+            if (isTest)
+                now = start + 3600;  // for dev
+            else
+                now = System.currentTimeMillis() / 1000;
             System.out.println("RentTime: " + start);
             System.out.println("ReturnTime: " + now);
             float rentTimeMinutes = (float) (now - start) / 60;
@@ -122,7 +127,7 @@ public class ReturnBikeController {
      * @param bikeCode: bikeCode của xe
      * @return: ArrayList<String> là một mảng các thuộc tính của xe
      */
-    private static Bike getBike(int bikeCode){
+    public static Bike getBike(int bikeCode){
         ArrayList<ArrayList<String>> bikeTable = BikeDAO.queryWithBikeCode(bikeCode);
         ArrayList<Bike> s = InitializeController.tableToBikes(bikeTable);
         assert s.size() == 1;
