@@ -57,15 +57,15 @@
                         <Text fill="#f20000" strokeType="OUTSIDE" strokeWidth="0.0" text="Thời gian sử dụng tối đa:" wrappingWidth="206.65625" GridPane.rowIndex="6" />
                         <Text fill="#f50000" strokeType="OUTSIDE" strokeWidth="0.0" text="Biển số xe:" wrappingWidth="197.109375" GridPane.rowIndex="7" />
                         <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Số tiền đặt cọc:" wrappingWidth="187.8828125" GridPane.rowIndex="8" />
-                        <TextField fx:id="text2" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <TextField fx:id="text3" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <TextField fx:id="text4" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <TextField fx:id="text5" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <TextField fx:id="text6" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <TextField fx:id="text7" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                        <TextField fx:id="text8" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                        <TextField fx:id="text9" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                        <TextField fx:id="text1" GridPane.columnIndex="1" />
+                        <TextField fx:id="text2" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="text3" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="text4" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="text5" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <TextField fx:id="text6" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <TextField fx:id="text7" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <TextField fx:id="text8" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <TextField fx:id="text9" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                        <TextField fx:id="text1" editable="false" GridPane.columnIndex="1" />
                      </children>
                   </GridPane>
                   <Text layoutX="39.0" layoutY="549.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bạn có muốn thuê xe không?" wrappingWidth="267.515625">
