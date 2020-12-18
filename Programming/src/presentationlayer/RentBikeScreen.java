@@ -54,7 +54,9 @@ public class RentBikeScreen {
             stage.setTitle("EcoBike");
             dp.init(bike, stage);
             stage.setScene(new Scene(root));
-            stage.show();
+            stage.showAndWait();
+            Stage stage1 = (Stage) barcode.getScene().getWindow();
+            stage1.close();
 
         } catch (IOException e) {
             e.printStackTrace();
