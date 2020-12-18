@@ -74,4 +74,8 @@ public class InitializeController {
         }
         return bikes;
     }
+
+    public static int dummy(int x){
+        return x;
+    }
 }
