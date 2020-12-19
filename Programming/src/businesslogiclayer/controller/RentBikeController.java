@@ -28,6 +28,7 @@ public class RentBikeController {
     private static final Card card = Card.getInstance();
     private static ArrayList<ArrayList<String>> listBike = BikeDAO.getBikes();
     private static ArrayList<String> bikeIsRented;
+    private static int bikeCode;
 
     /**
      *
@@ -36,7 +37,7 @@ public class RentBikeController {
      */
     public static Pair<Boolean, Bike> checkBarcodeAndGetBikeIfTrue(int barcode){
         IBarcodeConverter bc = new BarcodeConverterController();
-        int bikeCode = bc.convertBarcodeToBikeCode(barcode);
+        bikeCode = bc.convertBarcodeToBikeCode(barcode);
         boolean check = false;
         Bike bike = null;
 
@@ -58,7 +59,6 @@ public class RentBikeController {
                     Integer.parseInt(bikeIsRented.get(6)),
                     Float.parseFloat(bikeIsRented.get(7)),
                     bikeIsRented.get(8));
-            rentalCode = convertBikeCodeToRentalCode(bikeCode);
         }
         return new Pair<>(check, bike);
     }
@@ -72,6 +72,7 @@ public class RentBikeController {
      */
     public static String processRentBike(Bike bike){
         IInterbank interbank = new InterbankSubsysController();
+        rentalCode = convertBikeCodeToRentalCode(bikeCode);
         int cost = (int) calculateDeposit();
         System.out.println(cost);
         interbank.reset();
