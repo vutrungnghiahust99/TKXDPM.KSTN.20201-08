@@ -37,8 +37,8 @@ public class ReturnBikeScreen implements Initializable {
      * Khởi tạo mặc định giao diện trả xe gồm danh sách các bãi xe đông thời lắng nghe xem người dùng có double click
      * vào một dòng trong dánh sách, nếu có double click thì hiển thị thông báo yêu cầu xác nhận và thực hiện giao dịch
      * sau khi người dùng xác nhận, cuối cùng lưu các kết quả vào cơ sở dữ liệu và về màn hình chính
-     * @param url
-     * @param rb
+     * @param url: thông số mặc định của hàm initialize
+     * @param rb: thông số mặc định của hàm initialize
      */
     @Override
     public void initialize(URL url, ResourceBundle rb){

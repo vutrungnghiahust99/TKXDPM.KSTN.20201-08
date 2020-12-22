@@ -8,6 +8,7 @@ public class BarcodeConverterBoundary {
     /**
      * chuyen barcode thanh bike code
      * @param body : noi dung request gui len api
+     * @return bikeCode
      */
     public static String convertBarcodeToBikeCode(JsonObject body){
         try {

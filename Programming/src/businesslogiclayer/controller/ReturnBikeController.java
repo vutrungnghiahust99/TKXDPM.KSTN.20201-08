@@ -88,7 +88,8 @@ public class ReturnBikeController {
      * Tính toán chi phí thuê xe từ thông tin trong giao dịch thuê xe
      *
      * @param rentBikeTransaction: Giao dịch thuê xe
-     * @return: Chi phí tính toán
+     * @param isTest: Nếu True thì thời gian thuê xe luôn là 1 h
+     * @return Chi phí tính toán
      */
     public static int estimateCost(RentBikeTransaction rentBikeTransaction, boolean isTest){
         System.out.println("Estimating cost...");
@@ -125,7 +126,7 @@ public class ReturnBikeController {
      * Lấy thông tin của xe từ cơ sở dữ liệu dựa theo bikeCode
      *
      * @param bikeCode: bikeCode của xe
-     * @return: ArrayList<String> là một mảng các thuộc tính của xe
+     * @return ArrayList[String] là một mảng các thuộc tính của xe
      */
     public static Bike getBike(int bikeCode){
         ArrayList<ArrayList<String>> bikeTable = BikeDAO.queryWithBikeCode(bikeCode);
@@ -138,7 +139,7 @@ public class ReturnBikeController {
      * Lấy thời gian hiện tại và chuyển đổi thành format
      *
      * @param pattern: format thời gian
-     * @return: Thời gian hiện tại theo format thời gian phía trê
+     * @return Thời gian hiện tại theo format thời gian phía trê
      */
     public static String getCurrentLocalDateTimeStamp(String pattern) {
         return LocalDateTime.now()

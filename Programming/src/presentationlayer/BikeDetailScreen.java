@@ -24,7 +24,7 @@ public class BikeDetailScreen implements Initializable {
 
     /**
      * khởi tạo giá trị các trường của giao diện theo thông tin của xe
-     * @param bike
+     * @param bike: đối tượng bãi xe để khởi tạo giao diện chi tiết xe
      */
     public void init(Bike bike){
         text1.setText(Integer.toString(bike.getBikeCode()));

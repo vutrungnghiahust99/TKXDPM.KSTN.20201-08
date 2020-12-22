@@ -29,9 +29,9 @@ public class DockScreen implements Initializable {
 
     /**
      * Khởi tọa mặc định giao diện xem thông tin chi tiết bãi xe
-     * Khi người dùng double click vào một xe trong danh sách xe => hiển thị giao diện xem thông tin chi tiết xe
-     * @param url
-     * @param rb
+     * Khi người dùng double click vào một xe trong danh sách xe thì hiển thị giao diện xem thông tin chi tiết xe
+     * @param url: thông số mặc định của hàm initialize
+     * @param rb: thông số mặc định của hàm initialize
      */
     @Override
     public void initialize(URL url, ResourceBundle rb){

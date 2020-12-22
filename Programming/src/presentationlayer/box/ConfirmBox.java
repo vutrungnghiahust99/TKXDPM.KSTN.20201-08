@@ -22,7 +22,7 @@ public class ConfirmBox {
      * Hiển thị cửa sổ yêu cầu người dùng xác nhận
      * @param title: tiêu đề của cửa sổ
      * @param message: nội dung yêu cầu người dùng xác nhận
-     * @return: kết quả xác nhận của người dùng
+     * @return kết quả xác nhận của người dùng
      */
     public static boolean display(String title, String message){
         Stage window = new Stage();
