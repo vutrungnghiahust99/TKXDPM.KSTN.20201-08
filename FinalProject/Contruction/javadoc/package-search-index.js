@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"businesslogiclayer.barcodconvertersubsystem"},{"l":"businesslogiclayer.controller"},{"l":"businesslogiclayer.interbanksubsystem"},{"l":"connection"},{"l":"dataaccesslayer"},{"l":"entities"},{"l":"presentationlayer"},{"l":"presentationlayer.box"}]
