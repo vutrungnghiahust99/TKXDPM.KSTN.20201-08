@@ -14,7 +14,11 @@ public class ConvertToTransaction {
     private static final Card card = Card.getInstance();
 
     /**
+     * @param cost: chi phí thuê xe
+     * @param command: loại giao dịch (refund/pay)
+     * @param content: nội dung giao dịch
      * Chuyển thông tin đầu vào thành thông tin giao dịch phù hợp để gửi lên api
+     * @return giao dịch interbankTransaction
      */
     public static InterbankTransaction convertToPaymentTransaction(int cost, String command, String content){
         Calendar calendar = Calendar.getInstance();
@@ -34,7 +38,9 @@ public class ConvertToTransaction {
     }
 
     /**
+     * @param body: đối tượng json để lưu thông tin thẻ
      * Tạo ra thông tin giao dịch reset để gửi lên api
+     * @return đối tượng json đã lưu thông tin thẻ
      */
     public static  JsonObject resetTransaction(JsonObject body){
         body.addProperty("cardCode", card.getCardCode());
@@ -48,7 +54,6 @@ public class ConvertToTransaction {
      * @param transToHash : JsonObject cần chuyển thành mã hash
      * @param transactionBody : Thông tin cần có của giao dịch được gắn vào request
      * @return sentJson: thông tin request gửi lên api để thực hiện giao dịch
-     * @throws NoSuchAlgorithmException
      */
     public static JsonObject requestTransaction(JsonObject transToHash, JsonObject transactionBody)  {
         // transToHash là chuỗi cần băm
@@ -57,7 +62,7 @@ public class ConvertToTransaction {
         MessageDigest md = null;
         try {
             md = MessageDigest.getInstance("MD5");
-        } catch (NoSuchAlgorithmException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         md.update(transToHash.toString().getBytes());

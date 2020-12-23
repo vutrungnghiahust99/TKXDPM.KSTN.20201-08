@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class DockDAO {
     /**
      * Lấy tất cả các bãi xe trong cơ sở dữ liệu
-     * @return: Mảng hai chiều lưu dưới dạng ArrayList<ArrayList<String>>
+     * @return Mảng hai chiều các String
      */
     public static ArrayList<ArrayList<String>> getAllDocks(){
         String command = "SELECT * FROM dock";

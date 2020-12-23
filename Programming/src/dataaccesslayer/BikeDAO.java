@@ -28,7 +28,7 @@ public class BikeDAO {
     /**
      * Lấy danh sách xe tương ứng với địa chỉ bãi xe
      * @param dockID: ID của bãi xe
-     * @return: Mảng hai chiều các xe lưu dưới dạng ArrayList<ArrayList<String>>
+     * @return Mảng hai chiều các String để lưu các xe
      */
     public static ArrayList<ArrayList<String>> queryWithDockID(String dockID){
         ArrayList<ArrayList<String>> s = new ArrayList<>();
@@ -40,7 +40,7 @@ public class BikeDAO {
     /**
      * Lấy thông tin của xe dựa theo bikeCode
      * @param bikeCode: bikeCode của xe
-     * @return: Thông tin của xe lưu dưới dạng mảng một chiều
+     * @return Thông tin của xe lưu dưới dạng mảng một chiều
      */
     public static ArrayList<ArrayList<String>> queryWithBikeCode(int bikeCode){
         ArrayList<ArrayList<String>> s = new ArrayList<>();
@@ -51,7 +51,7 @@ public class BikeDAO {
 
     /**
      * Lấy tất cả các xe trong cơ sở dữ liệu
-     * @return: Mảng hai chiều các bike ứng với bảng bike trong cơ sở dữ liệu lưu dưới dạng ArrayLis<ArrayList<String>>
+     * @return Mảng hai chiều các String lưu các bike ứng với bảng bike trong cơ sở dữ liệu
      */
     public static ArrayList<ArrayList<String>> getBikes(){
         ArrayList<ArrayList<String>> s = new ArrayList<>();

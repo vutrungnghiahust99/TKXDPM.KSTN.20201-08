@@ -30,8 +30,8 @@ public class MainScreen implements Initializable {
 
     /**
      * khởi tạo giá trị mặc định cho giao diện
-     * @param url
-     * @param rb
+     * @param url: thông số mặc định của hàm initialize
+     * @param rb: thông số mặc định của hàm initialize
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {

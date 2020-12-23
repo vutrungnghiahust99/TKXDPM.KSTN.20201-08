@@ -14,7 +14,7 @@ public class DBConnection {
 
     /**
      * Tạo connection với cơ sở dữ liệu
-     * @return: Connection
+     * @return Connection
      */
     public static Connection getConnection() {
         Connection conn = null;
@@ -47,10 +47,10 @@ public class DBConnection {
 
     /**
      * Thực thi một lệnh bất kỳ và trả về một mảng hai chiều ứng với bảng trong cơ sở dữ liệu,
-     * mảng hai chiều được biểu diễn theo dạng ArrayList<ArrayList<String>>
+     * mảng hai chiều được biểu diễn theo dạng ArrayList[ArrayList[String]]
      *
      * @param command: lệnh thực thi
-     * @return: mảng hai chiều chứa kết quả query
+     * @return mảng hai chiều chứa kết quả query
      */
     public static ArrayList<ArrayList<String>> query(String command){
         System.out.println("Executing query: \n" + command);

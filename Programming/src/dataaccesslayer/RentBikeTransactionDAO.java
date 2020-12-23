@@ -43,9 +43,8 @@ public class RentBikeTransactionDAO {
     /**
      * Lấy thông tin giao dịch thuê xe dựa trên mã thuê xe
      * @param rentalCode: mã thuê xe
-     * @return: Thông tin giao dịch thuê xe lưu dưới dạng mảng hai chiều có 1 dòng
-     */
-    public static ArrayList<ArrayList<String>> queryByRentalCode(String rentalCode){
+     * @return Thông tin giao dịch thuê xe lưu dưới dạng mảng hai chiều có 1 dòng
+     */public static ArrayList<ArrayList<String>> queryByRentalCode(String rentalCode){
         String command = "SELECT * FROM rentbiketransaction WHERE rentalCode=" + '\'' + rentalCode + '\'';
         System.out.println(command);
         return DBConnection.query(command);

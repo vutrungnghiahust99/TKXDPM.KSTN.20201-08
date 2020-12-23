@@ -33,7 +33,7 @@ public class RentBikeController {
     /**
      *
      * @param barcode : mã xe
-     * @return  <mã check bikeCode, thông tin xe (nếu bikeCode đúng)>
+     * @return  (mã check bikeCode, thông tin xe (nếu bikeCode đúng))
      */
     public static Pair<Boolean, Bike> checkBarcodeAndGetBikeIfTrue(int barcode){
         IBarcodeConverter bc = new BarcodeConverterController();
@@ -69,6 +69,8 @@ public class RentBikeController {
      * thông tin phiên thuê xe và cập nhật xe thành đang sử dụng.
      *
      * Nếu giao dịch thất bại thì sẽ đưa ra thông báo lỗi và không lưu lại thông tin.
+     * @param bike : Xe khách hàng muốn thuê
+     * @return bike
      */
     public static String processRentBike(Bike bike){
         IInterbank interbank = new InterbankSubsysController();

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class InitializeController {
     /**
      * Lấy tất cả các bãi xe từ cơ sở dữ liệu và chuyển thành đối tượng bãi xe tương ứng
-     * @return: danh sách các bãi xe
+     * @return danh sách các bãi xe
      */
     public static ArrayList<Dock> getDocks(){
         ArrayList<Dock> docks = new ArrayList<>();
@@ -35,7 +35,7 @@ public class InitializeController {
     /**
      * Lấy danh sách các xe trong một bãi xe cho trước từ cơ sở dữ liệu
      * @param dockID: ID của bãi xe
-     * @return: danh sách xe
+     * @return danh sách xe
      */
     public static ArrayList<Bike> getBikes(String dockID){
         ArrayList<ArrayList<String>> bikeTable = BikeDAO.queryWithDockID(dockID);
@@ -44,8 +44,8 @@ public class InitializeController {
 
     /**
      * chuyển kết quả dạng bảng sau khi query về danh sách các xe
-     * @param bikeTable: mảng hai chiều lưu dưới dạng ArrayList<ArrayList<String>>
-     * @return: danh sách các xe
+     * @param bikeTable: mảng hai chiều các String
+     * @return danh sách các xe
      */
     public static ArrayList<Bike> tableToBikes(ArrayList<ArrayList<String>> bikeTable){
         ArrayList<Bike> bikes = new ArrayList<>();
