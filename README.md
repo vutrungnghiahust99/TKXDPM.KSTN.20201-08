@@ -90,13 +90,12 @@
 ## Tasks
  - Lập trình
 ## Contributions
- - Lê Thế Nam: Subsystem, lớp giao diện và controller cho use case "Thuê xe", entities
- - Vũ Trung Nghĩa: lớp giao diện và controller cho use case "Trả xe", Mysql Connection và DAO, entities 
- - Nguyễn Thanh Nhã: lớp giao diện cho use case "Xem thông tin xe trong bãi"
+ - Lê Thế Nam: Lập trình Subsystem Interbank và BarcodeConverter, lớp giao diện và controller cho use case "Thuê xe", entities
+ - Vũ Trung Nghĩa: Lớp giao diện và controller cho use case "Trả xe" và "Xem thông tin xe trong bãi", Mysql Connection và DAO, entities 
 ## Revisions
  - Lê Thế Nam reviews Vũ Trung Nghĩa
- - Vũ Trung Nghĩa reviews Nguyễn Thanh Nhã
- - Nguyễn Thanh Nhã reviews Lê Thế Nam
+ - Vũ Trung Nghĩa reviews Lê Thế Nam
+
 
 # Homework09: Kiểm thử đơn vị
 ## Tasks
@@ -104,11 +103,9 @@
 ## Contributions
  - Lê Thế Nam: Kiểm thử đơn vị cho RentBikeController và subsystem
  - Vũ Trung Nghĩa: Kiểm thử đơn vị cho ReturnBikeController và InitializeController
- - Nguyễn Thanh Nhã: 
 ## Revisions
  - Lê Thế Nam reviews Vũ Trung Nghĩa
- - Vũ Trung Nghĩa reviews Nguyễn Thanh Nhã
- - Nguyễn Thanh Nhã reviews Lê Thế Nam
+ - Vũ Trung Nghĩa reviews Lê Thế Nam
 
 # Homework10: Design Concepts
 ## Tasks
