@@ -36,16 +36,17 @@ DROP TABLE IF EXISTS `ecodatabase`.`bike` ;
 CREATE TABLE IF NOT EXISTS `ecodatabase`.`bike` (
   `bikeCode` INT(11) NOT NULL,
   `isInUse` INT(10) NOT NULL,
-  `type` VARCHAR(45) NOT NULL,
   `value` INT(11) NOT NULL,
-  `priceForFirst30Minutes` INT(11) NOT NULL,
-  `priceFor15MinutesAfter30Minutes` INT(11) NOT NULL,
-  `remainBattery` INT(11) NOT NULL,
-  `maxTime` FLOAT NOT NULL,
   `licensePlate` VARCHAR(45) NOT NULL,
   `dockID` CHAR(10) NOT NULL,
+  `type` VARCHAR(45) NOT NULL,
+  `numSaddle` INT(11) NOT NULL,
+  `numPedals` INT(11) NOT NULL,
+  `numBicycleSeat` INT(11) NOT NULL,
+  `remainBattery` INT(11) NULL,
+  `maxTime` FLOAT NULL,
+  `motor` VARCHAR(45) NULL,
   PRIMARY KEY (`bikeCode`),
-  -- INDEX `dockID_idx` (`dockID` ASC) VISIBLE,
   CONSTRAINT `dockID`
     FOREIGN KEY (`dockID`)
     REFERENCES `ecodatabase`.`dock` (`dockID`))
@@ -53,44 +54,6 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
-
--- -----------------------------------------------------
--- Table `ecodatabase`.`user`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `ecodatabase`.`user` ;
-CREATE TABLE IF NOT EXISTS `ecodatabase`.`user` (
-  `userID` INT(11) NOT NULL,
-  `fullName` VARCHAR(45) NOT NULL,
-  `phoneNumber` INT(11) NOT NULL,
-  `province` VARCHAR(45) NOT NULL,
-  `address` VARCHAR(45) NOT NULL,
-  `email` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
-  `dateOfBirth` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`userID`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
-
-
--- -----------------------------------------------------
--- Table `ecodatabase`.`card`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `ecodatabase`.`card` ;
-
-CREATE TABLE IF NOT EXISTS `ecodatabase`.`card` (
-  `userID` INT(11) NOT NULL,
-  `cardCode` VARCHAR(45) NOT NULL,
-  `owner` VARCHAR(45) NOT NULL,
-  `CVV` INT(11) NOT NULL,
-  `expiredDate` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`userID`),
-  CONSTRAINT `userID`
-    FOREIGN KEY (`userID`)
-    REFERENCES `ecodatabase`.`user` (`userID`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
 
 -- -----------------------------------------------------
 -- Table `ecodatabase`.`rentbiketransaction`
@@ -161,55 +124,32 @@ INSERT INTO `dock` VALUES
 
 
 INSERT INTO `bike` VALUES
-(20200000,0,'Xe đạp điện',10000000,15000,5000,60,4,'XDD-200000','HUST'),
-(20200001,0,'Xe đạp điện',1200000,15000,5000,60,4,'XDD-200001','HUST'),
-(20200002,0,'Xe máy điện',2000000,30000,10000,80,8,'XMD-200002','NEU'),
-(20200003,0,'Xe máy điện',2000000,30000,10000,100,10,'XMD-200003','TNL'),
-(20200004,0,'Xe đạp điện',1200000,15000,5000,100,10,'XDD-200004','XDA'),
-(20200005,0,'Xe máy điện',2000000,30000,10000,100,10,'XMD-200005','XDA'),
-(20200006,0,'Xe đạp điện',1200000,15000,5000,100,10,'XDD-200006','UTC'),
-(20200007,0,'Xe đạp điện',1200000,15000,5000,100,10,'XDD-200007','HLU'),
-(20200008,0,'Xe máy điện',2000000,30000,10000,100,10,'XMD-200008','HLU'),
-(20200009,0,'Xe máy điện',2000000,30000,10000,100,10,'XMD-200009','UTC'),
-(20200010,0,'Xe máy điện',2000000,30000,10000,100,10,'XMD-200010','HUST'),
-(20200011,0,'Xe máy điện',2000000,30000,10000,100,10,'XMD-200011','DSL'),
-(20200012,0,'Xe đạp điện',1200000,15000,5000,60,4,'XDD-200012','C1'),
-(20200013,0,'Xe máy điện',2000000,30000,10000,80,8,'XMD-200013','DSL'),
-(20200014,0,'Xe máy điện',2000000,30000,10000,100,10,'XMD-200014','FTU'),
-(20200015,0,'Xe đạp điện',1200000,15000,5000,100,10,'XDD-200015','TMU'),
-(20200016,0,'Xe máy điện',2000000,30000,10000,100,10,'XMD-200016','VINC'),
-(20200017,0,'Xe đạp điện',1200000,15000,5000,100,10,'XDD-200017','DSL'),
-(20200018,0,'Xe đạp điện',1200000,15000,5000,100,10,'XDD-200018','C1'),
-(20200019,0,'Xe máy điện',2000000,30000,10000,100,10,'XMD-200019','VINC'),
-(20200020,0,'Xe máy điện',2000000,30000,10000,100,10,'XMD-200020','D6'),
-(20200021,0,'Xe đạp điện',1200000,15000,5000,60,4,'XDD-200021','HUST'),
-(20200022,0,'Xe máy điện',2000000,30000,10000,80,8,'XMD-200022','NEU'),
-(20200023,0,'Xe máy điện',2000000,30000,10000,100,10,'XMD-200023','TNL'),
-(20200024,0,'Xe đạp điện',1200000,15000,5000,100,10,'XDD-200024','XDA'),
-(20200025,0,'Xe máy điện',2000000,30000,10000,100,10,'XMD-200025','XDA'),
-(20200026,0,'Xe đạp điện',1200000,15000,5000,100,10,'XDD-200026','UTC'),
-(20200027,0,'Xe đạp điện',1200000,15000,5000,100,10,'XDD-200027','HLU'),
-(20200028,0,'Xe máy điện',2000000,30000,10000,100,10,'XMD-200028','HLU'),
-(20200029,0,'Xe máy điện',2000000,30000,10000,100,10,'XMD-200029','UTC'),
-(20200030,0,'Xe máy điện',2000000,30000,10000,100,10,'XMD-200030','HUST'),
-(20200031,0,'Xe máy điện',2000000,30000,10000,100,10,'XMD-200031','DSL'),
-(20200032,0,'Xe đạp điện',1200000,15000,5000,60,4,'XDD-200032','C1'),
-(20200033,0,'Xe máy điện',2000000,30000,10000,80,8,'XMD-200033','DSL'),
-(20200034,0,'Xe máy điện',2000000,30000,10000,100,10,'XMD-200034','FTU'),
-(20200035,0,'Xe đạp điện',1200000,15000,5000,100,10,'XDD-2000035','TMU'),
-(20200036,0,'Xe máy điện',2000000,30000,10000,100,10,'XMD-200036','VINC'),
-(20200037,0,'Xe đạp điện',1200000,15000,5000,100,10,'XDD-200037','DSL'),
-(20200038,0,'Xe đạp điện',1200000,15000,5000,100,10,'XDD-200038','C1'),
-(20200039,0,'Xe máy điện',2000000,30000,10000,100,10,'XMD-200039','VINC'),
-(20200040,0,'Xe máy điện',2000000,30000,10000,100,10,'XMD-200040','D6');
+(20200000,0,10000000,'XDD-200000','HUST',"Xe đạp đơn thường",1,1,1,null,null,"không"),
+(20200001,0,1200000,'XDD-200001','HUST', "Xe đạp đơn thường",1,1,1,null,null,"không"),
+(20200002,0,2000000,'XMD-200002','NEU',"Xe đạp đơn thường",1,1,1,null,null,"không"),
+(20200003,0,2000000,'XMD-200003','TNL',"Xe đạp đơn thường",1,1,1,null,null,"không"),
+(20200004,0,1200000,'XDD-200004','XDA',"Xe đạp đơn thường",1,1,1,null,null,"không"),
+(20200005,0,2000000,'XMD-200005','XDA',"Xe đạp đôi thường",2,2,1,null,null,"không"),
+(20200006,0,1200000,'XDD-200006','UTC',"Xe đạp đôi thường",2,2,1,null,null,"không"),
+(20200007,0,1200000,'XDD-200007','HLU',"Xe đạp đôi thường",2,2,1,null,null,"không"),
+(20200008,0,2000000,'XMD-200008','HLU',"Xe đạp đôi thường",2,2,1,null,null,"không"),
+(20200009,0,2000000,'XMD-200009','UTC',"Xe đạp đôi thường",2,2,1,null,null,"không"),
+(20200010,0,2000000,'XMD-200010','HUST',"Xe đạp đôi thường",2,2,1,null,null,"không"),
+(20200011,0,2000000,'XMD-200011','DSL',"Xe đạp đơn thường",1,1,1,null,null,"không"),
+(20200012,0,1200000,'XDD-200012','C1',"Xe đạp đơn thường",1,1,1,null,null,"không"),
+(20200013,0,2000000,'XMD-200013','DSL',"Xe đạp đơn thường",1,1,1,null,null,"không"),
+(20200014,0,2000000,'XMD-200014','FTU',"Xe đạp đơn thường",1,1,1,null,null,"không"),
+(20200015,0,1200000,'XDD-200015','TMU',"Xe đạp đơn thường",1,1,1,null,null,"không"),                                   
+(20200017,0,1200000,'XDD-200017','DSL',"Xe đạp đơn điện",1,1,1,100,10,"có"),
+(20200018,0,1200000,'XDD-200018','C1',"Xe đạp đơn điện",1,1,1,100,10,"có"),
+(20200019,0,2000000,'XMD-200019','VINC',"Xe đạp đơn điện",1,1,1,100,10,"có"),
+(20200020,0,2000000,'XMD-200020','D6',"Xe đạp đơn điện",1,1,1,100,10,"có"),
+(20200021,0,1200000,'XDD-200021','HUST',"Xe đạp đơn điện",1,1,1,100,10,"có"),
+(20200022,0,2000000,'XMD-200022','NEU',"Xe đạp đơn điện",1,1,1,100,10,"có"),
+(20200023,0,2000000,'XMD-200023','TNL',"Xe đạp đơn điện",1,1,1,100,10,"có");
 
 
 
-INSERT INTO `user` VALUES (1,'Group 8',0986172930,'Phúc Thọ','92, Phố Chùa Quỳnh','nam.lt173265@sis.hust.edu.vn','88888888','1999-01-21');
-
-
-
-INSERT INTO `card` VALUES (1,'118131_group8_2020','Group 8',427,'1125');
 
 INSERT INTO `rentbiketransaction` VALUES
 ('202000012020-12-12 10:09:39',20200001,'Xe đạp điện',25000,'Group 8',15000,5000,'2020-12-12 10:09:39','2020-12-7 11:10:34', 480000),
