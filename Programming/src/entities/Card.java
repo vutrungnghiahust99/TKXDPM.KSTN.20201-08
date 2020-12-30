@@ -5,32 +5,36 @@ public class Card {
     private String owner;
     private String CVV;
     private String expiredDate;
-    private static Card card = new Card("118131_group8_2020", "Group 8", "427", "1125");
-
-    public Card(String cardCode, String owner, String CVV, String expiredDate) {
-        this.cardCode = cardCode;
-        this.owner = owner;
-        this.CVV = CVV;
-        this.expiredDate = expiredDate;
-    }
-
-    public static Card getInstance(){
-        return card;
-    }
 
     public String getCardCode() {
         return cardCode;
+    }
+
+    public void setCardCode(String cardCode) {
+        this.cardCode = cardCode;
     }
 
     public String getOwner() {
         return owner;
     }
 
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
     public String getCVV() {
         return CVV;
     }
 
+    public void setCVV(String CVV) {
+        this.CVV = CVV;
+    }
+
     public String getExpiredDate() {
         return expiredDate;
+    }
+
+    public void setExpiredDate(String expiredDate) {
+        this.expiredDate = expiredDate;
     }
 }
