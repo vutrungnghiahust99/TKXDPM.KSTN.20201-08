@@ -2,17 +2,9 @@ package entities;
 
 public class DoubleBike extends Bike{
     private String type;
-    private int nPedals;
-    private int nSaddles;
-    private int nBicycleSeat;
+    private String moreDetails;
 
-    public int getNBicycleSeat() {
-        return nBicycleSeat;
-    }
-
-    public void setNBicycleSeat(int nBicycleSeat) {
-        this.nBicycleSeat = nBicycleSeat;
-    }
+    @Override
     public String getType() {
         return type;
     }
@@ -21,20 +13,13 @@ public class DoubleBike extends Bike{
         this.type = type;
     }
 
-    public int getNPedals() {
-        return nPedals;
+    @Override
+    public String getMoreDetails() {
+        return moreDetails;
     }
 
-    public void setNPedals(int nPedals) {
-        this.nPedals = nPedals;
-    }
-
-    public int getNSaddles() {
-        return nSaddles;
-    }
-
-    public void setNSaddles(int nSaddles) {
-        this.nSaddles = nSaddles;
+    public void setMoreDetails(String moreDetails) {
+        this.moreDetails = moreDetails;
     }
 
     public String getGeneralInfo(){
@@ -47,6 +32,6 @@ public class DoubleBike extends Bike{
 
     @Override
     public double calculateDeposit() {
-        return 0.4*getValue();
+        return 0.4 * getValue();
     }
 }
