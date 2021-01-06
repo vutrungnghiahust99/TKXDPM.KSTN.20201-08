@@ -2,7 +2,6 @@ package entities;
 
 public class DoubleBike extends Bike{
     private String type;
-    private String moreDetails;
 
     @Override
     public String getType() {
@@ -11,15 +10,6 @@ public class DoubleBike extends Bike{
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    @Override
-    public String getMoreDetails() {
-        return moreDetails;
-    }
-
-    public void setMoreDetails(String moreDetails) {
-        this.moreDetails = moreDetails;
     }
 
     public String getGeneralInfo(){

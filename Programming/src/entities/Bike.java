@@ -57,9 +57,9 @@ public class Bike {
         BikeDAO.updateIsInUse(this.bikeCode, isInUse, dockID);
     }
 
-    public double calculateDeposit(){ return 1;}
+    public double calculateDeposit(){ return 0.4 * value;}
 
-    public String getMoreDetails(){ return "";}
+    public String getMoreDetails(){ return "Không";}
 
-    public String getType(){ return "";}
+    public String getType(){ return "Không có thông tin";}
 }

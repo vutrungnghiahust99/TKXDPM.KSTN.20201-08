@@ -45,7 +45,9 @@ public class BikeFactory {
                 singleElectricBike.setNumPedals(Integer.parseInt(bike.get(7)));
                 singleElectricBike.setNumSaddle(Integer.parseInt(bike.get(6)));
                 singleElectricBike.setNumBicycleSeat(Integer.parseInt(bike.get(8)));
-                singleElectricBike.setMoreDetails(bike.get(9));
+                singleElectricBike.setRemainBattery(Double.parseDouble(bike.get(9)));
+                singleElectricBike.setMaxTime(Double.parseDouble(bike.get(10)));
+                singleElectricBike.setMotor(bike.get(11));
                 return singleElectricBike;
             default:
                 throw new IllegalArgumentException("This bank type is unsupported");

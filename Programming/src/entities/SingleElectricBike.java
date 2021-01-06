@@ -2,7 +2,33 @@ package entities;
 
 public class SingleElectricBike extends Bike {
     private String type;
-    private String moreDetails;
+    private Double remainBattery;
+    private Double maxTime;
+    private String motor;
+
+    public Double getRemainBattery() {
+        return remainBattery;
+    }
+
+    public void setRemainBattery(Double remainBattery) {
+        this.remainBattery = remainBattery;
+    }
+
+    public Double getMaxTime() {
+        return maxTime;
+    }
+
+    public void setMaxTime(Double maxTime) {
+        this.maxTime = maxTime;
+    }
+
+    public String getMotor() {
+        return motor;
+    }
+
+    public void setMotor(String motor) {
+        this.motor = motor;
+    }
 
     public void setType(String type) {
         this.type = type;
@@ -10,11 +36,8 @@ public class SingleElectricBike extends Bike {
 
     @Override
     public String getMoreDetails() {
-        return moreDetails;
-    }
-
-    public void setMoreDetails(String moreDetails) {
-        this.moreDetails = moreDetails;
+        return "Lượng pin còn lại: " + getRemainBattery()  + "\n" + "Thời gian sử dụng tối đa: " + getMaxTime() + "\n"
+                + "Động cơ xe: " + getMotor();
     }
 
     public String getGeneralInfo(){
