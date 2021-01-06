@@ -1,5 +1,7 @@
 package entities;
 
+import dataaccesslayer.CardDAO;
+
 public class Card {
     private String cardCode;
     private String owner;
@@ -36,5 +38,9 @@ public class Card {
 
     public void setExpiredDate(String expiredDate) {
         this.expiredDate = expiredDate;
+    }
+
+    public void saveCardInfo(){
+        CardDAO.saveCardInfo(cardCode, owner, CVV, expiredDate);
     }
 }

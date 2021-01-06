@@ -21,7 +21,7 @@ public class DoubleBike extends Bike{
     }
 
     @Override
-    public double calculateDeposit() {
-        return 0.4 * getValue();
+    public int calculateDeposit() {
+        return (int)0.4 * getValue();
     }
 }
