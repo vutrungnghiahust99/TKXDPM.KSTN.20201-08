@@ -8,20 +8,16 @@ public class RentBikeTransaction {
     private String type;
     private int rentBikeCost;
     private String owner;
-    private int priceForFirst30Minutes;
-    private int priceFor15MinutesAfter30Minutes;
     private String rentTime;
     private String returnTime;
     private int deposit;
 
-    public RentBikeTransaction(String rentalCode, int bikeCode, String type, int rentBikeCost, String owner, int priceForFirst30Minutes, int priceFor15MinutesAfter30Minutes, String rentTime, String returnTime, int deposit) {
+    public RentBikeTransaction(String rentalCode, int bikeCode, String type, int rentBikeCost, String owner, String rentTime, String returnTime, int deposit) {
         this.rentalCode = rentalCode;
         this.bikeCode = bikeCode;
         this.type = type;
         this.rentBikeCost = rentBikeCost;
         this.owner = owner;
-        this.priceForFirst30Minutes = priceForFirst30Minutes;
-        this.priceFor15MinutesAfter30Minutes = priceFor15MinutesAfter30Minutes;
         this.rentTime = rentTime;
         this.returnTime = returnTime;
         this.deposit = deposit;
@@ -63,14 +59,6 @@ public class RentBikeTransaction {
         return owner;
     }
 
-    public int getPriceForFirst30Minutes() {
-        return priceForFirst30Minutes;
-    }
-
-    public int getPriceFor15MinutesAfter30Minutes() {
-        return priceFor15MinutesAfter30Minutes;
-    }
-
     public void setBikeCode(int bikeCode) {
         this.bikeCode = bikeCode;
     }
@@ -99,18 +87,9 @@ public class RentBikeTransaction {
         this.owner = owner;
     }
 
-    public void setPriceForFirst30Minutes(int priceForFirst30Minutes) {
-        this.priceForFirst30Minutes = priceForFirst30Minutes;
-    }
-
-    public void setPriceFor15MinutesAfter30Minutes(int priceFor15MinutesAfter30Minutes) {
-        this.priceFor15MinutesAfter30Minutes = priceFor15MinutesAfter30Minutes;
-    }
-
     public void saveRentBikeTransaction(){
         RentBikeTransactionDAO.save(bikeCode, rentalCode, type, rentTime, returnTime,
-                rentBikeCost, owner, priceForFirst30Minutes,
-                priceFor15MinutesAfter30Minutes, deposit);
+                rentBikeCost, owner, deposit);
     }
 
     public void updateReturnTimeAndCost(String returnTime, int rentBikeCost){
@@ -131,13 +110,11 @@ public class RentBikeTransaction {
         String row3 = String.format("  %-50s%-30s", "Loại xe", type);
         String row4 = String.format("  %-50s%-30d", "Chi phí thuê", rentBikeCost);
         String row5 = String.format("  %-50s%-30s", "Chủ thẻ", owner);
-        String row6 = String.format("  %-50s%-30d", "Giá thuê 30 phút đầu", priceForFirst30Minutes);
-        String row7 = String.format("  %-50s%-30d", "Giá thuê 15 phút sau 30 phút đầu", priceFor15MinutesAfter30Minutes);
         String row8 = String.format("  %-50s%-30s", "Thời gian thuê xe", rentTime);
-        String row9 = String.format("  %-50s%-30s", "Thời gian trả xe", rentTime);
+        String row9 = String.format("  %-50s%-30s", "Thời gian trả xe", returnTime);
         String row10 = String.format("  %-50s%-30d", "Tiền đặt cọc", deposit);
 
-        return  header + '\n' + row1 + '\n' + row2 + '\n' + row3 + '\n' + row4 + '\n' + row5 + '\n' + row6 + '\n' + row7 +
+        return  header + '\n' + row1 + '\n' + row2 + '\n' + row3 + '\n' + row4 + '\n' + row5 + '\n' +
                 '\n' + row8 + '\n' + row9 + '\n' + row10;
     }
 }

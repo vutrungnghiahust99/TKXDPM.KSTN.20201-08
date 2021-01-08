@@ -2,16 +2,7 @@ package businesslogiclayer.interbanksubsystem;
 
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpPatch;
-import org.apache.http.entity.ContentType;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.util.EntityUtils;
 
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j

@@ -2,6 +2,7 @@ package presentationlayer;
 
 import businesslogiclayer.controller.RentBikeController;
 import businesslogiclayer.controller.ReturnBikeController;
+import entities.Card;
 import entities.Dock;
 import entities.RentBikeTransaction;
 import javafx.fxml.FXML;
@@ -27,8 +28,9 @@ import java.util.ResourceBundle;
  * Quản lý giao diện trả xe của người dùng
  */
 public class ReturnBikeScreen implements Initializable {
-    public static String newDockID = null;
+//    public static String newDockID = null;
     private ArrayList<Dock> docks;
+    private String rentalCode;
 
     @FXML
     private ListView<String> docksView;
@@ -43,13 +45,6 @@ public class ReturnBikeScreen implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb){
         System.out.println("default initialize ReturnBikeScreen");
-
-        //listen when user double click on a bike in listview => show ConfirmReturnBikeScreen
-        docksView.setOnMouseClicked(click -> {
-            if (click.getClickCount() == 2) {
-                handleDoubleClickOnDockList();
-            }
-        });
     }
 
     private void handleDoubleClickOnDockList() {
@@ -63,8 +58,25 @@ public class ReturnBikeScreen implements Initializable {
             boolean confirmReturnBike = ConfirmBox.display("ConfirmBox", "Xác nhận trả xe?");
             System.out.println(confirmReturnBike);
             if(confirmReturnBike){
-                handleUserConfirmReturnBike(dock);
+                Card card = getCardInfoAfterUserConfirm();
+                if(card != null){
+                    processReturnBike(dock, rentalCode, card);
+                }
             }
+        }
+    }
+
+    private void processReturnBike(Dock d, String rentalCode, Card card){
+//        newDockID = );
+        Pair<String, RentBikeTransaction> s = ReturnBikeController.processReturnBike(rentalCode, card, d.getDockID());
+        String respondCode = s.getKey();
+        RentBikeTransaction rentBikeTransaction = s.getValue();
+
+        NotificationErrorCode.displayNotificationErrorCode(respondCode, "refund");
+
+        if (respondCode.equals("00")){
+            MainScreen.reset = true;
+            showRentBikeTransactionInfo(rentBikeTransaction);
             Stage stage = (Stage)docksView.getScene().getWindow();
             stage.close();
         }
@@ -74,36 +86,39 @@ public class ReturnBikeScreen implements Initializable {
         return dock.getNumberOfDockingPoints() - dock.getBikes().size() > 0;
     }
 
-    private void handleUserConfirmReturnBike(Dock dock) {
-        System.out.println("user confirm to return bike");
-        assert dock != null;
-        newDockID = dock.getDockID();
-        Pair<String, RentBikeTransaction> s = ReturnBikeController.processReturnBike();
-        String respondCode = s.getKey();
-        RentBikeTransaction rentBikeTransaction = s.getValue();
-
-        NotificationErrorCode.displayNotificationErrorCode(respondCode, "refund");
-
-        if (respondCode.equals("00")){
-            RentBikeController.rentalCode = "";
-            //set rent = false, tức là set trạng thái người dùng thành chưa thuê xe
-            RentBikeScreen.rent = false;
-            MainScreen.reset = true;
-            showRentBikeTransactionInfo(rentBikeTransaction);
-            Stage stage = (Stage)docksView.getScene().getWindow();
-            stage.close();
+    private Card getCardInfoAfterUserConfirm() {
+        try {
+            Card card = new Card();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("CardInfoScreen.fxml"));
+            Parent root = loader.load();
+            CardInfoScreen cardInfoScreen = loader.getController();
+            CardInfoScreen.card = null;
+            Stage stageCard = new Stage();
+            stageCard.setTitle("CardInfo");
+            stageCard.setScene(new Scene(root));
+            stageCard.showAndWait();
+            card = cardInfoScreen.getCardInfo();
+            return card;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 
-    /**
-     * Khởi tạo giao diện trả xe với danh sách các bãi xe
-     * @param docks: danh sách các bãi xe
-     */
-    public void initData(ArrayList<Dock> docks){
-        System.out.println("initialize dockInfo and bikesInfo ");
-        this.docks = docks;
-        for(Dock dock : docks)
+    public void initData(ArrayList<Dock> d, String rentalCode){
+        System.out.println("initialize ReturnBikeScreen");
+        docks = d;
+        this.rentalCode = rentalCode;
+        //show list of docks
+        for (Dock dock : docks) {
             docksView.getItems().add(dock.getGeneralInfo());
+        }
+
+        docksView.setOnMouseClicked(click -> {
+            if (click.getClickCount() == 2) {
+                handleDoubleClickOnDockList();
+            }
+        });
     }
 
     /**
@@ -128,6 +143,7 @@ public class ReturnBikeScreen implements Initializable {
      * @param rentBikeTransaction: hóa đơn thuê xe
      */
     private void showRentBikeTransactionInfo(RentBikeTransaction rentBikeTransaction) {
+        System.out.println("showRentBikeTransactionInfo");
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("RentBikeTransactionScreen.fxml"));
             Parent root = loader.load();
