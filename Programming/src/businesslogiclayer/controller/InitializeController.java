@@ -51,24 +51,6 @@ public class InitializeController {
     public static ArrayList<Bike> tableToBikes(ArrayList<ArrayList<String>> bikeTable){
         ArrayList<Bike> bikes = new ArrayList<>();
         for(ArrayList<String> row: bikeTable){
-//            int bikeCode = Integer.parseInt(row.get(0));
-//            boolean isInUse;
-//            if(row.get(1).equals("1"))
-//                isInUse = true;
-//            else if(row.get(1).equals("0"))
-//                isInUse = false;
-//            else{
-//                System.out.println("Something wrong happen");
-//                System.exit(1);
-//                isInUse = false;
-//            }
-//            String type = row.get(2);
-//            int value = Integer.parseInt(row.get(3));
-//            int priceForFirst30Minutes = Integer.parseInt(row.get(4));
-//            int priceFor15MinutesAfter30Minutes = Integer.parseInt(row.get(5));
-//            int remainBattery = Integer.parseInt(row.get(6));
-//            float maxTime = Float.parseFloat(row.get(7));
-//            String licensePlate = row.get(8);
             Bike bike = BikeFactory.getBike(row);
             bikes.add(bike);
         }

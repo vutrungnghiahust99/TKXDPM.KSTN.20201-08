@@ -1,5 +1,6 @@
 package presentationlayer;
 import businesslogiclayer.controller.InitializeController;
+import businesslogiclayer.controller.RentBikeController;
 import entities.Dock;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import presentationlayer.box.NotificationBox;
 
 import java.io.IOException;
 import java.net.URL;
@@ -108,5 +110,37 @@ public class MainScreen implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void handleReturnButtonClick() {
+        try{
+            System.out.println("user click ReturnBikeButton");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("RentalCodeScreen.fxml"));
+            Parent root = loader.load();
+
+            RentalCodeScreen rentalCodeScreen = loader.getController();
+            rentalCodeScreen.initData(this.docks);
+//                returnBikeController.initData(docks);
+
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(new Scene(root));
+            stage.setTitle("RentalCodeScreen");
+            stage.showAndWait();
+            System.out.println("Finish ReturnBike");
+            if(MainScreen.reset){
+                System.out.println("Reset and reload data from database");
+                docks = InitializeController.getDocks();
+                docksView.getItems().clear();
+                //show list of docks
+                for (Dock dock : docks) {
+                    docksView.getItems().add(dock.getGeneralInfo());
+                }
+                MainScreen.reset = false;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }

@@ -45,4 +45,8 @@ public class Card {
     public void saveCardInfo(){
         CardDAO.saveCardInfo(cardCode, owner, CVV, expiredDate);
     }
+
+    public void deleteFromDatabase(){
+        CardDAO.deleteCardInfo(this.cardCode);
+    }
 }

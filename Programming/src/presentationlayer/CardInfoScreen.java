@@ -26,6 +26,32 @@ public class CardInfoScreen implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        text1.setText("118131_group8_2020");
+        text2.setText("Group 8");
+        text3.setText("427");
+        text4.setText("1125");
+        xacnhan.setOnAction(e -> {
+
+            CheckCardInUseController checkCardInUseController = new CheckCardInUseController();
+            if (text1.getText().isEmpty() ||text2.getText().isEmpty() || text3.getText().isEmpty() || text4.getText().isEmpty()){
+                NotificationBox.display("Notification", "Bạn vui lòng nhập đầy đủ thông tin thẻ!");
+            }
+            else{
+                boolean check = checkCardInUseController.checkCardInUse(text1.getText());
+                if (check){
+                    card = new Card();
+                    card.setCardCode(text1.getText());
+                    card.setOwner(text2.getText());
+                    card.setCVV(text3.getText());
+                    card.setExpiredDate(text4.getText());
+                    ((Stage) xacnhan.getScene().getWindow()).close();
+                }
+                else{
+                    NotificationBox.display("NotificationBox", "Bạn cần sử dụng thẻ đã thuê xe để thanh toán");
+                }
+            }
+        });
+        huy.setOnAction(e ->  ((Stage) huy.getScene().getWindow()).close());
     }
 
     /**
@@ -51,6 +77,7 @@ public class CardInfoScreen implements Initializable {
                     String code = RentBikeController.processRentBike(card, bike);
                     NotificationErrorCode.displayNotificationErrorCode(code, "pay");
                     if (code.equals("00")){
+                        NotificationBox.display("RentalCode", "Mã thuê xe của bạn là:\n" + RentBikeController.rentalCode);
                         cardInfoStage.close();
                         bikeInfoStage.close();
                     }
@@ -64,4 +91,11 @@ public class CardInfoScreen implements Initializable {
         huy.setOnAction(e ->  cardInfoStage.close());
     }
 
+    public Card getCardInfo(){
+        return card;
+    }
+
+    public static Card getCard() {
+        return card;
+    }
 }

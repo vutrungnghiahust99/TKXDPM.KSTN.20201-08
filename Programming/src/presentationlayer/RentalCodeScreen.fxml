@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="636.0" prefWidth="556.0" style="-fx-background-color: #ffbf00;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationlayer.RentalCodeScreen">
+    <top>
+        <Region prefHeight="0.0" prefWidth="385.0" style="-fx-background-color: #ffbf00;" BorderPane.alignment="CENTER" />
+    </top>
+    <left>
+        <VBox prefHeight="474.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+            <children>
+                <AnchorPane prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: white;">
+                    <children>
+                        <Text layoutX="91.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qúy khách vui lòng nhập mã thuê xe" wrappingWidth="375.515625">
+                            <font>
+                                <Font size="23.0" />
+                            </font>
+                        </Text>
+                        <Button layoutX="218.0" layoutY="254.0" mnemonicParsing="false" onAction="#handleButtonSend" prefHeight="35.0" prefWidth="122.0" text="Gửi" />
+                        <Label alignment="CENTER" layoutX="1.0" prefHeight="74.0" prefWidth="556.0" style="-fx-background-color: #ffbf00;" text="Trả xe">
+                            <font>
+                                <Font size="32.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="rentalCode" layoutX="109.0" layoutY="176.0" prefHeight="48.0" prefWidth="339.0" promptText="Mã thuê xe" />
+                    </children>
+                </AnchorPane>
+            </children>
+        </VBox>
+    </left>
+    <bottom>
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hệ thống thuê xe điện tử EcoBike " BorderPane.alignment="CENTER">
+            <font>
+                <Font size="14.0" />
+            </font>
+            <BorderPane.margin>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </BorderPane.margin>
+        </Text>
+    </bottom>
+</BorderPane>

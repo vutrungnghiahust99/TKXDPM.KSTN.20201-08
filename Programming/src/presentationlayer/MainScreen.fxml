@@ -17,7 +17,7 @@
          <children>
             <Button mnemonicParsing="false" onAction="#handleRentButtonClick" text="Thuê xe " />
             <Region />
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Trả xe " />
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleReturnButtonClick" text="Trả xe " />
             <Region />
             <Button layoutX="72.0" layoutY="10.0" mnemonicParsing="false" text="Xem thông tin xe đang thuê " />
             <Region />

@@ -24,7 +24,7 @@ public class CardDAO {
 
     public static void deleteCardInfo(String cardCode){
         String command = "DELETE FROM card WHERE" +
-                "(card.cardCode" + "==" + '\'' + cardCode + '\'' + ");";
+                " cardCode" + "=" + '\'' + cardCode + '\'' + ";";
         DBConnection.execute(command);
     }
 }
