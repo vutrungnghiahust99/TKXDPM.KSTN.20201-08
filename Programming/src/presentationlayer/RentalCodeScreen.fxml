@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="636.0" prefWidth="556.0" style="-fx-background-color: #ffbf00;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationlayer.RentBikeScreen">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="636.0" prefWidth="556.0" style="-fx-background-color: #ffbf00;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationlayer.RentalCodeScreen">
     <top>
         <Region prefHeight="0.0" prefWidth="385.0" style="-fx-background-color: #ffbf00;" BorderPane.alignment="CENTER" />
     </top>
@@ -17,18 +17,18 @@
             <children>
                 <AnchorPane prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: white;">
                     <children>
-                        <Text layoutX="106.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qúy khách vui lòng nhập barcode" wrappingWidth="344.515625">
+                        <Text layoutX="91.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qúy khách vui lòng nhập mã thuê xe" wrappingWidth="375.515625">
                             <font>
                                 <Font size="23.0" />
                             </font>
                         </Text>
-                        <Button layoutX="218.0" layoutY="254.0" mnemonicParsing="false" onAction="#handleButtonThueXe" prefHeight="35.0" prefWidth="122.0" text="Thuê xe" />
-                        <Label alignment="CENTER" layoutX="1.0" prefHeight="74.0" prefWidth="556.0" style="-fx-background-color: #ffbf00;" text="Thuê Xe">
+                        <Button layoutX="218.0" layoutY="254.0" mnemonicParsing="false" onAction="#handleButtonSend" prefHeight="35.0" prefWidth="122.0" text="Gửi" />
+                        <Label alignment="CENTER" layoutX="1.0" prefHeight="74.0" prefWidth="556.0" style="-fx-background-color: #ffbf00;" text="Trả xe">
                             <font>
                                 <Font size="32.0" />
                             </font>
                         </Label>
-                        <TextField fx:id="barcode" layoutX="109.0" layoutY="176.0" prefHeight="48.0" prefWidth="339.0" promptText="Nhập barcode" />
+                        <TextField fx:id="rentalCode" layoutX="109.0" layoutY="176.0" prefHeight="48.0" prefWidth="339.0" promptText="Mã thuê xe" />
                     </children>
                 </AnchorPane>
             </children>

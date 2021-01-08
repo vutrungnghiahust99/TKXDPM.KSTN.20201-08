@@ -1,5 +1,7 @@
 package businesslogiclayer.interbanksubsystem;
 
+import entities.Card;
+
 /**
  * interface cho Interbank Subsystem
  * Có 2 method để hệ thống giao tiếp đó là:
@@ -7,7 +9,7 @@ package businesslogiclayer.interbanksubsystem;
  * reset : reset tài khoản người dùng
  */
 public interface IInterbank {
-    String processTransaction(int cost, String command, String content);
+    String processTransaction(Card card, int cost, String command, String content);
 
     void reset();
 }

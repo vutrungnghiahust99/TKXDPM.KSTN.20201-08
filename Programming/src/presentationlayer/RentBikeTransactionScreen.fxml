@@ -41,8 +41,6 @@
                         <RowConstraints maxHeight="94.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="93.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="90.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="52.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
@@ -53,21 +51,17 @@
                         <Text fill="#e80404" strokeType="OUTSIDE" strokeWidth="0.0" text="Loại xe:" wrappingWidth="132.234375" GridPane.rowIndex="2" />
                         <Text fill="#f50606" strokeType="OUTSIDE" strokeWidth="0.0" text="Chi phí thuê xe:" GridPane.rowIndex="3" />
                         <Text fill="#f50303" strokeType="OUTSIDE" strokeWidth="0.0" text="Người thuê:" wrappingWidth="233.0078125" GridPane.rowIndex="4" />
-                        <Text fill="#f80000" strokeType="OUTSIDE" strokeWidth="0.0" text="Giá thuê 30 phút đầu:" wrappingWidth="204.296875" GridPane.rowIndex="5" />
-                        <Text fill="#f20000" strokeType="OUTSIDE" strokeWidth="0.0" text="Giá thuê 15 phút sau 30 phút đầu:" wrappingWidth="206.65625" GridPane.rowIndex="6" />
-                        <Text fill="#f50000" strokeType="OUTSIDE" strokeWidth="0.0" text="Thời điểm thuê xe:" wrappingWidth="197.109375" GridPane.rowIndex="7" />
-                        <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Thời điểm trả xe:" wrappingWidth="187.8828125" GridPane.rowIndex="8" />
+                        <Text fill="#f50000" strokeType="OUTSIDE" strokeWidth="0.0" text="Thời điểm thuê xe:" wrappingWidth="197.109375" GridPane.rowIndex="5" />
+                        <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Thời điểm trả xe:" wrappingWidth="187.8828125" GridPane.rowIndex="6" />
                         <TextField fx:id="text2" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <TextField fx:id="text3" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <TextField fx:id="text4" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <TextField fx:id="text5" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <TextField fx:id="text6" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <TextField fx:id="text7" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                        <TextField fx:id="text8" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                        <TextField fx:id="text9" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                        <TextField fx:id="text8" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <TextField fx:id="text9" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                         <TextField fx:id="text1" editable="false" GridPane.columnIndex="1" />
-                        <TextField fx:id="text10" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                        <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiền đặt cọc:" wrappingWidth="187.8828125" GridPane.rowIndex="9" />
+                        <TextField fx:id="text10" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiền đặt cọc:" wrappingWidth="187.8828125" GridPane.rowIndex="7" />
                      </children>
                   </GridPane>
                   <Text layoutX="39.0" layoutY="549.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cảm ơn bạn đã sử dụng dịch vụ!" wrappingWidth="267.515625">

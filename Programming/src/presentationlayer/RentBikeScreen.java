@@ -1,5 +1,6 @@
 package presentationlayer;
-import businesslogiclayer.controller.RentBikeController;
+
+import businesslogiclayer.controller.CheckBarcodeController;
 import entities.Bike;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,7 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.util.Pair;
-import presentationlayer.box.*;
+import presentationlayer.box.NotificationBox;
+
 import java.io.IOException;
 
 public class RentBikeScreen {
@@ -25,17 +27,12 @@ public class RentBikeScreen {
         }
         else{
             if (!rent) {
-                try{
-                    int inputCode = Integer.parseInt(message);
-                    Pair<Boolean, Bike> p = RentBikeController.checkBarcodeAndGetBikeIfTrue(inputCode);
-                    if (p.getKey()) {
-                        System.out.println(p.getValue());
-                        display(p.getValue());
+                Pair<Boolean, Bike> p = CheckBarcodeController.checkBarcodeAndGetBikeIfTrue(message);
+                if (p.getKey()) {
+                    System.out.println(p.getValue());
+                    display(p.getValue());
 
-                    } else {
-                        NotificationBox.display("NotificationBox", "Barcode không hợp lệ!");
-                    }
-                }catch (NumberFormatException e){
+                } else {
                     NotificationBox.display("NotificationBox", "Barcode không hợp lệ!");
                 }
             }

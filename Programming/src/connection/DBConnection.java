@@ -1,6 +1,9 @@
 package connection;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
@@ -8,7 +11,7 @@ import java.util.ArrayList;
  */
 public class DBConnection {
     private static final String DB_URL = "jdbc:mysql://localhost:3306/ecodatabase";
-    private static final String USER_NAME = "vutrungnghia";
+    private static final String USER_NAME = "root";
     private static final String PASSWORD = "29452269";
     private static Connection conn = getConnection();
 

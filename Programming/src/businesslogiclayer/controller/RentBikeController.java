@@ -1,18 +1,18 @@
 package businesslogiclayer.controller;
-import businesslogiclayer.interbanksubsystem.*;
-import businesslogiclayer.barcodconvertersubsystem.*;
-import dataaccesslayer.*;
-import entities.*;
+
+//import businesslogiclayer.interbanksubsystem.IInterbank;
+//import businesslogiclayer.interbanksubsystem.InterbankSubsysController;
+
+import businesslogiclayer.interbanksubsystem.IInterbank;
+import businesslogiclayer.interbanksubsystem.InterbankSubsysController;
+import entities.Bike;
+import entities.Card;
 import entities.PaymentTransaction;
 import entities.RentBikeTransaction;
-import javafx.util.Pair;
-import presentationlayer.MainScreen;
 import presentationlayer.RentBikeScreen;
 
-import entities.Card;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -25,111 +25,68 @@ public class RentBikeController {
      *              Phiên thuê xe khác nhau sẽ có rentalCode khác nhau.
      */
     public static String rentalCode = "";
-    private static final Card card = Card.getInstance();
-    private static ArrayList<ArrayList<String>> listBike = BikeDAO.getBikes();
-    private static ArrayList<String> bikeIsRented;
-    private static int bikeCode;
-
-    /**
-     *
-     * @param barcode : mã xe
-     * @return  (mã check bikeCode, thông tin xe (nếu bikeCode đúng))
-     */
-    public static Pair<Boolean, Bike> checkBarcodeAndGetBikeIfTrue(int barcode){
-        IBarcodeConverter bc = new BarcodeConverterController();
-        bikeCode = bc.convertBarcodeToBikeCode(barcode);
-        boolean check = false;
-        Bike bike = null;
-
-        for (ArrayList<String> b : listBike){
-            if (bikeCode == Integer.parseInt(b.get(0)) && Integer.parseInt(b.get(1)) == 0){
-                check = true;
-                bikeIsRented = b;
-                break;
-            }
-        }
-        if (check){
-            bike = new Bike(
-                    Integer.parseInt(bikeIsRented.get(0)),
-                    false,
-                    bikeIsRented.get(2),
-                    Integer.parseInt(bikeIsRented.get(3)),
-                    Integer.parseInt(bikeIsRented.get(4)),
-                    Integer.parseInt(bikeIsRented.get(5)),
-                    Integer.parseInt(bikeIsRented.get(6)),
-                    Float.parseFloat(bikeIsRented.get(7)),
-                    bikeIsRented.get(8));
-        }
-        return new Pair<>(check, bike);
-    }
 
     /**
      * Xử lý giao dịch thuê xe
      * Nếu giao dịch thành công thì sẽ tiến hành lưu lại giao dịch thanh toán,
-     * thông tin phiên thuê xe và cập nhật xe thành đang sử dụng.
+     * thông tin phiên thuê xe và cập nhật xe thành đang sử dụng, trạng thái người dùng thành đang thuê.
+     * Và lưu lại thông tin thẻ đang thuê xe.
      *
      * Nếu giao dịch thất bại thì sẽ đưa ra thông báo lỗi và không lưu lại thông tin.
      * @param bike : Xe khách hàng muốn thuê
      * @return bike
      */
-    public static String processRentBike(Bike bike){
+    public static String processRentBike(Card card, Bike bike){
+        System.out.println("Xử lý giao dịch.");
+
+        // chuyen bike code thanh rental code
+        rentalCode = convertBikeCodeToRentalCode(bike.getBikeCode());
+        int deposit = bike.calculateDeposit();
+        // xu ly giao dich
         IInterbank interbank = new InterbankSubsysController();
-        rentalCode = convertBikeCodeToRentalCode(bikeCode);
-        int cost = (int) calculateDeposit();
-        System.out.println(cost);
-        interbank.reset();
-        String code = interbank.processTransaction(cost, "pay", "Trừ tiền cọc");
+        String code = interbank.processTransaction(card, deposit, "pay", "Giao dịch trừ tiền cọc");
+        //Neu thanh cong thi luu giao dich thanh toan, giao dich thue xe, update trang thai xe, trang thai nguoi dung
+        //luu thong tin the dang thue
+
+
         if (code.equals("00")){
-            System.out.println("Đã trừ: " + cost + "VNĐ");
-            MainScreen.reset = true;
-            RentBikeScreen.rent = true;
             Calendar calendar = Calendar.getInstance();
             Date date = calendar.getTime();
-            DateFormat t = new SimpleDateFormat("HH:mm:ss");
-            DateFormat d = new SimpleDateFormat("yyyy-MM-dd");
-            DateFormat td = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            /**
-             * Lưu lại thông tin phiên thuê xe
-             */
+            DateFormat day = new SimpleDateFormat("yyyy-MM-dd");
+            DateFormat time = new SimpleDateFormat("HH:mm:ss");
+            DateFormat daytime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+            // cap nhat trang thai nguoi dung
+            RentBikeScreen.rent = true;
+
+            //luu giao dich thue xe
             RentBikeTransaction rentBikeTransaction = new RentBikeTransaction(
-                    rentalCode,
-                    bike.getBikeCode(),
-                    bike.getType(),
-                    -1,
-                    card.getOwner(),
-                    bike.getPriceForFirst30Minutes(),
-                    bike.getPriceFor15MinutesAfter30Minutes(),
-                    td.format(date),
-                    "",
-                    cost);
+                    rentalCode, bike.getBikeCode(), bike.getType(),
+                    -1, card.getOwner(), daytime.format(date),
+                    "", deposit);
+
             rentBikeTransaction.saveRentBikeTransaction();
-            /**
-             * Lưu lại giao dịch thanh toán
-             */
+
+            //luu giao dich tru tien coc
             PaymentTransaction paymentTransaction = new PaymentTransaction(
-                    rentalCode,
-                    card.getCardCode(),
-                    card.getOwner(),
-                    "Trừ tiền cọc",
-                    cost,
-                    t.format(date),
-                    d.format(date));
+                    rentalCode, card.getCardCode(), card.getOwner(),
+                    "Giao dịch trừ tiền cọc", deposit,
+                    time.format(date), day.format(date));
             paymentTransaction.savePaymentTransaction();
-            /**
-             * Cập nhật trạng thái xe
-             */
-            bike.updateInUseAndDockID(true, bikeIsRented.get(9));
-        }
-        else{
-            rentalCode = "";
-            System.out.println("Giao dịch thất bại");
+
+
+            // cap nhat trang thai xe
+            bike.updateInUseAndDockID(true, bike.getDockID());
+
+            //luu thong tin card dang thue
+            card.saveCardInfo();
         }
         return code;
     }
 
     /**
      *
-     * @param bikeCode
+     * @param bikeCode: Mã xe của xe cần thuê
      * Sinh ra rental code cho phiên thuê xe
      * @return rental code
      */
@@ -139,12 +96,5 @@ public class RentBikeController {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String dateString = df.format(date);
         return bikeCode + dateString;
-    }
-
-    /**
-     * @return giá trị tiền đặt cọc  = 40% giá trị xe
-     */
-    public static double calculateDeposit(){
-        return Integer.parseInt(bikeIsRented.get(3)) * 0.4;
     }
 }

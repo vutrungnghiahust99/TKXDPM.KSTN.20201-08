@@ -40,32 +40,35 @@
                       <RowConstraints maxHeight="81.0" minHeight="0.0" prefHeight="38.0" vgrow="SOMETIMES" />
                       <RowConstraints maxHeight="131.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="94.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="93.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="90.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="52.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="93.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="90.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="65.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="52.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
                         <Text fill="#eb0707" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã xe:" wrappingWidth="142.515625" />
                         <Text fill="#f20606" strokeType="OUTSIDE" strokeWidth="0.0" text="Loại xe:" wrappingWidth="134.484375" GridPane.rowIndex="1" />
                         <Text fill="#e80404" strokeType="OUTSIDE" strokeWidth="0.0" text="Giá trị:" wrappingWidth="132.234375" GridPane.rowIndex="2" />
-                        <Text fill="#f50606" strokeType="OUTSIDE" strokeWidth="0.0" text="Giá thuê trong 30 phút đầu tiên:" GridPane.rowIndex="3" />
-                        <Text fill="#f50303" strokeType="OUTSIDE" strokeWidth="0.0" text="Giá thuê mỗi 15 phút sau:" wrappingWidth="233.0078125" GridPane.rowIndex="4" />
-                        <Text fill="#f80000" strokeType="OUTSIDE" strokeWidth="0.0" text="Lượng pin còn lại (%):" wrappingWidth="204.296875" GridPane.rowIndex="5" />
-                        <Text fill="#f20000" strokeType="OUTSIDE" strokeWidth="0.0" text="Thời gian sử dụng tối đa:" wrappingWidth="206.65625" GridPane.rowIndex="6" />
-                        <Text fill="#f50000" strokeType="OUTSIDE" strokeWidth="0.0" text="Biển số xe:" wrappingWidth="197.109375" GridPane.rowIndex="7" />
-                        <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Số tiền đặt cọc:" wrappingWidth="187.8828125" GridPane.rowIndex="8" />
+                        <Text fill="#f50606" strokeType="OUTSIDE" strokeWidth="0.0" text="Số lượng bàn đạp:" GridPane.rowIndex="3" />
+                        <Text fill="#f50303" strokeType="OUTSIDE" strokeWidth="0.0" text="Số lượng yên xe:" wrappingWidth="233.0078125" GridPane.rowIndex="4" />
+                        <Text fill="#f80000" strokeType="OUTSIDE" strokeWidth="0.0" text="Số lượng ghế sau:" wrappingWidth="204.296875" GridPane.rowIndex="5" />
+                        <Text fill="#f20000" strokeType="OUTSIDE" strokeWidth="0.0" text="Thông tin bổ sung:" wrappingWidth="206.65625" GridPane.rowIndex="6" />
+                        <Text fill="#f50000" strokeType="OUTSIDE" strokeWidth="0.0" text="Biển số xe:" wrappingWidth="197.109375" GridPane.rowIndex="8" />
+                        <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Số tiền đặt cọc:" wrappingWidth="187.8828125" GridPane.rowIndex="9" />
                         <TextField fx:id="text2" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <TextField fx:id="text3" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <TextField fx:id="text4" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <TextField fx:id="text5" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         <TextField fx:id="text6" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <TextField fx:id="text7" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                        <TextField fx:id="text8" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                         <TextField fx:id="text9" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                        <TextField fx:id="text10" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="9" />
                         <TextField fx:id="text1" editable="false" GridPane.columnIndex="1" />
+                        <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Bãi xe hiện tại:" GridPane.rowIndex="7" />
+                        <TextField fx:id="text8" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <TextArea fx:id="textArea" editable="false" prefHeight="60.0" prefWidth="280.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                      </children>
                   </GridPane>
                   <Text layoutX="39.0" layoutY="549.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bạn có muốn thuê xe không?" wrappingWidth="267.515625">

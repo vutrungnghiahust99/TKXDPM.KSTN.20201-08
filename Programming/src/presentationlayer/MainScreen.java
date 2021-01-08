@@ -1,5 +1,4 @@
 package presentationlayer;
-
 import businesslogiclayer.controller.InitializeController;
 import businesslogiclayer.controller.RentBikeController;
 import entities.Dock;
@@ -28,13 +27,26 @@ public class MainScreen implements Initializable {
     @FXML
     private ListView<String> docksView;
 
-    /**
-     * khởi tạo giá trị mặc định cho giao diện
-     * @param url: thông số mặc định của hàm initialize
-     * @param rb: thông số mặc định của hàm initialize
-     */
+
+
+    public void handleRentButtonClick() {
+        try {
+            System.out.println("user click RentBikeButton");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("RentBikeScreen.fxml"));
+            Parent root = (Parent) loader.load();
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(new Scene(root));
+            stage.setTitle("RentBikeScreen");
+            stage.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("Initialize main screen");
         // generate fake docks dataset
         docks = InitializeController.getDocks();
@@ -61,6 +73,23 @@ public class MainScreen implements Initializable {
     }
 
     /**
+     * Khi người dùng click vào một dòng trong danh sách bãi xe, hàm sẽ tiến hành tìm kiếm đối tượng bãi xe tương
+     * ứng bằng cách so sánh string từ giao diện gửi về và string của bãi xe trong danh sách bãi xe docks
+     * @param dockInfo: string của bãi xe gửi về từ giao diện
+     * @return: bãi xe tương ứng hoặc null trong trường hợp không tồn tại
+     */
+    private Dock getDockFromString(String dockInfo) {
+
+        for (Dock dock : docks) {
+            String s = dock.getGeneralInfo();
+            if (dockInfo.equals(s)) {
+                return dock;
+            }
+        }
+        return null;
+    }
+
+    /**
      * Hiển thị giao diện xem thông tin bãi xe
      * @param dock: đối tượng bãi xe chứa thông tin cần hiển thị
      */
@@ -83,82 +112,22 @@ public class MainScreen implements Initializable {
         }
     }
 
-    /**
-     * Khi người dùng click vào một dòng trong danh sách bãi xe, hàm sẽ tiến hành tìm kiếm đối tượng bãi xe tương
-     * ứng bằng cách so sánh string từ giao diện gửi về và string của bãi xe trong danh sách bãi xe docks
-     * @param dockInfo: string của bãi xe gửi về từ giao diện
-     * @return: bãi xe tương ứng hoặc null trong trường hợp không tồn tại
-     */
-    private Dock getDockFromString(String dockInfo) {
-
-        for (Dock dock : docks) {
-            String s = dock.getGeneralInfo();
-            if (dockInfo.equals(s)) {
-                return dock;
-            }
-        }
-        return null;
-    }
-
-    /**
-     * Khi người dùng click vào một bãi xe trong danh sách bãi xe, hàm sẽ khởi tạo một giao diện thông tin bãi xe
-     * và đợi cho đến khi giao diện thông tin bãi xe được tắt đi, tùy theo kết quả trả về có thể cập nhật lại danh
-     * sách bãi xe từ cơ sở dữ liệu hoặc không
-     */
     public void handleReturnButtonClick() {
-        if (RentBikeController.rentalCode.equals("")){
-            System.out.println("User is not renting a bike");
-            NotificationBox.display("", "Không có xe đang thuê!");
-//            Stage stage = (Stage)docksView.getScene().getWindow();
-//            stage.close();
-        }
-        else{
-            try {
-                System.out.println("user click ReturnBikeButton");
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("ReturnBikeScreen.fxml"));
-                Parent root = loader.load();
+        try{
+            System.out.println("user click ReturnBikeButton");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("RentalCodeScreen.fxml"));
+            Parent root = loader.load();
 
-                ReturnBikeScreen returnBikeController = loader.getController();
-
-                returnBikeController.initData(docks);
-
-                Stage stage = new Stage();
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.setScene(new Scene(root));
-                stage.setTitle("ReturnBikeScreen");
-                stage.showAndWait();
-                if(MainScreen.reset){
-                    System.out.println("Reset and reload data from database");
-                    docks = InitializeController.getDocks();
-                    docksView.getItems().clear();
-                    //show list of docks
-                    for (Dock dock : docks) {
-                        docksView.getItems().add(dock.getGeneralInfo());
-                    }
-                    MainScreen.reset = false;
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public void handleRentButtonClick() {
-        try {
-            System.out.println("user click RentBikeButton");
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("RentBikeScreen.fxml"));
-            Parent root = (Parent) loader.load();
-
-//            RentBikeController rentBikeController = loader.getController();
-//
-//            rentBikeController.initData(docks);
+            RentalCodeScreen rentalCodeScreen = loader.getController();
+            rentalCodeScreen.initData(this.docks);
+//                returnBikeController.initData(docks);
 
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(new Scene(root));
-            stage.setTitle("RentBikeScreen");
+            stage.setTitle("RentalCodeScreen");
             stage.showAndWait();
-
+            System.out.println("Finish ReturnBike");
             if(MainScreen.reset){
                 System.out.println("Reset and reload data from database");
                 docks = InitializeController.getDocks();
@@ -172,7 +141,6 @@ public class MainScreen implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
 
-    public void handleLockBikeButtonClick(){}
+    }
 }
