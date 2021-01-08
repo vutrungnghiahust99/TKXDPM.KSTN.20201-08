@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="636.0" prefWidth="556.0" style="-fx-background-color: #ffbf00;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationlayer.CardInfoScreen">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="488.0" prefWidth="556.0" style="-fx-background-color: #ffbf00;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationlayer.CardInfoScreen">
    <bottom>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hệ thống thuê xe điện tử EcoBike " wrappingWidth="306.1025390625" BorderPane.alignment="CENTER">
          <font>
@@ -20,35 +20,35 @@
    <left>
       <VBox prefHeight="474.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane prefHeight="575.0" prefWidth="547.0" style="-fx-background-color: white;">
+            <AnchorPane prefHeight="510.0" prefWidth="557.0" style="-fx-background-color: white;">
                <children>
-                  <Label alignment="CENTER" layoutX="1.0" prefHeight="74.0" prefWidth="556.0" style="-fx-background-color: #ffbf00;" text="Thông tin chi tiết xe">
+                  <Label alignment="CENTER" layoutX="1.0" prefHeight="74.0" prefWidth="556.0" style="-fx-background-color: #ffbf00;" text="Thông tin thẻ">
                      <font>
                         <Font size="32.0" />
                      </font>
                   </Label>
                   <Button layoutX="288.0" layoutY="367.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="124.0" text="Xác nhận" fx:id="xacnhan" />
                   <Button fx:id="huy" layoutX="430.0" layoutY="367.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="99.0" text="Hủy" />
-                  <GridPane layoutX="32.0" layoutY="86.0" prefHeight="245.0" prefWidth="525.0" AnchorPane.bottomAnchor="244.0" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="86.0">
+                  <GridPane layoutX="32.0" layoutY="86.0" prefHeight="214.0" prefWidth="525.0" AnchorPane.bottomAnchor="178.0" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="86.0">
                      <children>
                         <Text fill="#eb0707" strokeType="OUTSIDE" strokeWidth="0.0" text="Card Code:" wrappingWidth="142.515625" />
                         <Text fill="#f20606" strokeType="OUTSIDE" strokeWidth="0.0" text="Chủ sở hữu:" wrappingWidth="134.484375" GridPane.rowIndex="1" />
                         <Text fill="#e80404" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã CVV:" wrappingWidth="132.234375" GridPane.rowIndex="2" />
                         <Text fill="#f50606" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày hết hạn:" GridPane.rowIndex="3" />
-                        <TextField fx:id="text2" prefHeight="51.0" prefWidth="280.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <TextField fx:id="text3" prefHeight="47.0" prefWidth="280.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <TextField fx:id="text4" prefHeight="50.0" prefWidth="280.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <TextField fx:id="text1" prefHeight="46.0" prefWidth="280.0" GridPane.columnIndex="1" />
+                        <TextField fx:id="text2" prefHeight="38.0" prefWidth="355.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="text3" prefHeight="42.0" prefWidth="355.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="text4" prefHeight="39.0" prefWidth="355.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="text1" prefHeight="36.0" prefWidth="355.0" GridPane.columnIndex="1" />
                      </children>
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="324.0" minWidth="10.0" prefWidth="173.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="357.0" minWidth="10.0" prefWidth="357.0" />
                      </columnConstraints>
                      <rowConstraints>
-                        <RowConstraints maxHeight="81.0" minHeight="0.0" prefHeight="59.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="131.0" minHeight="10.0" prefHeight="74.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="184.0" minHeight="10.0" prefHeight="59.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="242.0" minHeight="10.0" prefHeight="71.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="81.0" minHeight="0.0" prefHeight="42.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="131.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="184.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="242.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                   </GridPane>
                   <Text layoutX="20.0" layoutY="392.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bạn vui long xác nhận thông tin!" wrappingWidth="267.515625">
