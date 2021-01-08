@@ -111,7 +111,7 @@ public class RentBikeTransaction {
         String row4 = String.format("  %-50s%-30d", "Chi phí thuê", rentBikeCost);
         String row5 = String.format("  %-50s%-30s", "Chủ thẻ", owner);
         String row8 = String.format("  %-50s%-30s", "Thời gian thuê xe", rentTime);
-        String row9 = String.format("  %-50s%-30s", "Thời gian trả xe", rentTime);
+        String row9 = String.format("  %-50s%-30s", "Thời gian trả xe", returnTime);
         String row10 = String.format("  %-50s%-30d", "Tiền đặt cọc", deposit);
 
         return  header + '\n' + row1 + '\n' + row2 + '\n' + row3 + '\n' + row4 + '\n' + row5 + '\n' +

@@ -1,22 +1,17 @@
 package businesslogiclayer.controller;
 
+import businesslogiclayer.costcalculator.CostCalculator;
+import businesslogiclayer.costcalculator.ICostCalculator;
 import businesslogiclayer.interbanksubsystem.IInterbank;
 import businesslogiclayer.interbanksubsystem.InterbankSubsysController;
 import dataaccesslayer.BikeDAO;
 import dataaccesslayer.RentBikeTransactionDAO;
-import entities.Bike;
-import entities.Card;
-import entities.PaymentTransaction;
-import entities.RentBikeTransaction;
+import entities.*;
 import javafx.util.Pair;
-import presentationlayer.ReturnBikeScreen;
-//import presentationlayer.ReturnBikeScreen;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Thực hiện xử lý yêu cầu trả xe của người dùng
@@ -31,9 +26,13 @@ public class ReturnBikeController {
      */
     public static Pair<String, RentBikeTransaction> processReturnBike(String rentalCode, Card card, String newDockID){
         RentBikeTransaction rentBikeTransaction = ReturnBikeController.getRentBikeTransaction(rentalCode);
+        Bike bike = getBike(rentBikeTransaction.getBikeCode());
 
         System.out.println(rentBikeTransaction.getDetailInfo());
-        int rentBikeCost = 100000;
+        ICostCalculator costCalculator = new CostCalculator();
+        costCalculator.setCostCalculationMethod(bike);
+//        long rentTime =
+        int rentBikeCost = costCalculator.calculateCost(-1); // for testing
         int refundAmount = rentBikeTransaction.getDeposit() -  rentBikeCost;
         System.out.println("Refund amount: " + refundAmount);
         assert refundAmount > 0;
@@ -54,7 +53,6 @@ public class ReturnBikeController {
         rentBikeTransaction.updateReturnTimeAndCost(returnTime, rentBikeCost);
 
         // update Bike
-        Bike bike = getBike(rentBikeTransaction.getBikeCode());
         bike.updateInUseAndDockID(false, newDockID);
 
         // delete card from database
@@ -76,7 +74,7 @@ public class ReturnBikeController {
         String bikeType = s.get(2);
         int rentBikeCost = Integer.parseInt(s.get(3));
         String owner = s.get(4);
-        String rentTime = s.get(6);
+        String rentTime = s.get(5);
         String returnTime = s.get(6);
         int deposit = Integer.parseInt(s.get(7));
         return new RentBikeTransaction(
@@ -93,44 +91,6 @@ public class ReturnBikeController {
         return rentBikeTransactions.size() == 1;
     }
 
-//    /**
-//     * Tính toán chi phí thuê xe từ thông tin trong giao dịch thuê xe
-//     *
-//     * @param rentBikeTransaction: Giao dịch thuê xe
-//     * @param isTest: Nếu True thì thời gian thuê xe luôn là 1 h
-//     * @return Chi phí tính toán
-//     */
-//    public static int estimateCost(RentBikeTransaction rentBikeTransaction, boolean isTest){
-//        System.out.println("Estimating cost...");
-//        String rentTime = rentBikeTransaction.getRentTime();  //
-//        SimpleDateFormat df = new SimpleDateFormat(PATTERN);
-//        try {
-//            Date date = df.parse(rentTime);
-//            long epoch = date.getTime();
-//            long start = epoch / 1000;
-//            long now;
-//            if (isTest)
-//                now = start + 3600;  // for dev
-//            else
-//                now = System.currentTimeMillis() / 1000;
-//            System.out.println("RentTime: " + start);
-//            System.out.println("ReturnTime: " + now);
-//            float rentTimeMinutes = (float) (now - start) / 60;
-//            if (rentTimeMinutes > 30){
-//                int p1 = rentBikeTransaction.getPriceForFirst30Minutes();
-//                float p2 = rentBikeTransaction.getPriceFor15MinutesAfter30Minutes() * ((rentTimeMinutes -  30) / 15);
-//                return p1 + (int) p2;
-//            }
-//            else{
-//                return rentBikeTransaction.getPriceForFirst30Minutes();
-//            }
-//        }catch (Exception e){
-//            e.printStackTrace();
-//            System.exit(1);
-//            return -1;
-//        }
-//    }
-
     /**
      * Lấy thông tin của xe từ cơ sở dữ liệu dựa theo bikeCode
      *
@@ -139,9 +99,8 @@ public class ReturnBikeController {
      */
     public static Bike getBike(int bikeCode){
         ArrayList<ArrayList<String>> bikeTable = BikeDAO.queryWithBikeCode(bikeCode);
-        ArrayList<Bike> s = InitializeController.tableToBikes(bikeTable);
-        assert s.size() == 1;
-        return s.get(0);
+        assert bikeTable.size() == 1;
+        return BikeFactory.getBike(bikeTable.get(0));
     }
 
     /**
