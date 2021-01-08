@@ -65,4 +65,7 @@ public class Bike {
 
     public String getType(){ return "Không có thông tin";}
 
+    public String getGeneralInfo(){
+        return bikeCode + " - " + getType();
+    }
 }
