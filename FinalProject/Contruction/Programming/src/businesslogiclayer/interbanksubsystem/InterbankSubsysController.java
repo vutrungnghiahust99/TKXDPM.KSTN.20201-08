@@ -1,13 +1,22 @@
 package businesslogiclayer.interbanksubsystem;
 
-import entities.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import entities.Card;
+import entities.InterbankTransaction;
+
+import javax.xml.bind.DatatypeConverter;
+import java.security.MessageDigest;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class InterbankSubsysController implements IInterbank {
 
     /**
+     * @param card : instance chứa thông tin thẻ người dùng
      * @param cost : giá tiền cần giao dịch
      * @param command : yêu cầu giao dịch {"pay", "refund"}
      * @param content : nội dung giao dịch
@@ -15,14 +24,50 @@ public class InterbankSubsysController implements IInterbank {
      */
 
     @Override
-    public String processTransaction(int cost, String command, String content){
+    public String processTransaction(Card card, int cost, String command, String content){
+        reset();
         try {
-            InterbankTransaction transaction;
-            transaction = ConvertToTransaction.convertToPaymentTransaction(cost, command, content);
+            // convert to payment transaction
+            Calendar calendar = Calendar.getInstance();
+            Date date = calendar.getTime();
+            DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String createdAt = df.format(date);
+
+            InterbankTransaction transaction= new InterbankTransaction();
+            transaction.setCardCode(card.getCardCode());
+            transaction.setOwner(card.getOwner());
+            transaction.setCvvCode(card.getCVV());
+            transaction.setDateExpired(card.getExpiredDate());
+            transaction.setCommand(command);
+            transaction.setTransactionContent(content);
+            transaction.setAmount(cost);
+            transaction.setCreatedAt(createdAt);
+
+
             String transactString = new ObjectMapper().writeValueAsString(transaction);
             JsonObject transactionBody = new JsonParser().parse(transactString).getAsJsonObject();
+
+            //convert to request transaction
             JsonObject transToHash = new JsonObject();
-            JsonObject sentJson = ConvertToTransaction.requestTransaction(transToHash, transactionBody);
+            // transToHash là chuỗi cần băm
+            transToHash.addProperty("secretKey", "Bk5+TDRsBPY=");
+            transToHash.add("transaction", transactionBody);
+            MessageDigest md = null;
+            try {
+                md = MessageDigest.getInstance("MD5");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            md.update(transToHash.toString().getBytes());
+            byte[] digest = md.digest();
+            String myHash = DatatypeConverter.printHexBinary(digest).toUpperCase();
+            JsonObject sentJson = new JsonObject();
+            sentJson.addProperty("version","1.0.1");
+            sentJson.add("transaction",transactionBody);
+            sentJson.addProperty("appCode", "ApBD97uYEU8=");
+            sentJson.addProperty("hashCode", myHash);
+            System.out.println("Chuỗi gửi lên: " + sentJson.toString());
+
             InterbankBoundary interbank = new InterbankBoundary();
             String errorCode = interbank.processTransaction(sentJson);
             return errorCode;
@@ -40,9 +85,8 @@ public class InterbankSubsysController implements IInterbank {
     @Override
     public void reset(){
         JsonObject body = new JsonObject();
-        body = ConvertToTransaction.resetTransaction(body);
         InterbankBoundary interbank = new InterbankBoundary();
-        String errorCode = interbank.reset(body);
+        String errorCode = interbank.reset();
         switch (errorCode) {
             case "00": System.out.println("Reset balance thành công!"); break;
             case "01": System.out.println("Thẻ không hợp lệ!"); break;

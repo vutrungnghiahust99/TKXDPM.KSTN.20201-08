@@ -27,55 +27,9 @@ class InterbankBoundaryTest {
     InterbankBoundary interbankBoundary = new InterbankBoundary();
     JsonObject body1 = new JsonObject();
     JsonObject body2 = new JsonObject();
-    Card card = Card.getInstance();
+    Card card = new Card();
     @BeforeEach
     void setUp() {
-    }
-
-    @ParameterizedTest
-    @CsvSource({
-            "bd1, 00",
-            "bd2, 01",
-            "bd3, 01",
-            "bd4, 01",
-            "bd5, 01",
-            "null,01"
-    })
-    void reset(String bd, String expected) {
-        JsonObject body = new JsonObject();
-        switch (bd){
-            case "bd1":
-                body.addProperty("cardCode", card.getCardCode());
-                body.addProperty("owner", card.getOwner());
-                body.addProperty("cvvCode", card.getCVV());
-                body.addProperty("dateExpired", card.getExpiredDate());
-                break;
-            case "bd2":
-                body.addProperty("cardCode", card.getCardCode());
-                body.addProperty("owner", card.getOwner());
-                body.addProperty("cvvCode", card.getCVV());
-                break;
-            case "bd3":
-                body.addProperty("owner", card.getOwner());
-                body.addProperty("cvvCode", card.getCVV());
-                body.addProperty("dateExpired", card.getExpiredDate());
-                break;
-            case "bd4":
-                body.addProperty("cardCode", card.getCardCode());
-                body.addProperty("cvvCode", card.getCVV());
-                body.addProperty("dateExpired", card.getExpiredDate());
-                break;
-            case "bd5":
-                body.addProperty("cardCode", card.getCardCode());
-                body.addProperty("owner", card.getOwner());
-                body.addProperty("dateExpired", card.getExpiredDate());
-                break;
-            case "null":
-                break;
-        }
-
-        String code = interbankBoundary.reset(body);
-        assertEquals(code, expected);
     }
 
     @ParameterizedTest
@@ -90,6 +44,10 @@ class InterbankBoundaryTest {
             "8, 07"
     })
     void processTransaction(String th, String expected) throws JsonProcessingException {
+        card.setCardCode("118131_group8_2020");
+        card.setOwner("Group 8");
+        card.setCVV("427");
+        card.setExpiredDate("1125");
         int cost;
         switch (th){
             case "6": cost = 5000000;break;

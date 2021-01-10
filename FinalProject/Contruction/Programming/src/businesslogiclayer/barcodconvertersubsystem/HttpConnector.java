@@ -2,6 +2,7 @@ package businesslogiclayer.barcodconvertersubsystem;
 
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
+
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
@@ -30,7 +31,7 @@ public class HttpConnector {
             assert response.body() != null;
             return response.body().string();
         } catch (Exception e) {
-            System.out.println("Lỗi rồi sếp ơi! (method: sendPatch)");
+            System.out.println("Lỗi rồi sếp ơi! (method: post - barocde)");
         }
         return null;
     }

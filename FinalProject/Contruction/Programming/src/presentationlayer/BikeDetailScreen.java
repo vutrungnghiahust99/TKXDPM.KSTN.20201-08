@@ -4,6 +4,7 @@ import entities.Bike;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.net.URL;
@@ -14,7 +15,11 @@ import java.util.ResourceBundle;
  */
 public class BikeDetailScreen implements Initializable {
     @FXML
-    private TextField text1, text2, text3, text4, text5, text6, text7, text8;
+    private TextField text1, text2, text3, text4, text5, text6, text8, text9, text10;
+
+    @FXML
+    private TextArea textArea;
+
     @FXML
     private Button OK;
 
@@ -27,14 +32,18 @@ public class BikeDetailScreen implements Initializable {
      * @param bike: đối tượng bãi xe để khởi tạo giao diện chi tiết xe
      */
     public void init(Bike bike){
-        text1.setText(Integer.toString(bike.getBikeCode()));
+        text1.setText(String.valueOf(bike.getBikeCode()));
         text2.setText(bike.getType());
-        text3.setText(Integer.toString(bike.getValue()));
-        text4.setText(Integer.toString(bike.getPriceForFirst30Minutes()));
-        text5.setText(Integer.toString(bike.getPriceFor15MinutesAfter30Minutes()));
-        text6.setText(Integer.toString(bike.getRemainBattery()));
-        text7.setText(Float.toString(bike.getMaxTime()));
-        text8.setText(bike.getLicensePlate());
+        text3.setText(String.valueOf(bike.getValue()));
+        text4.setText(String.valueOf(bike.getNumPedals()));
+        text5.setText(String.valueOf(bike.getNumSaddle()));
+        text6.setText(String.valueOf(bike.getNumBicycleSeat()));
+        textArea.setText(bike.getMoreDetails());
+        text8.setText(bike.getDockID());
+        text9.setText(bike.getLicensePlate());
+        System.out.println("deposit: " + bike.calculateDeposit());
+        text10.setText(String.valueOf(bike.calculateDeposit()));
+
     }
 
     /**

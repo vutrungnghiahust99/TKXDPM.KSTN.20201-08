@@ -17,22 +17,17 @@ public class RentBikeTransactionDAO {
      * @param returnTime: thời điểm trả xe
      * @param rentBikeCost: Chi phí thuê xe
      * @param owner: Người thuê
-     * @param priceForFirst30Minutes: Giá thuê xe trong 30 phút đầu tiên
-     * @param priceFor15MinutesAfter30Minutes: Giá thuê trong 15 phút sau 30 phút đầu tiên
      * @param deposit: tiền đặt cọc
      */
     public static void save(int bikeCode, String rentalCode, String type, String rentTime, String returnTime,
-                            int rentBikeCost, String owner, int priceForFirst30Minutes,
-                            int priceFor15MinutesAfter30Minutes, int deposit){
+                            int rentBikeCost, String owner, int deposit){
         String command = "INSERT INTO rentbiketransaction " +
-                "(rentalCode, bikeCode, type, rentBikeCost, owner, priceFor30FirstMinutes, priceFor15MinutesAfter30Minutes, rentTime, returnTime, deposit) VALUES " +
+                " VALUES " +
                 "(" + '\'' + rentalCode + '\'' + ", " +
                 bikeCode + ", " +
                 '\'' + type + '\'' + ", " +
                 rentBikeCost + ", " +
                 '\'' + owner + '\'' + ", " +
-                priceForFirst30Minutes + ", " +
-                priceFor15MinutesAfter30Minutes + ", " +
                 '\'' + rentTime + '\'' + ", " +
                 '\'' + returnTime + '\'' + ", " +
                 deposit + ")";
