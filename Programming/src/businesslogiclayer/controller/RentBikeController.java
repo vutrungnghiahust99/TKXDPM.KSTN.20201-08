@@ -74,7 +74,6 @@ public class RentBikeController {
                     time.format(date), day.format(date));
             paymentTransaction.savePaymentTransaction();
 
-
             // cap nhat trang thai xe
             bike.updateInUseAndDockID(true, bike.getDockID());
 

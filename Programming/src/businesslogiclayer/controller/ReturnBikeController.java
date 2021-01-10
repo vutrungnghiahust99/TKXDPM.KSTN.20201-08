@@ -8,6 +8,7 @@ import dataaccesslayer.BikeDAO;
 import dataaccesslayer.RentBikeTransactionDAO;
 import entities.*;
 import javafx.util.Pair;
+import presentationlayer.RentBikeScreen;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -37,10 +38,13 @@ public class ReturnBikeController {
         System.out.println("Refund amount: " + refundAmount);
         assert refundAmount > 0;
         IInterbank interbank = new InterbankSubsysController();
-        String respondCode = interbank.processTransaction(card, refundAmount, "refund", "Castle in the sky");
+        String respondCode = interbank.processTransaction(card, refundAmount, "refund", "Giao dịch hoàn tiền");
         System.out.println("respond code: " + respondCode);
-        if (!respondCode.equals("00"))
+        if (!respondCode.equals("00")) {
+            // cap nhat trang thai nguoi dung
+            RentBikeScreen.rent = false;
             return new Pair<>(respondCode, null);
+        }
         // create new transaction and save
         PaymentTransaction paymentTransaction = new PaymentTransaction(
                 rentalCode, card.getCardCode(), card.getOwner(),

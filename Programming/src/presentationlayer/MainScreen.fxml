@@ -31,8 +31,7 @@
    <left>
       <ImageView fitHeight="504.0" fitWidth="312.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
-            <Image url="file:D:/SoftwareDesignAndConstruction/TKXDPM.KSTN.20201-08/Programming/images/MainScreen.jpg" />
-<!--            <Image url="@../../images/MainScreen.jpg" />-->
+            <Image url="file:/D:/The%20Nam%20Le/Code/Java/TKXDPM.KSTN.20201-08/Programming/images/MainScreen.jpg" />
          </image></ImageView>
    </left>
    <center>

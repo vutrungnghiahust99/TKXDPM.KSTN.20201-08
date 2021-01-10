@@ -10,10 +10,22 @@ import javafx.util.Pair;
 import java.util.ArrayList;
 
 public class CheckBarcodeController {
+
+    /**
+     * rentalcode: ma thue xe
+     */
     public static String rentalCode = "";
-    //    private static final Card card = Card.getInstance();
+    /**
+     * listbike: chua thong tin cua xe trong he thong
+     */
     private static ArrayList<ArrayList<String>> listBike = BikeDAO.getBikes();
+    /**
+     * bikeIsRented: Xe ma duoc nguoi dung muon thue
+     */
     private static ArrayList<String> bikeIsRented;
+    /**
+     * bikeCode: ma xe ma nguoi dung muon thue
+     */
     private static int bikeCode;
     /**
      *
