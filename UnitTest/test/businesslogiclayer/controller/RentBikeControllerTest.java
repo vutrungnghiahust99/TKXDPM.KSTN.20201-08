@@ -17,20 +17,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RentBikeControllerTest {
 
-//    @BeforeEach
-//    void setUp() {
-//    }
-
-    @ParameterizedTest
-    @CsvSource({
-            "20200001,true",
-            "123413,false"
-    })
-    void checkBarcodeAndGetBikeIfTrue(int barcode, Boolean expected) {
-        Boolean isValid = RentBikeController.checkBarcodeAndGetBikeIfTrue(barcode).getKey();
-        assertEquals(expected, isValid);
-    }
-
     @ParameterizedTest
     @CsvSource({
             "20200001, 20200001",
